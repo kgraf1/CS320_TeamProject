@@ -11,16 +11,25 @@ import customer.java.Customer;
 import customer.java.CustomerDataAccessImplementation;
 import customer.java.CustomerDataAccessObject;
 
+/**
+ * Servlet implementation class loginRegister
+ */
 @WebServlet("/loginRegister")
-public class loginRegister {
+public class loginRegister extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
     public loginRegister() {
-        
+     
     }
 
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+
 		CustomerDataAccessObject cd = new CustomerDataAccessImplementation();
 		String userName=req.getParameter("username");
 		String password=req.getParameter("password1");
