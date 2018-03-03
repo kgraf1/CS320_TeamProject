@@ -37,7 +37,7 @@ h2{
 }
 * {box-sizing: border-box;}
 
-.topnav {
+.topnav {/*Everything from here and below is stuff for the navigation bar at the top of the page*/
   overflow: hidden;
   background-color: #e9e9e9;
 }
