@@ -1,0 +1,88 @@
+body {
+    color: #000 !important;
+    background-color: #f5f7f8 !important;
+    font-family: "Open Sans", sans-serif;
+}
+
+.content {
+    max-width:980px;
+    margin:auto
+}
+
+.container {
+    content: "";
+    display: table;
+    clear: both;
+    padding: 0.01em 16px;
+}
+
+.row {
+    content: "";
+    display: table;
+    clear: both;
+    padding: 0 8px;
+}
+
+.col {
+    float: left;
+    width: 100%;
+}
+
+.left {
+    width: 24.99999%;
+}
+
+.middle {
+    width: 58.33333%;
+}
+
+.right {
+    width: 16.66666%;
+}
+
+.card {
+    box-shadow:0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19);
+    border-radius: 4px;
+    color: #000 !important;
+    background-color: #fff !important;
+    text-align: center;
+}
+
+.clear {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.button {
+    border: none;
+    display: inline-block;
+    padding: 8px 16px;
+    vertical-align: middle;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    background-color: inherit;
+    text-align: center;
+    cursor: pointer;
+    white-space: nowrap;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    color:#fff !important; 
+    background-color:#57707d !important; 
+    margin-bottom:16px!important;
+}
+
+    .button:disabled {
+        cursor: not-allowed;
+        opacity: 0.3;
+    }
+
+    .button:hover {
+        color: #000 !important;
+        background-color: #ccc !important;
+    }
