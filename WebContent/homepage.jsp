@@ -8,11 +8,13 @@
 
 <body>
 
-<!-- Here is all the stuff for the topnav || links to porfile page, home and search  -->
+<!-- Here is all the stuff for the topnav || links to profile page, home and search  -->
 <div class="topnav">
   <div class = "title"> Engineering Models </div>
+  
   <a class="active" href="homepage.jsp">Home</a>
-  <a href="error.jsp">Profile</a>
+  
+  <a href="profilepage.jsp">Profile</a>
   
   
  

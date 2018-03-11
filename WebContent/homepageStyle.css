@@ -32,12 +32,12 @@ h2{
 #pad{/* pads the two sections (welcome and popular) 10 pixels from each other*/
 	padding-top: 10px;
 }
-#links{/*styling for links*/
+#links{/*styling for links. currently un-used*/
 
 }
 * {box-sizing: border-box;}
 
-.topnav {
+.topnav {/*Everything from here and below is stuff for the navigation bar at the top of the page*/
   overflow: hidden;
   background-color: #e9e9e9;
 }
