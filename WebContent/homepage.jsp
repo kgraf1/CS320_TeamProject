@@ -14,7 +14,7 @@
   
   <a class="active" href="homepage.jsp">Home</a>
   
-  <a href="error.jsp">Profile</a>
+  <a href="profile.jsp">Profile</a>
   
   
  
