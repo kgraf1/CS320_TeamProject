@@ -1,4 +1,4 @@
-package customer.java;
+package login.submit.registration;
 
 public interface CustomerDataAccessObject {
 

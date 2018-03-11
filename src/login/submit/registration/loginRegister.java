@@ -7,10 +7,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import customer.java.Customer;
-import customer.java.CustomerDataAccessImplementation;
-import customer.java.CustomerDataAccessObject;
-
 /**
  * Servlet implementation class loginRegister
  */
@@ -40,7 +36,7 @@ public class loginRegister extends HttpServlet {
 		//If the user presses the log in button and the customer and name are found then login continues
 		if(submitType.equals("Log In") && c!=null && c.getName()!=null) {
 			req.setAttribute("message", c.getName());
-			req.getRequestDispatcher("welcome.jsp").forward(req, resp);
+			req.getRequestDispatcher("homepage.jsp").forward(req, resp);
 		}
 		//If the user presses the register button they will continue to registration
 		else if(submitType.equals("Register")) {

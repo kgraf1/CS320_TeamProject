@@ -1,4 +1,4 @@
-package Provider.java;
+package login.submit.registration;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

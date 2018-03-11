@@ -1,4 +1,4 @@
-package Provider.java;
+package login.submit.registration;
 
 public interface LoginProvider {
 	String username="root";
