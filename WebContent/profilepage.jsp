@@ -51,7 +51,7 @@
 
                 <div class="card">
                     <div class="container">
-                        <p><button type="button" class="button" style="width:300px;">Submit a model</button></p>
+                        <p><button type="button" class="button" style="width:300px;"><a href="modelSubmission.jsp">Submit a model</a></button></p>
                     </div>
                 </div>
 
@@ -70,7 +70,7 @@
                     <p style="font-weight:bold;">Time:</p> <p> about 3 minutes</p>
                     <div style="margin:0 -16px;padding:0 8px;">
                     </div>
-                    <button type="button" class="button" style="width:150px;">See more!</button>
+                    <button type="button"class="button" style="width:150px;">See more!</button>
                 </div>
 
                 <div class="container card" style="margin:16px!important; width:757px">
