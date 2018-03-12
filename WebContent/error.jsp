@@ -9,5 +9,6 @@
 		<h1>An error has Occurred: Page not Implemented Yet</h1>
 		<br>
 		<a href = "homepage.jsp">Return To Homepage</a>
+		<a href = "profilepage.jsp"> Go to Profile Page</a>
 	</body>
 </html>
