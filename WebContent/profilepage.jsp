@@ -7,7 +7,7 @@
 
 
 
-<link rel="stylesheet" type="text/css" href="/CS320_TeamProject/WebContent/profilepage.css">
+<link rel="stylesheet" type="text/css" href="profilepage.css">
 <!-- import the homepage css for navigation bar-->
 <style>
    
