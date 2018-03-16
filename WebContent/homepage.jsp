@@ -19,7 +19,7 @@
   
  
   <div class="search-container">
-    <form action="error.jsp">
+    <form action="search.jsp">
       <input type="text" placeholder="Search.." name="search" >
       <button type="submit" >Submit</button>
       
@@ -33,11 +33,11 @@
 		<h2>
 			Categories:
 			<br>
-			<a href = "error.jsp">Construction</a>
+			<a href = "construction.jsp">Construction</a>
 			<br>
-			<a href = "error.jsp">Dynamics</a>
+			<a href = "dynamics.jsp">Dynamics</a>
 			<br>
-			<a href = "error.jsp">Heat Transfer</a>
+			<a href = "heattransfer.jsp">Heat Transfer</a>
 		</h2>
 		
 
