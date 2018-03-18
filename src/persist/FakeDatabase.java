@@ -39,22 +39,56 @@ public class FakeDatabase implements IDatabase {
 	
 	@Override
 	public List<PhysicalModel> findModelsByTitle(String title) {
-		return null;
+		List<PhysicalModel> list = new ArrayList<PhysicalModel> ();
+		
+		for(PhysicalModel model : physicalModelList) {
+			if(model.getTitle().compareTo(title) == 0) {
+				list.add(model);
+			}
+		}
+		
+		return list;
 	}
 	
 	@Override
 	public List<PhysicalModel> findModelsByCategory(Category category) {
-		return null;
+		List<PhysicalModel> list = new ArrayList<PhysicalModel> ();
+		
+		for(PhysicalModel model : physicalModelList) {
+			if(model.getCategory() == category) {
+				list.add(model);
+			}
+		}
+		
+		return list;
 	}
 	
 	@Override
 	public List<PhysicalModel> findModelsByKeyword(String keyword) {
-		return null;
+		List<PhysicalModel> list = new ArrayList<PhysicalModel> ();
+		
+		for(PhysicalModel model : physicalModelList) {
+			if(model.getKeywords().contains(keyword)) {
+				list.add(model);
+			}
+		}
+		
+		return list;
 	}
 	
 	@Override
 	public List<PhysicalModel> findModelsByMaterialName(String materialName) {
-		return null;
+		List<PhysicalModel> list = new ArrayList<PhysicalModel> ();
+		
+		for(PhysicalModel model : physicalModelList) {
+			for(Material material : model.getMaterialList()) {
+				if(material.getName().compareTo(materialName) == 0) {
+					list.add(model);
+				}
+			}
+		}
+		
+		return list;
 	}
 		
 	@Override
