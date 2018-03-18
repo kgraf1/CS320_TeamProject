@@ -49,9 +49,13 @@ public class TestLogin {
 	public void DataAccessInsertCustomer() throws Exception {//tests if something can be inserted. 
 		CustomerDataAccessImplementation data = new CustomerDataAccessImplementation();
 		Customer test = new Customer(testusername,testpassword,testname,testemail);
-		int status = data.insertCustomer(test);
+		Customer test2 = null;
 		
-		assertEquals(0,status);
+		int status = data.insertCustomer(test);
+		assertEquals(1,status);
+		
+		status = data.insertCustomer(test2);
+		assertEquals(0, status);
 	}
 	
 	@Test
