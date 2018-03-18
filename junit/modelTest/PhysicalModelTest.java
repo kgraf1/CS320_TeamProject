@@ -137,9 +137,9 @@ public class PhysicalModelTest {
 		theList.add(new Rating(5, "Comment"));
 		model.setRatings(theList);
 		
-		double average = (4 + 2 + 5) / 3;
+		double average = (4 + 2 + 5) / 3.0;
 		
-		assertTrue(Math.abs(average - model.getAverageRating()) < 0.000000001);
+		assertTrue(Math.abs(average - model.getAverageRating()) < 0.0001);
 	}
 
 }

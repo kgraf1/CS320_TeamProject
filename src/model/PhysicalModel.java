@@ -81,7 +81,7 @@ public class PhysicalModel {
 			average = average + ratings.get(i).getRate();
 		}
 		
-		return average / (double)ratings.size();
+		return average / (double)(ratings.size());
 	}
 	
 }
