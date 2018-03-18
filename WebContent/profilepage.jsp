@@ -13,7 +13,7 @@
    
 </style>
 <body>
-    <!-- Uncomment when css in imported
+    <!-- Top Navigation -->
     <div class="topnav">
         <div class="title"> Engineering Models </div>
 
@@ -30,7 +30,7 @@
             </form>
         </div>
     </div>
--->
+    
     <!-- Page Container -->
     <div class="container content" style="max-width:1400px;margin-top:80px">
         <!-- The Grid -->

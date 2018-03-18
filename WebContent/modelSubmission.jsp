@@ -16,7 +16,7 @@
             <label for="Category">Category</label>
             <select id="category" name="category">
                 <option value="" disabled selected hidden>Please Choose...</option>
-                <option value="contruction">Contruction</option>
+                <option value="construction">Construction</option>
                 <option value="dynamics">Dynamics</option>
                 <option value="fluids">Fluids</option>
                 <option value="heatTransfer">Heat Transfer</option>
@@ -53,8 +53,8 @@
             <label for="application">Application</label>
             <textarea id="application" name="application" placeholder="Application of your model..." style="height:200px"></textarea>
 
-            <input type="submit" value="Submit">
-        </form>
+            <button type="submit"><a href="profilepage.jsp">Submit</a>
+         </form>
     </div>
 
 </body>

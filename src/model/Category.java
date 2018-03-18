@@ -1,0 +1,13 @@
+package model;
+
+public enum Category {
+
+	THERMODYNAMICS,
+	CONSTRUCTION,
+	DYNAMICS,
+	FLUIDS,
+	HEATTRANSFER,
+	MATERIALSCIENCE,
+	MECHANICS,
+	STATIS
+}
