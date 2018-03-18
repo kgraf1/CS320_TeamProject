@@ -6,6 +6,16 @@ public class Customer {
 	private String password;
 	private String email;
 	
+	public Customer(String username, String password, String name, String email) {
+		this.username = username;
+		this.name = name;
+		this.password = password;
+		this.email = email;
+	}
+	
+	public Customer() {
+		
+	}
 	
 	public String getEmail() {
 		return email;

@@ -11,7 +11,7 @@ public class CustomerDataAccessImplementation implements CustomerDataAccessObjec
 
 	@Override
 	public int insertCustomer(Customer c) {
-int status=0;
+		int status=0;
 		
 		try {
 			con=ConnectionProvider.getCon();
@@ -34,7 +34,7 @@ int status=0;
 
 	@Override
 	public Customer getCustomer(String username, String password) {
-	Customer c=new Customer();
+		Customer c=new Customer();
 		
 		try {
 			con=ConnectionProvider.getCon();
