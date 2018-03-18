@@ -11,6 +11,10 @@ public class Profile {
 	private String lastName;
 	private boolean loggedIn;  //check with team if this is okay
 	
+	public Profile() {
+		
+	}
+	
 	public Profile(String username, String password, String email, List<Integer> modelList, String firstName,
 			String lastName) {
 		

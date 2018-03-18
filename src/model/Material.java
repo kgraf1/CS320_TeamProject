@@ -6,6 +6,10 @@ public class Material {
 	private String name;
 	private String specs;
 	
+	public Material() {
+		
+	}
+	
 	public Material (int quantity, String name, String specs) {
 		this.quantity = quantity;
 		this.name = name;

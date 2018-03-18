@@ -4,6 +4,10 @@ public class User {
 	
 	private Profile profile;
 	
+	public User() {
+		
+	}
+	
 	public User(Profile profile) {
 		this.profile = profile;
 	}

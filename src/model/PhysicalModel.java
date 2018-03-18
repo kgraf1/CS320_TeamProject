@@ -17,6 +17,10 @@ public class PhysicalModel {
 	private List<Material> materialList;
 	private Category category;
 	
+	public PhysicalModel() {
+		
+	}
+	
 	public PhysicalModel(int id, String title, List<String> procedureList, List<String> keywords, String decription,
 			String thumbnail, String engPrinciple, String citation, Application application, List<Rating> ratings,
 			List<Material> materialList, Category category) {
@@ -65,7 +69,7 @@ public class PhysicalModel {
 	public void setApplication(Application application) { this.application = application; }
 	
 	public List<Rating> getRatings() { return ratings; }
-	public void setRating(List<Rating> ratings) { this.ratings = ratings; }
+	public void setRatings(List<Rating> ratings) { this.ratings = ratings; }
 	
 	public List<Material> getMaterialList() { return materialList; }
 	public void setMaterialList(List<Material> materialList) { this.materialList = materialList; }
@@ -77,7 +81,7 @@ public class PhysicalModel {
 			average = average + ratings.get(i).getRate();
 		}
 		
-		return average / ratings.size();
+		return average / (double)ratings.size();
 	}
 	
 }

@@ -7,6 +7,9 @@ public class Application {
 	private String duringClass;
 	private String duringImage;
 	
+	public Application() {
+		
+	}
 	
 	public Application(String beforeClass, String beforeImage, String duringClass, String duringImage) {
 		this.beforeClass = beforeClass;
