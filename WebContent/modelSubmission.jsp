@@ -53,7 +53,7 @@
             <label for="application">Application</label>
             <textarea id="application" name="application" placeholder="Application of your model..." style="height:200px"></textarea>
 
-            <button type="submit"><a href="profilepage.jsp">Submit</a>
+            <button type="submit"><a href="profilepage.jsp">Submit</a></button>
          </form>
     </div>
 

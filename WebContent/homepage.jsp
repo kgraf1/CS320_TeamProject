@@ -21,7 +21,7 @@
   <div class="search-container">
     <form action="search.jsp">
       <input type="text" placeholder="Search.." name="search" >
-      <button type="submit" >Submit</button>
+      <button type="submit">Submit</button>
       
     </form>
   </div>

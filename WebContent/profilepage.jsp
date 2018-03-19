@@ -8,6 +8,7 @@
 
 
 <link rel="stylesheet" type="text/css" href="profilepage.css">
+<link rel="stylesheet" type="text/css" href="homepageStyle.css">
 <!-- import the homepage css for navigation bar-->
 <style>
    
@@ -19,12 +20,12 @@
 
         <a class="active" href="homepage.jsp">Home</a>
 
-        <a href="error.jsp">Profile</a>
+        <a href="profilepage.jsp">Profile</a>
 
 
 
         <div class="search-container">
-            <form action="/action_page.php">
+            <form action="search.jsp">
                 <input type="text" placeholder="Search.." name="search">
                 <button type="submit">Submit</button>
             </form>
