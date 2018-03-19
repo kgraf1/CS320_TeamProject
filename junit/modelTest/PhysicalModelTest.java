@@ -26,27 +26,23 @@ public class PhysicalModelTest {
 	//Testing the constructor
 	@Test
 	public void testPhysicalModel() {
-		List<String> procedureList = new ArrayList<String> ();
-		List<String> keywords = new ArrayList<String> ();
 		Application application = new Application();
-		List<Rating> ratings = new ArrayList<Rating> ();
-		List<Material> materials = new ArrayList<Material> ();
 		
-		model = new PhysicalModel(1, "the title", procedureList, keywords, "the description",
-				"the thumbnail", "the engPrinciple", "the citation", application, ratings,
-				materials, Category.DYNAMICS);
+		model = new PhysicalModel(1, "the title", 2, 3, "the description",
+				"the thumbnail", "the engPrinciple", "the citation", application, 4,
+				5, Category.DYNAMICS);
 		
 		assertEquals(model.getId(), 1);
 		assertTrue(model.getTitle().compareTo("the title") == 0);
-		assertTrue(model.getProcedureList() == procedureList);
-		assertTrue(model.getKeywords() == keywords);
+		assertTrue(model.getProcedureListId() == 2);
+		assertTrue(model.getKeywordsId() == 3);
 		assertTrue(model.getDecription().compareTo("the description") == 0);
 		assertTrue(model.getThumbnail().compareTo("the thumbnail") == 0);
 		assertTrue(model.getEngPrinciple().compareTo("the engPrinciple") == 0);
 		assertTrue(model.getCitation().compareTo("the citation") == 0);
 		assertTrue(model.getApplication() == application);
-		assertTrue(model.getRatings() == ratings);
-		assertTrue(model.getMaterialList() == materials);
+		assertTrue(model.getRatingsId() == 4);
+		assertTrue(model.getMaterialListId() == 5);
 		assertTrue(model.getCategory() == Category.DYNAMICS);
 	}
 
@@ -65,9 +61,8 @@ public class PhysicalModelTest {
 
 	@Test
 	public void testProcedureList() {
-		List<String> theList = new ArrayList<String> ();
-		model.setProcedureList(theList);
-		assertTrue(model.getProcedureList() == theList);
+		model.setProcedureListId(10);
+		assertTrue(model.getProcedureListId() == 10);
 	}
 
 	@Test
@@ -78,9 +73,8 @@ public class PhysicalModelTest {
 
 	@Test
 	public void testKeywords() {
-		List<String> theList = new ArrayList<String> ();
-		model.setKeywords(theList);
-		assertTrue(model.getKeywords() == theList);
+		model.setKeywordsId(11);
+		assertTrue(model.getKeywordsId() == 11);
 	}
 	
 	@Test
@@ -117,19 +111,18 @@ public class PhysicalModelTest {
 
 	@Test
 	public void testRatings() {
-		List<Rating> theList = new ArrayList<Rating> ();
-		model.setRatings(theList);
-		assertTrue(model.getRatings() == theList);
+		model.setRatingsId(12);
+		assertTrue(model.getRatingsId() == 12);
 	}
 	
 	@Test
 	public void testMaterialList() {
-		List<Material> theList = new ArrayList<Material> ();
-		model.setMaterialList(theList);
-		assertTrue(model.getMaterialList() == theList);
+		model.setMaterialListId(13);
+		assertTrue(model.getMaterialListId() == 13);
 	}
 
-	@Test
+	//might be moving to different class
+	/*@Test
 	public void testGetAverageRating() {
 		List<Rating> theList = new ArrayList<Rating> ();
 		theList.add(new Rating(4, "Comment"));
@@ -140,6 +133,6 @@ public class PhysicalModelTest {
 		double average = (4 + 2 + 5) / 3.0;
 		
 		assertTrue(Math.abs(average - model.getAverageRating()) < 0.0001);
-	}
+	}*/
 
 }

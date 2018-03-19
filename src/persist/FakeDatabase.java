@@ -14,18 +14,25 @@ import model.Rating;
 public class FakeDatabase implements IDatabase {
 
 	private List<PhysicalModel> physicalModelList;
+	private List<Profile> profileList;
+	//implement all of the lists needed
 	
 	public FakeDatabase() {
+		profileList = new ArrayList<Profile> ();
 		physicalModelList = new ArrayList<PhysicalModel>();
-	
+		/*
+		construct all of the lists needed
+		 */
 		// Add initial data
 		readInitialData();
 		
+		System.out.println(profileList.size() + " profiles");
 		System.out.println(physicalModelList.size() + " physical models");
 	}
 
 	public void readInitialData() {
 		try {
+			profileList.addAll(InitialData.getProfiles());
 			physicalModelList.addAll(InitialData.getPhysicalModels());
 		} catch (IOException e) {
 			throw new IllegalStateException("Couldn't read initial data", e);
@@ -65,7 +72,7 @@ public class FakeDatabase implements IDatabase {
 	
 	@Override
 	public List<PhysicalModel> findModelsByKeyword(String keyword) {
-		List<PhysicalModel> list = new ArrayList<PhysicalModel> ();
+		/*List<PhysicalModel> list = new ArrayList<PhysicalModel> ();
 		
 		for(PhysicalModel model : physicalModelList) {
 			if(model.getKeywords().contains(keyword)) {
@@ -74,11 +81,13 @@ public class FakeDatabase implements IDatabase {
 		}
 		
 		return list;
+		*/
+		return null;
 	}
 	
 	@Override
 	public List<PhysicalModel> findModelsByMaterialName(String materialName) {
-		List<PhysicalModel> list = new ArrayList<PhysicalModel> ();
+		/*List<PhysicalModel> list = new ArrayList<PhysicalModel> ();
 		
 		for(PhysicalModel model : physicalModelList) {
 			for(Material material : model.getMaterialList()) {
@@ -89,6 +98,8 @@ public class FakeDatabase implements IDatabase {
 		}
 		
 		return list;
+		*/
+		return null;
 	}
 		
 	@Override

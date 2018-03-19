@@ -3,6 +3,7 @@ package model;
 import java.util.List;
 
 public class Profile {
+	private int id;
 	private String username;
 	private String password;
 	private String email;
@@ -15,9 +16,10 @@ public class Profile {
 		
 	}
 	
-	public Profile(String username, String password, String email, List<Integer> modelList, String firstName,
+	public Profile(int id, String username, String password, String email, List<Integer> modelList, String firstName,
 			String lastName) {
 		
+		this.id = id;
 		this.username = username;
 		this.password = password;
 		this.email = email;
@@ -26,6 +28,9 @@ public class Profile {
 		this.lastName = lastName;
 		loggedIn = false;
 	}
+	
+	public int getId() { return id; }
+	public void setId(int id) { this.id = id; }
 	
 	public String getUsername() { return username; }
 	public void setUsername(String username) { this.username = username; }
