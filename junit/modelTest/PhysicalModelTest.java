@@ -28,7 +28,7 @@ public class PhysicalModelTest {
 	public void testPhysicalModel() {
 
 		model = new PhysicalModel(1, 6, "the title", "the description",
-				"the thumbnail", "the engPrinciple", "the citation", Category.DYNAMICS);
+				"the thumbnail", "the engPrinciple", "the citation", Category.DYNAMICS, "the procedure");
 		
 		assertEquals(model.getId(), 1);
 		assertTrue(model.getProfileId() == 6);
@@ -38,6 +38,7 @@ public class PhysicalModelTest {
 		assertTrue(model.getEngPrinciple().compareTo("the engPrinciple") == 0);
 		assertTrue(model.getCitation().compareTo("the citation") == 0);
 		assertTrue(model.getCategory() == Category.DYNAMICS);
+		assertTrue(model.getProcedure().compareTo("the procedure") == 0);
 	}
 
 	//Testing getters and setters
@@ -89,18 +90,10 @@ public class PhysicalModelTest {
 		assertTrue(model.getCitation().compareTo("This is the citation") == 0);
 	}
 
-	//might be moving to different class
-	/*@Test
-	public void testGetAverageRating() {
-		List<Rating> theList = new ArrayList<Rating> ();
-		theList.add(new Rating(4, "Comment"));
-		theList.add(new Rating(2, "Comment"));
-		theList.add(new Rating(5, "Comment"));
-		model.setRatings(theList);
-		
-		double average = (4 + 2 + 5) / 3.0;
-		
-		assertTrue(Math.abs(average - model.getAverageRating()) < 0.0001);
-	}*/
+	@Test
+	public void testProcedure() {
+		model.setProcedure("This is the procedure");
+		assertTrue(model.getProcedure().compareTo("This is the procedure") == 0);
+	}
 
 }
