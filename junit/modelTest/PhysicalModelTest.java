@@ -2,14 +2,8 @@ package modelTest;
 
 import static org.junit.Assert.*;
 
-import java.util.List;
-import java.util.ArrayList;
-
-import model.Application;
 import model.Category;
-import model.Material;
 import model.PhysicalModel;
-import model.Rating;
 
 import org.junit.Test;
 import org.junit.Before;
