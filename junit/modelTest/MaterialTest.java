@@ -19,14 +19,28 @@ public class MaterialTest {
 	//Testing the Constructor
 	@Test
 	public void testConstructor() {
-		material = new Material(4, "The name", "specs");
+		material = new Material(5, 20, 4, "The name", "specs");
 		
+		assertTrue(material.getId() == 5);
+		assertTrue(material.getModelId() == 20);
 		assertTrue(material.getQuantity() == 4);
 		assertTrue(material.getName().compareTo("The name") == 0);
 		assertTrue(material.getSpecs().compareTo("specs") == 0);
 	}
 	
 	//Testing getters and setters
+	@Test
+	public void testId() {
+		material.setId(70);
+		assertTrue(material.getId() == 70);
+	}
+	
+	@Test
+	public void testModelId() {
+		material.setModelId(55);
+		assertTrue(material.getModelId() == 55);
+	}
+	
 	@Test
 	public void testQuantity() {
 		material.setQuantity(6);

@@ -17,13 +17,27 @@ public class RatingTest {
 	//Testing the constructor
 	@Test
 	public void testRating() {
-		rating = new Rating (3, "comment");
+		rating = new Rating (5, 7, 3, "comment");
 		
+		assertTrue(rating.getId() == 5);
+		assertTrue(rating.getModelId() == 7);
 		assertTrue(rating.getRate() == 3);
 		assertTrue(rating.getComment().compareTo("comment") == 0);
 	}
 
 	//Testing the getters and setters
+	@Test
+	public void testId() {
+		rating.setId(44);
+		assertTrue(rating.getId() == 44);
+	}
+	
+	@Test
+	public void testModelId() {
+		rating.setModelId(55);
+		assertTrue(rating.getModelId() == 55);
+	}
+	
 	@Test
 	public void testRate() {
 		rating.setRate(4);

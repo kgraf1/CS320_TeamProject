@@ -22,14 +22,13 @@ public class ProfileTest {
 	@Test
 	public void testProfile() {
 		List<Integer> modelList = new ArrayList<Integer> ();
-		profile = new Profile(3, "username", "password", "email", modelList, "firstName",
+		profile = new Profile(3, "username", "password", "email", "firstName",
 				"lastName");
 		
 		assertTrue(profile.getId() == 3);
 		assertTrue(profile.getUsername().compareTo("username") == 0);
 		assertTrue(profile.getPassword().compareTo("password") == 0);
 		assertTrue(profile.getEmail().compareTo("email") == 0);
-		assertTrue(profile.getModelList() == modelList);
 		assertTrue(profile.getFirstName().compareTo("firstName") == 0);
 		assertTrue(profile.getLastName().compareTo("lastName") == 0);
 	}
@@ -51,13 +50,6 @@ public class ProfileTest {
 	public void testEmail() {
 		profile.setEmail("This is the email");
 		assertTrue(profile.getEmail().compareTo("This is the email") == 0);
-	}
-
-	@Test
-	public void testModelList() {
-		List<Integer> list = new ArrayList<Integer> ();
-		profile.setModelList(list);
-		assertTrue(profile.getModelList() == list);
 	}
 
 	@Test

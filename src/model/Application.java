@@ -2,6 +2,8 @@ package model;
 
 public class Application {
 
+	private int id;				//this one
+	private int modelId;		//this one
 	private String beforeClass;
 	private String beforeImage;
 	private String duringClass;
@@ -11,12 +13,20 @@ public class Application {
 		
 	}
 	
-	public Application(String beforeClass, String beforeImage, String duringClass, String duringImage) {
+	public Application(int id, int modelId, String beforeClass, String beforeImage, String duringClass, String duringImage) {
+		this.id = id;
+		this.modelId = modelId;
 		this.beforeClass = beforeClass;
 		this.beforeImage = beforeImage;
 		this.duringClass = duringClass;
 		this.duringImage = duringImage;
 	}
+	
+	public int getId() { return id; }
+	public void setId(int id) { this.id = id; }
+	
+	public int getModelId() { return modelId; }
+	public void setModelId(int modelId) { this.modelId = modelId; }
 	
 	public String getBeforeClass() { return beforeClass; }
 	public void setBeforeClass(String beforeClass) { this.beforeClass = beforeClass; }

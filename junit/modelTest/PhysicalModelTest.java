@@ -26,23 +26,17 @@ public class PhysicalModelTest {
 	//Testing the constructor
 	@Test
 	public void testPhysicalModel() {
-		Application application = new Application();
-		
-		model = new PhysicalModel(1, "the title", 2, 3, "the description",
-				"the thumbnail", "the engPrinciple", "the citation", application, 4,
-				5, Category.DYNAMICS);
+
+		model = new PhysicalModel(1, 6, "the title", "the description",
+				"the thumbnail", "the engPrinciple", "the citation", Category.DYNAMICS);
 		
 		assertEquals(model.getId(), 1);
+		assertTrue(model.getProfileId() == 6);
 		assertTrue(model.getTitle().compareTo("the title") == 0);
-		assertTrue(model.getProcedureListId() == 2);
-		assertTrue(model.getKeywordsId() == 3);
 		assertTrue(model.getDecription().compareTo("the description") == 0);
 		assertTrue(model.getThumbnail().compareTo("the thumbnail") == 0);
 		assertTrue(model.getEngPrinciple().compareTo("the engPrinciple") == 0);
 		assertTrue(model.getCitation().compareTo("the citation") == 0);
-		assertTrue(model.getApplication() == application);
-		assertTrue(model.getRatingsId() == 4);
-		assertTrue(model.getMaterialListId() == 5);
 		assertTrue(model.getCategory() == Category.DYNAMICS);
 	}
 
@@ -54,15 +48,15 @@ public class PhysicalModelTest {
 	}
 
 	@Test
+	public void testProfileId() {
+		model.setProfileId(55);
+		assertTrue(model.getProfileId() == 55);
+	}
+	
+	@Test
 	public void testTitle() {
 		model.setTitle("This is the title");
 		assertTrue(model.getTitle().compareTo("This is the title") == 0);
-	}
-
-	@Test
-	public void testProcedureList() {
-		model.setProcedureListId(10);
-		assertTrue(model.getProcedureListId() == 10);
 	}
 
 	@Test
@@ -71,12 +65,6 @@ public class PhysicalModelTest {
 		assertEquals(model.getCategory(), Category.CONSTRUCTION);
 	}
 
-	@Test
-	public void testKeywords() {
-		model.setKeywordsId(11);
-		assertTrue(model.getKeywordsId() == 11);
-	}
-	
 	@Test
 	public void testDescription() {
 		model.setDescription("This is the description");
@@ -99,26 +87,6 @@ public class PhysicalModelTest {
 	public void testCitation() {
 		model.setCitation("This is the citation");
 		assertTrue(model.getCitation().compareTo("This is the citation") == 0);
-	}
-
-	@Test
-	public void testApplication() {
-		Application application = new Application();
-		
-		model.setApplication(application);
-		assertTrue(model.getApplication() == application);
-	}
-
-	@Test
-	public void testRatings() {
-		model.setRatingsId(12);
-		assertTrue(model.getRatingsId() == 12);
-	}
-	
-	@Test
-	public void testMaterialList() {
-		model.setMaterialListId(13);
-		assertTrue(model.getMaterialListId() == 13);
 	}
 
 	//might be moving to different class

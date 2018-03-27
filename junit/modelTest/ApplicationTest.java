@@ -18,8 +18,10 @@ public class ApplicationTest {
 	//Testing the constructor
 	@Test
 	public void testConstructor() {
-		application = new Application("beforeClass", "beforeImage", "duringClass", "duringImage");
+		application = new Application(5, 9, "beforeClass", "beforeImage", "duringClass", "duringImage");
 		
+		assertTrue(application.getId() == 5);
+		assertTrue(application.getModelId() == 9);
 		assertTrue(application.getBeforeClass().compareTo("beforeClass") == 0);
 		assertTrue(application.getBeforeImage().compareTo("beforeImage") == 0);
 		assertTrue(application.getDuringClass().compareTo("duringClass") == 0);
@@ -27,6 +29,18 @@ public class ApplicationTest {
 	}
 	
 	//Testing the getters and setters
+	@Test
+	public void testId() {
+		application.setId(20);
+		assertTrue(application.getId() == 20);
+	}
+	
+	@Test
+	public void testModelId() {
+		application.setModelId(25);
+		assertTrue(application.getModelId() == 25);
+	}
+	
 	@Test
 	public void testBeforeClass() {
 		application.setBeforeClass("This is before class");
