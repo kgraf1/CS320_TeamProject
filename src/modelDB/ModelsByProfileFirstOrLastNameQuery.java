@@ -28,7 +28,7 @@ public class ModelsByProfileFirstOrLastNameQuery {
 			
 			//check if anything was returned and output the list
 			if(modelList.isEmpty()) {
-				System.out.println("No Models found with this keyword");
+				System.out.println("No Models found with this user");
 			}
 			else {
 				for(PhysicalModel model: modelList) {

@@ -29,7 +29,7 @@ public class ModelByCategory {
 
 			//check if anything was returned and output the list
 			if(modelList.isEmpty()) {
-				System.out.println("No Models found with this keyword");
+				System.out.println("No Models found with this category");
 			}
 			else {
 				for(PhysicalModel model: modelList) {
