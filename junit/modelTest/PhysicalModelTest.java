@@ -10,6 +10,8 @@ import model.Category;
 import model.Material;
 import model.PhysicalModel;
 import model.Rating;
+import modelDB.ModelsByProfileFirstOrLastNameQuery;
+import model.Profile;
 
 import org.junit.Test;
 import org.junit.Before;
@@ -26,9 +28,21 @@ public class PhysicalModelTest {
 	//Testing the constructor
 	@Test
 	public void testPhysicalModel() {
+		
+		String [] keywords = {"hello", "these", "are", "keywords"};
+		
+		Material material1 = new Material (1, 1, 12, "Aluminum", "20mm");
+		Material material2 = new Material (2, 1, 5, "Screw", "8 gauge");
+		List<Material> MaterialList = new ArrayList<Material>();
+		MaterialList.add(material1);
+		MaterialList.add(material2);
+		
+		Application application = new Application (1, 1, "beforeClass", "beforeImage", "duringClass", "duringImage");
 
+		Profile profile = new Profile (1, "testUser", "12345", "test@gmail.com", "Test", "Professor");
+		
 		model = new PhysicalModel(1, 6, "the title", "the description",
-				"the thumbnail", "the engPrinciple", "the citation", Category.DYNAMICS);
+				"the thumbnail", "the engPrinciple", "the citation", Category.DYNAMICS, keywords, MaterialList, application, profile);
 		
 		assertEquals(model.getId(), 1);
 		assertTrue(model.getProfileId() == 6);
@@ -38,6 +52,10 @@ public class PhysicalModelTest {
 		assertTrue(model.getEngPrinciple().compareTo("the engPrinciple") == 0);
 		assertTrue(model.getCitation().compareTo("the citation") == 0);
 		assertTrue(model.getCategory() == Category.DYNAMICS);
+		assertTrue(model.getKeywords()== keywords);
+		assertTrue(model.getMaterialList() == MaterialList);
+		assertTrue(model.getApplication() == application);
+		assertTrue(model.getProfile() == profile);
 	}
 
 	//Testing getters and setters
@@ -87,6 +105,31 @@ public class PhysicalModelTest {
 	public void testCitation() {
 		model.setCitation("This is the citation");
 		assertTrue(model.getCitation().compareTo("This is the citation") == 0);
+	}
+	
+	@Test
+	public void testKeywords () {
+		String [] keywords = {"These", "are", "keywords"};
+		model.setKeywords(keywords);
+		assertTrue(model.getKeywords().equals(keywords));
+	}
+	
+	@Test
+	public void testMaterialList () {
+		List <Material> MaterialList = new ArrayList<Material>();
+		Material material1 = new Material (3, 1, 2, "bulb", "40Watt");
+		Material material2 = new Material (4, 1, 5, "hammer", "no specs");
+		MaterialList.add(material1);
+		MaterialList.add(material2);
+		model.setMaterialList(MaterialList);
+		assertTrue(model.getMaterialList().equals(MaterialList));
+	}
+	
+	@Test 
+	public void testApplication () {
+		Application application = new Application(2, 1, "before", "modelPieces", "during", "completeModel");
+		model.setApplication(application);
+		assertTrue(model.getApplication().equals(application));
 	}
 
 	//might be moving to different class

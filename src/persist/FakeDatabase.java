@@ -40,8 +40,15 @@ public class FakeDatabase implements IDatabase {
 	}
 	
 	@Override
-	public List<PhysicalModel> findModelsByProfileId(Long id) {
-		return null;
+	public List<PhysicalModel> findModelsByProfileFirstOrLastName(String name) {
+		List <PhysicalModel> list = new ArrayList<PhysicalModel> ();
+		
+		for(PhysicalModel model : physicalModelList) {
+			if((model.getProfile().getFirstName()==name) || (model.getProfile().getLastName()==name)) {
+				list.add(model);
+			}
+		}
+		return list;
 	}
 	
 	@Override
@@ -58,11 +65,11 @@ public class FakeDatabase implements IDatabase {
 	}
 	
 	@Override
-	public List<PhysicalModel> findModelsByCategory(Category category) {
+	public List<PhysicalModel> findModelsByCategory(String category) {
 		List<PhysicalModel> list = new ArrayList<PhysicalModel> ();
 		
 		for(PhysicalModel model : physicalModelList) {
-			if(model.getCategory() == category) {
+			if(model.getCategory().toString() == category) {
 				list.add(model);
 			}
 		}
@@ -72,34 +79,32 @@ public class FakeDatabase implements IDatabase {
 	
 	@Override
 	public List<PhysicalModel> findModelsByKeyword(String keyword) {
-		/*List<PhysicalModel> list = new ArrayList<PhysicalModel> ();
+		List<PhysicalModel> list = new ArrayList<PhysicalModel> ();
 		
 		for(PhysicalModel model : physicalModelList) {
-			if(model.getKeywords().contains(keyword)) {
-				list.add(model);
-			}
-		}
-		
-		return list;
-		*/
-		return null;
-	}
-	
-	@Override
-	public List<PhysicalModel> findModelsByMaterialName(String materialName) {
-		/*List<PhysicalModel> list = new ArrayList<PhysicalModel> ();
-		
-		for(PhysicalModel model : physicalModelList) {
-			for(Material material : model.getMaterialList()) {
-				if(material.getName().compareTo(materialName) == 0) {
+			String [] keywords = model.getKeywords();
+			for(int i =0; i<keywords.length; i++) {
+				if(keywords[i] == keyword) {
 					list.add(model);
 				}
 			}
 		}
 		
 		return list;
-		*/
-		return null;
+	}
+	
+	@Override
+	public List<PhysicalModel> findModelsByMaterialName(String materialName) {
+		List<PhysicalModel> list = new ArrayList<PhysicalModel> ();
+		
+		for(PhysicalModel model : physicalModelList) {
+			for(int i =0; i<model.getMaterialList().size(); i++) {
+				if(materialName.equals(model.getMaterialList().get(i).getName())) {
+					list.add(model);
+				}
+			}
+		}
+		return list;
 	}
 		
 	@Override

@@ -11,9 +11,9 @@ import java.util.List;
 
 public interface IDatabase {
 	//finding models
-	public List<PhysicalModel> findModelsByProfileId(Long id);
+	public List<PhysicalModel> findModelsByProfileFirstOrLastName(String name);
 	public List<PhysicalModel> findModelsByTitle(String title);
-	public List<PhysicalModel> findModelsByCategory(Category category);
+	public List<PhysicalModel> findModelsByCategory(String category);
 	public List<PhysicalModel> findModelsByKeyword(String keyword);
 	public List<PhysicalModel> findModelsByMaterialName(String materialName);
 	
