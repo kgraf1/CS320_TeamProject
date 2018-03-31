@@ -17,7 +17,7 @@ public class ModelByCategory {
 		
 		System.out.print("Enter a string: ");
 		String categories = keyboard.next();
-		String [] split = categories.split("\\s+");
+		String [] split = categories.split(" ");
 		
 		
 		for (int i=0; i<split.length; i++) {

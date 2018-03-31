@@ -16,8 +16,8 @@ public class ModelByKeywordsQuery {
 		InitDatabase.init(keyboard);
 		
 		System.out.print("Enter a String:");
-		String str = keyboard.next();
-		String [] split = str.split("\\s+");
+		String keywords = keyboard.nextLine();
+		String [] split = keywords.split(" ");
 		
 		
 		for(int i=0; i<split.length; i++) {
@@ -33,7 +33,7 @@ public class ModelByKeywordsQuery {
 			}
 			else {
 				for(PhysicalModel model: modelList) {
-					System.out.println(model.getTitle() + " " + model.getDecription());
+					System.out.println(model.getTitle() + " | " + model.getDecription());
 				}
 			}	
 		}

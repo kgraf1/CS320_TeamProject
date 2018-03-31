@@ -17,8 +17,7 @@ public class ModelsByProfileFirstOrLastNameQuery {
 		
 		System.out.println("Enter a String:");
 		String profiles = keyboard.nextLine();
-		
-		String [] split = profiles.split("\\+s");
+		String [] split = profiles.split(" ");
 		
 		for(int i=0; i<split.length; i++) {
 			String name = split[i];
@@ -32,12 +31,9 @@ public class ModelsByProfileFirstOrLastNameQuery {
 			}
 			else {
 				for(PhysicalModel model: modelList) {
-					System.out.println(model.getTitle() + " " + model.getDecription());
+					System.out.println(model.getTitle() + " | " + model.getDecription());
 				}
 			}	
-		}
-		
-			
+		}		
 	}
-
 }
