@@ -59,7 +59,7 @@ public class FakeDatabase implements IDatabase {
 		
 		for(PhysicalModel model : physicalModels) {
 			for(int i=0; i<profiles.size(); i++) {
-				if(((profiles.get(i).getFirstName()==name)||(profiles.get(i).getLastName()==name) && (profiles.get(i).getId()==model.getProfileId()))) {
+				if(((profiles.get(i).getFirstName().equals(name))||(profiles.get(i).getLastName().equals(name)) && (profiles.get(i).getId()==model.getProfileId()))) {
 						list.add(model);
 				}
 			}
@@ -99,7 +99,7 @@ public class FakeDatabase implements IDatabase {
 		
 		for(PhysicalModel model : physicalModels) {
 			for(int i =0; i<keywords.size(); i++) {
-				if((keywords.get(i).getWord()==keyword) && (model.getId()==keywords.get(i).getModelId())) {
+				if((keywords.get(i).getWord().equals(keyword)) && (model.getId()==keywords.get(i).getModelId())) {
 					list.add(model);
 				}
 			}
@@ -114,8 +114,12 @@ public class FakeDatabase implements IDatabase {
 		
 		for(PhysicalModel model : physicalModels) {
 			for(int i =0; i<materials.size(); i++) {
-				if((materials.get(i).getName()==materialName) && (materials.get(i).getModelId()==model.getId())){
+				if((materials.get(i).getName().equals(materialName)) && (materials.get(i).getModelId()==model.getId())){
 					list.add(model);
+					//System.out.println(materials.get(i).getName() +" is "+materialName+", adding this model to the list");
+				}
+				else {
+					//System.out.println(materials.get(i).getName() +" is not "+materialName);
 				}
 			}
 		}
