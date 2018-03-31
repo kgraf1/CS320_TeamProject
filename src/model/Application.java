@@ -2,8 +2,8 @@ package model;
 
 public class Application {
 
-	private int id;				//this one
-	private int modelId;		//this one
+	private int id;				
+	private int modelId;		
 	private String beforeClass;
 	private String beforeImage;
 	private String duringClass;

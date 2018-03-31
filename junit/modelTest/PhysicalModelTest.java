@@ -1,17 +1,15 @@
 package modelTest;
 
 import static org.junit.Assert.*;
-
 import java.util.List;
 import java.util.ArrayList;
 
-import model.Application;
 import model.Category;
-import model.Material;
 import model.PhysicalModel;
 import model.Rating;
-import modelDB.ModelsByProfileFirstOrLastNameQuery;
 import model.Profile;
+import model.Material;
+import model.Application;
 
 import org.junit.Test;
 import org.junit.Before;
@@ -42,7 +40,8 @@ public class PhysicalModelTest {
 		Profile profile = new Profile (1, "testUser", "12345", "test@gmail.com", "Test", "Professor");
 		
 		model = new PhysicalModel(1, 6, "the title", "the description",
-				"the thumbnail", "the engPrinciple", "the citation", Category.DYNAMICS, keywords, MaterialList, application, profile);
+				"the thumbnail", "the engPrinciple", "the citation", Category.DYNAMICS, keywords, MaterialList, application, profile
+				,"the procedure");
 		
 		assertEquals(model.getId(), 1);
 		assertTrue(model.getProfileId() == 6);
@@ -56,6 +55,7 @@ public class PhysicalModelTest {
 		assertTrue(model.getMaterialList() == MaterialList);
 		assertTrue(model.getApplication() == application);
 		assertTrue(model.getProfile() == profile);
+		assertTrue(model.getProcedure().compareTo("the procedure") == 0);
 	}
 
 	//Testing getters and setters
@@ -132,18 +132,10 @@ public class PhysicalModelTest {
 		assertTrue(model.getApplication().equals(application));
 	}
 
-	//might be moving to different class
-	/*@Test
-	public void testGetAverageRating() {
-		List<Rating> theList = new ArrayList<Rating> ();
-		theList.add(new Rating(4, "Comment"));
-		theList.add(new Rating(2, "Comment"));
-		theList.add(new Rating(5, "Comment"));
-		model.setRatings(theList);
-		
-		double average = (4 + 2 + 5) / 3.0;
-		
-		assertTrue(Math.abs(average - model.getAverageRating()) < 0.0001);
-	}*/
+	@Test
+	public void testProcedure() {
+		model.setProcedure("This is the procedure");
+		assertTrue(model.getProcedure().compareTo("This is the procedure") == 0);
+	}
 
 }

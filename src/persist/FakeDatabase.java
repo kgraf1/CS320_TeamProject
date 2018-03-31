@@ -10,30 +10,44 @@ import model.Material;
 import model.PhysicalModel;
 import model.Profile;
 import model.Rating;
+import model.Keyword;
 
 public class FakeDatabase implements IDatabase {
 
-	private List<PhysicalModel> physicalModelList;
-	private List<Profile> profileList;
-	//implement all of the lists needed
+	private List<Profile> profiles;
+	private List<PhysicalModel> physicalModels;
+	private List<Keyword> keywords;
+	private List<Rating> ratings;
+	private List<Material> materials;
+	private List<Application> applications;
 	
 	public FakeDatabase() {
-		profileList = new ArrayList<Profile> ();
-		physicalModelList = new ArrayList<PhysicalModel>();
-		/*
-		construct all of the lists needed
-		 */
+		profiles = new ArrayList<Profile> ();
+		physicalModels = new ArrayList<PhysicalModel>();
+		keywords = new ArrayList<Keyword>();
+		ratings = new ArrayList<Rating>();
+		materials = new ArrayList<Material>();
+		applications = new ArrayList<Application>();
+		
 		// Add initial data
 		readInitialData();
 		
-		System.out.println(profileList.size() + " profiles");
-		System.out.println(physicalModelList.size() + " physical models");
+		System.out.println(profiles.size() + " profiles");
+		System.out.println(physicalModels.size() + " physical models");
+		System.out.println(keywords.size() + " keywords");
+		System.out.println(ratings.size() + " ratings");
+		System.out.println(materials.size() + " materials");
+		System.out.println(applications.size() + " applications");
 	}
 
 	public void readInitialData() {
 		try {
-			profileList.addAll(InitialData.getProfiles());
-			physicalModelList.addAll(InitialData.getPhysicalModels());
+			profiles.addAll(InitialData.getProfiles());
+			physicalModels.addAll(InitialData.getPhysicalModels());
+			keywords.addAll(InitialData.getKeywords());
+			ratings.addAll(InitialData.getRatings());
+			materials.addAll(InitialData.getMaterials());
+			applications.addAll(InitialData.getApplications());
 		} catch (IOException e) {
 			throw new IllegalStateException("Couldn't read initial data", e);
 		}
@@ -43,7 +57,7 @@ public class FakeDatabase implements IDatabase {
 	public List<PhysicalModel> findModelsByProfileFirstOrLastName(String name) {
 		List <PhysicalModel> list = new ArrayList<PhysicalModel> ();
 		
-		for(PhysicalModel model : physicalModelList) {
+		for(PhysicalModel model : physicalModels) {
 			if((model.getProfile().getFirstName()==name) || (model.getProfile().getLastName()==name)) {
 				list.add(model);
 			}
@@ -55,7 +69,7 @@ public class FakeDatabase implements IDatabase {
 	public List<PhysicalModel> findModelsByTitle(String title) {
 		List<PhysicalModel> list = new ArrayList<PhysicalModel> ();
 		
-		for(PhysicalModel model : physicalModelList) {
+		for(PhysicalModel model : physicalModels) {
 			if(model.getTitle().compareTo(title) == 0) {
 				list.add(model);
 			}
@@ -68,12 +82,12 @@ public class FakeDatabase implements IDatabase {
 	public List<PhysicalModel> findModelsByCategory(String category) {
 		List<PhysicalModel> list = new ArrayList<PhysicalModel> ();
 		
-		for(PhysicalModel model : physicalModelList) {
+
+		for(PhysicalModel model : physicalModels) {
 			if(model.getCategory().toString() == category) {
 				list.add(model);
 			}
 		}
-		
 		return list;
 	}
 	
@@ -81,7 +95,7 @@ public class FakeDatabase implements IDatabase {
 	public List<PhysicalModel> findModelsByKeyword(String keyword) {
 		List<PhysicalModel> list = new ArrayList<PhysicalModel> ();
 		
-		for(PhysicalModel model : physicalModelList) {
+		for(PhysicalModel model : physicalModels) {
 			String [] keywords = model.getKeywords();
 			for(int i =0; i<keywords.length; i++) {
 				if(keywords[i] == keyword) {
@@ -97,7 +111,7 @@ public class FakeDatabase implements IDatabase {
 	public List<PhysicalModel> findModelsByMaterialName(String materialName) {
 		List<PhysicalModel> list = new ArrayList<PhysicalModel> ();
 		
-		for(PhysicalModel model : physicalModelList) {
+		for(PhysicalModel model : physicalModels) {
 			for(int i =0; i<model.getMaterialList().size(); i++) {
 				if(materialName.equals(model.getMaterialList().get(i).getName())) {
 					list.add(model);

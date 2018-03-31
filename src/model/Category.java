@@ -9,5 +9,5 @@ public enum Category {
 	HEATTRANSFER,
 	MATERIALSCIENCE,
 	MECHANICS,
-	STATIS
+	STATICS
 }

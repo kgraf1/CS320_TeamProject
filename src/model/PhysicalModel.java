@@ -20,6 +20,8 @@ public class PhysicalModel {
 	private List <Material> materialList;
 	private Application application;
 	private Profile profile;
+	private String procedure;
+
 	
 	public PhysicalModel() {
 		
@@ -27,7 +29,8 @@ public class PhysicalModel {
 	
 	public PhysicalModel(int id, int profileId, String title, String decription, String thumbnail, 
 						String engPrinciple, String citation, Category category, String [] keywords,
-						List<Material> materialList, Application application, Profile profile) {
+						List<Material> materialList, Application application, Profile profile,
+						String procedure) {
 		this.id = id;
 		this.profileId = profileId;
 		this.title = title;
@@ -40,6 +43,8 @@ public class PhysicalModel {
 		this.materialList = materialList;
 		this.application = application;
 		this.profile = profile;
+		this.procedure = procedure;
+
 	}
 
 	public void setId(int id) { this.id = id; }
@@ -88,5 +93,8 @@ public class PhysicalModel {
 		
 		return average / (double)(ratings.size());
 	}*/
+	public String getProcedure() { return procedure; }
+	public void setProcedure(String procedure) { this.procedure = procedure; }
+
 	
 }
