@@ -17,14 +17,14 @@ public class ModelByCategory {
 		
 		System.out.print("Enter a string: ");
 		String categories = keyboard.next();
-		String [] split = categories.split("\\s+");
+		String [] split = categories.split(" ");
 		
 		
 		for (int i=0; i<split.length; i++) {
 			String category= split[i];
 			//get the DB instance and execute transaction
 			IDatabase db = DatabaseProvider.getInstance();
-			List<PhysicalModel> modelList = db.findModelsByKeyword(category);
+			List<PhysicalModel> modelList = db.findModelsByCategory(category);
 			
 
 			//check if anything was returned and output the list

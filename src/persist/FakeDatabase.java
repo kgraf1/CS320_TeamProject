@@ -62,6 +62,7 @@ public class FakeDatabase implements IDatabase {
 				if(((profiles.get(i).getFirstName().equals(name))||(profiles.get(i).getLastName().equals(name)) && (profiles.get(i).getId()==model.getProfileId()))) {
 						list.add(model);
 				}
+				
 			}
 		}
 		return list;
@@ -86,7 +87,7 @@ public class FakeDatabase implements IDatabase {
 		
 
 		for(PhysicalModel model : physicalModels) {
-			if(model.getCategory().equals(category)) {
+			if(model.getCategory().toString().equals(category.toUpperCase())) {
 				list.add(model);
 			}
 		}
@@ -116,11 +117,8 @@ public class FakeDatabase implements IDatabase {
 			for(int i =0; i<materials.size(); i++) {
 				if((materials.get(i).getName().equals(materialName)) && (materials.get(i).getModelId()==model.getId())){
 					list.add(model);
-					//System.out.println(materials.get(i).getName() +" is "+materialName+", adding this model to the list");
 				}
-				else {
-					//System.out.println(materials.get(i).getName() +" is not "+materialName);
-				}
+				
 			}
 		}
 		return list;
