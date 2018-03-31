@@ -57,10 +57,13 @@ public class FakeDatabase implements IDatabase {
 	public List<PhysicalModel> findModelsByProfileFirstOrLastName(String name) {
 		List <PhysicalModel> list = new ArrayList<PhysicalModel> ();
 		
+		
 		for(PhysicalModel model : physicalModels) {
-			for(int i=0; i<profiles.size(); i++) {
-				if(((profiles.get(i).getFirstName().equals(name))||(profiles.get(i).getLastName().equals(name)) && (profiles.get(i).getId()==model.getProfileId()))) {
+			for(Profile profile:profiles) { 
+				if(model.getProfileId()==profile.getId()) {
+					if((profile.getFirstName().equals(name)) || (profile.getLastName().equals(name))){
 						list.add(model);
+					}
 				}
 				
 			}
@@ -99,8 +102,8 @@ public class FakeDatabase implements IDatabase {
 		List<PhysicalModel> list = new ArrayList<PhysicalModel> ();
 		
 		for(PhysicalModel model : physicalModels) {
-			for(int i =0; i<keywords.size(); i++) {
-				if((keywords.get(i).getWord().equals(keyword)) && (model.getId()==keywords.get(i).getModelId())) {
+			for(Keyword key: keywords) {
+				if((key.getWord().equals(keyword)) && (model.getId()==key.getModelId())) {
 					list.add(model);
 				}
 			}
