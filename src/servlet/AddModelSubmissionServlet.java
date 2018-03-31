@@ -7,8 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-//import controller
-import model.PhysicalModel;
+import controller.AddModelSubmissionController;
 import model.Application;
 import model.Category;
 
@@ -36,7 +35,7 @@ public class AddModelSubmissionServlet extends HttpServlet {
 		String errorMessage = null;
 
 		// the new submission 
-		PhysicalModel model = null;
+		boolean created = false;
 		Category category = null;
 		Application application = null;
 		
@@ -45,7 +44,10 @@ public class AddModelSubmissionServlet extends HttpServlet {
 			String name = req.getParameter("name");
 			category = Category.valueOf(req.getParameter("category"));
 			String description = req.getParameter("description");
+			String thumbnail = req.getParameter("thumbnail");
 			String engPrinciple = req.getParameter("engPrinciple");
+			String citation = req.getParameter("citation");
+			String procedure = req.getParameter("procedure");
 			//get materials
 			//get Application
 			
@@ -56,7 +58,8 @@ public class AddModelSubmissionServlet extends HttpServlet {
 			// otherwise, create the model by calling the controller
 			else {
 				AddModelSubmissionController controller = new AddModelSubmissionController();
-				model = controller.create(name, category, description, engPrinciple);
+				created = controller.create(name, description, thumbnail, engPrinciple, citation,
+											category, procedure);
 			}
 		} catch (Exception e) {
 			errorMessage = "Invalid entry";

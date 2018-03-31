@@ -37,7 +37,13 @@ public class DerbyDatabase implements IDatabase {
 	public List<Profile> findProfileByDatabaseTitle(String title) { return null; }
 	
 	//creating models
-	public PhysicalModel insertModel(String title, List<String> procedureList, List<String> keywords, String decription,
-			String thumbnail, String engPrinciple, String citation, Application application, List<Rating> ratings,
-			List<Material> materialList, Category category) { return null; }
+	public int insertModelIntoPhysicalModelTable(String title, String decription, String thumbnail,
+			String engPrinciple, String citation, Category category, String procedure) { return 0; }
+	
+	public int insertMaterialIntoMaterialTable(int modelId, int quantity, String name, String specs) { return 0;}
+	public int insertKeywordIntoKeywordTable(int modelId, String word) { return 0; }
+	public int insertApplicationIntoApplicationTable(int modelId, String beforeClass, String beforeImage,
+			String duringClass, String duringImage) { return 0; }
+	public int insertRatingIntoRatingTable(int modelId, int rate, String comment) { return 0; }
+
 }
