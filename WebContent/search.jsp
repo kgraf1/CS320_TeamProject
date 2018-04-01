@@ -1,14 +1,40 @@
+<!DOCTYPE html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>Search</title>
+		<title>Model Website Search</title>
+		<style type="text/css">
+			.error {
+				color: red;
+				font-weight: bold;				
+			}
+			
+			tr.button {
+				padding-left: 20px;
+				margin: 20 px;
+			}
+		</style>
 	</head>
+
 	<body>
-		<h1>The search page has not yet been implemented!</h1>
 		<br>
-		<a href = "homepage.jsp">Return To Homepage</a>
-		<a href = "profilepage.jsp"> Go to Profile Page</a>
+		<form action="${pageContext.servletContext.contextPath}/modelsbytitle" method="get">
+			<input type="Submit" name="submitmodelsbytitle" value="Search for Models By Title">
+		</form>
+		<br>
+		<form action="${pageContext.servletContext.contextPath}/modelsbykeywords" method="post">
+			<input type="Submit" name="submitmodelbykeyword" value="Search for Models by Keywords">
+		</form>	
+		<br>			
+		<form action="${pageContext.servletContext.contextPath}/modelsbymaterial" method="post">
+			<input type="Submit" name="submitmodelbymaterial" value="Search for Models by Material">
+		</form>	
+		<br>			
+		<form action="${pageContext.servletContext.contextPath}/modelsbyprofilename" method="get">
+			<input type="Submit" name="submitmodelbyprofilename" value="Search for Models by Profile Name">
+		</form>
+		<br>
 	</body>
 </html>

@@ -18,17 +18,23 @@ public class ModelByTitleQuery {
 		System.out.print("Enter a title: ");
 		String title = keyboard.nextLine();
 		
-		//get the DB instance and execute transaction
-		IDatabase db = DatabaseProvider.getInstance();
-		List<PhysicalModel> modelList = db.findModelsByTitle(title);
+		String split[] = title.split(" ");
 		
-		//check if anything was returned and output the list
-		if(modelList.isEmpty()) {
-			System.out.println("No Models found with this title");
-		}
-		else {
-			for(PhysicalModel model: modelList) {
-				System.out.println(model.getTitle() + " " + model.getDecription());
+		for(int i=0; i<split.length; i++) {
+			
+			title=split[i];
+			//get the DB instance and execute transaction
+			IDatabase db = DatabaseProvider.getInstance();
+			List<PhysicalModel> modelList = db.findModelsByTitle(title);
+		
+			//check if anything was returned and output the list
+			if(modelList.isEmpty()) {
+				System.out.println("No Models found with this title");
+			}
+			else {
+				for(PhysicalModel model: modelList) {
+					System.out.println(model.getTitle() + " " + model.getDecription());
+				}
 			}
 		}
 	}
