@@ -1,7 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xmlns="http://java.sun.com/xml/ns/javaee" 
+xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" 
+id="WebApp_ID"
+ version="3.0">
   <display-name>ModelWebsiteRegistration</display-name>
   <welcome-file-list>
     <welcome-file>login.jsp</welcome-file>
   </welcome-file-list>
+  
+	<!-- Servlets -->
+  <servlet>
+    <servlet-name>ModelsByCategoryServlet</servlet-name>
+    <servlet-class>servlets.ModelsByCategoryServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ModelsByKeywordServlet</servlet-name>
+    <servlet-class>servlets.ModelsByCategoryKeyword</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ModelsByMaterialServlet</servlet-name>
+    <servlet-class>servlets.ModelsByMaterialServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ModelsByProfileNameServlet</servlet-name>
+    <servlet-class>servlets.ModelsByProfileNameServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ModelsByTitleServlet</servlet-name>
+    <servlet-class>servlets.ModelsByTitleServlet</servlet-class>
+  </servlet>
+  
+  <!-- Servlet mappings -->
+  <servlet-mapping>
+    <servlet-name>ModelsByCategoryServlet</servlet-name>
+    <url-pattern>/ModelsByCategory</url-pattern>
+  </servlet-mapping>
+   <servlet-mapping>
+    <servlet-name>ModelsByKeywordServlet</servlet-name>
+    <url-pattern>/ModelsByKeyword</url-pattern>
+  </servlet-mapping>
+   <servlet-mapping>
+    <servlet-name>ModelsByMaterialServlet</servlet-name>
+    <url-pattern>/ModelsByMaterial</url-pattern>
+  </servlet-mapping>
+   <servlet-mapping>
+    <servlet-name>ModelsByProfileNameServlet</servlet-name>
+    <url-pattern>/ModelsByProfileName</url-pattern>
+  </servlet-mapping>
+   <servlet-mapping>
+    <servlet-name>ModelsByTitleServlet</servlet-name>
+    <url-pattern>/ModelsByTitle</url-pattern>
+  </servlet-mapping>
+  
 </web-app>
