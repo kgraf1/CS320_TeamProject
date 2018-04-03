@@ -122,10 +122,87 @@ public class FakeDatabase implements IDatabase {
 	}
 		
 	@Override
-	public PhysicalModel insertModel(String title, List<String> procedureList, List<String> keywords, String decription,
-		String thumbnail, String engPrinciple, String citation, Application application, List<Rating> ratings,
-		List<Material> materialList, Category category) {
-		return null;
+	public int insertModelIntoPhysicalModelTable(String title, String decription, String thumbnail,
+			String engPrinciple, String citation, Category category, String procedure) {
+
+		int id = 1;
+		
+		if(physicalModels.size() > 0) {
+			id = physicalModels.get(physicalModels.size() - 1).getId() + 1;
+		}
+		
+		int profileId = profiles.get(profiles.size() - 1).getId() + 1;
+		
+		PhysicalModel model = new PhysicalModel(id, profileId, title, decription, thumbnail, engPrinciple, citation,
+									category, procedure);
+		
+		physicalModels.add(model);
+		
+		return model.getId();
 	}
 		
+	@Override
+	public int insertMaterialIntoMaterialTable(int modelId, int quantity, String name, String specs) {
+
+		int id = 1;
+		
+		if(materials.size() > 0) {
+			id = materials.get(materials.size() - 1).getId() + 1;
+		}
+		
+		Material material = new Material(id, modelId, quantity, name, specs);
+		
+		materials.add(material);
+		
+		return material.getId();
+	}
+	
+	@Override
+	public int insertKeywordIntoKeywordTable(int modelId, String word) {
+
+		int id = 1;
+		
+		if(keywords.size() > 0) {
+			id = keywords.get(keywords.size() - 1).getId() + 1;
+		}
+		
+		Keyword keyword = new Keyword(id, modelId, word);
+		
+		keywords.add(keyword);
+		
+		return keyword.getId();
+	}
+	
+	@Override
+	public int insertApplicationIntoApplicationTable(int modelId, String beforeClass, String beforeImage,
+			String duringClass, String duringImage) {
+		
+		int id = 1;
+		
+		if(applications.size() > 0) {
+			id = applications.get(applications.size() - 1).getId() + 1;
+		}
+		
+		Application app = new Application(id, modelId, beforeClass, beforeImage, duringClass, duringImage);
+		
+		applications.add(app);
+		
+		return app.getId();
+	}
+	
+	@Override
+	public int insertRatingIntoRatingTable(int modelId, int rate, String comment) {
+
+		int id = 1;
+		
+		if(ratings.size() > 0) {
+			id = ratings.get(ratings.size() - 1).getId() + 1;
+		}
+		
+		Rating rating = new Rating(id, modelId, rate, comment);
+		
+		ratings.add(rating);
+		
+		return rating.getId();
+	}
 }
