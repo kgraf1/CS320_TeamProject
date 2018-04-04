@@ -12,20 +12,19 @@
 	
 	<!-- Here is all the stuff for the topnav || links to profile page, home and search  -->
 	<div class="topnav">
-  	<div class = "title"> Engineering Models </div>
+  		<div class = "title"> Engineering Models </div>
   
-  	<a class="active" href="homepage.jsp">Home</a>
+  		<a class="active" href="homepage.jsp">Home</a>
   
-  	<a href="profilepage.jsp">Profile</a>
+  		<a href="profilepage.jsp">Profile</a>
   
-  	<div class="search-container">
-    	<form action="search.jsp">
-      	<input type="text" placeholder="Search.." name="search" >
-      	<button type="submit">Submit</button>
-      
-    </form>
-  </div>
-</div>
+  		<div class="search-container">
+    		<form action="search.jsp">
+      			<input type="text" placeholder="Search.." name="search" >
+      			<button type="submit">Submit</button>
+      		</form>
+  		</div>
+	</div>
 
 </body>
 </html>
