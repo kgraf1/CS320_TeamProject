@@ -32,12 +32,16 @@ public class InitialData {
 				profile.setId(profileId++);
 				profile.setUsername(i.next());
 				profile.setPassword(i.next());
-				profile.setEmail(i.next());
 				profile.setFirstName(i.next());
 				profile.setLastName(i.next());
+				profile.setEmail(i.next());
 				
 				profileList.add(profile);
 			}
+			/*for(int i=0; i<profileList.size(); i++) {
+			System.out.println(profileList.get(i).getFirstName());
+			System.out.println(profileList.get(i).getLastName());
+			}*/
 			return profileList;
 		} finally {
 			readProfileList.close();

@@ -1,8 +1,10 @@
 package persist;
 
+
+import persist.IDatabase;
+
 public class DatabaseProvider {
-	//The following code is taken from Professor Hake's LibraryExample
-	private static IDatabase theInstance;
+private static IDatabase theInstance;
 	
 	public static void setInstance(IDatabase db) {
 		theInstance = db;
@@ -15,3 +17,4 @@ public class DatabaseProvider {
 		return theInstance;
 	}
 }
+

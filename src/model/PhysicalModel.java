@@ -1,6 +1,8 @@
 package model;
 
-import java.util.List;
+
+import model.Category;
+
 
 public class PhysicalModel {
 	
@@ -13,13 +15,14 @@ public class PhysicalModel {
 	private String citation;
 	private Category category;
 	private String procedure;
+
 	
 	public PhysicalModel() {
 		
 	}
 	
 	public PhysicalModel(int id, int profileId, String title, String decription, String thumbnail, 
-						String engPrinciple, String citation, Category category, String procedure) {
+						String engPrinciple, String citation, Category category,String procedure) {
 		this.id = id;
 		this.profileId = profileId;
 		this.title = title;
@@ -29,6 +32,7 @@ public class PhysicalModel {
 		this.citation = citation;
 		this.category = category;
 		this.procedure = procedure;
+
 	}
 
 	public void setId(int id) { this.id = id; }
@@ -55,7 +59,18 @@ public class PhysicalModel {
 	public String getCitation() { return citation; }
 	public void setCitation(String citation) { this.citation = citation; }
 	
+	//might move this to another class
+	/*public double getAverageRating() {
+		double average = 0;
+		
+		for(int i = 0; i < ratings.size(); i++) {
+			average = average + ratings.get(i).getRate();
+		}
+		
+		return average / (double)(ratings.size());
+	}*/
 	public String getProcedure() { return procedure; }
 	public void setProcedure(String procedure) { this.procedure = procedure; }
+
 	
 }

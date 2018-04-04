@@ -46,4 +46,16 @@ public class DerbyDatabase implements IDatabase {
 			String duringClass, String duringImage) { return 0; }
 	public int insertRatingIntoRatingTable(int modelId, int rate, String comment) { return 0; }
 
+
+	@Override
+	public List<PhysicalModel> findModelsByProfileFirstOrLastName(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<PhysicalModel> findModelsByCategory(String category) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

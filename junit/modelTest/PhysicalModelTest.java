@@ -2,6 +2,7 @@ package modelTest;
 
 import static org.junit.Assert.*;
 
+
 import model.Category;
 import model.PhysicalModel;
 
@@ -20,9 +21,11 @@ public class PhysicalModelTest {
 	//Testing the constructor
 	@Test
 	public void testPhysicalModel() {
-
+		
+		
 		model = new PhysicalModel(1, 6, "the title", "the description",
-				"the thumbnail", "the engPrinciple", "the citation", Category.DYNAMICS, "the procedure");
+				"the thumbnail", "the engPrinciple", "the citation", 
+				Category.DYNAMICS,"the procedure");
 		
 		assertEquals(model.getId(), 1);
 		assertTrue(model.getProfileId() == 6);
@@ -83,7 +86,7 @@ public class PhysicalModelTest {
 		model.setCitation("This is the citation");
 		assertTrue(model.getCitation().compareTo("This is the citation") == 0);
 	}
-
+	
 	@Test
 	public void testProcedure() {
 		model.setProcedure("This is the procedure");

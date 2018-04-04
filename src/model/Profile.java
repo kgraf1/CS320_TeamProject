@@ -1,7 +1,5 @@
 package model;
 
-import java.util.List;
-
 public class Profile {
 	private int id;
 	private String username;
@@ -15,8 +13,8 @@ public class Profile {
 		
 	}
 	
-	public Profile(int id, String username, String password, String email, String firstName,
-			String lastName) {
+	public Profile(int id, String username, String password, String firstName,
+			String lastName, String email) {
 		
 		this.id = id;
 		this.username = username;
