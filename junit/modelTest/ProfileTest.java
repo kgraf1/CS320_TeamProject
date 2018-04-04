@@ -22,8 +22,8 @@ public class ProfileTest {
 	@Test
 	public void testProfile() {
 		List<Integer> modelList = new ArrayList<Integer> ();
-		profile = new Profile(3, "username", "password", "email", "firstName",
-				"lastName");
+		profile = new Profile(3, "username", "password", "firstName", "lastName",
+				"email");
 		
 		assertTrue(profile.getId() == 3);
 		assertTrue(profile.getUsername().compareTo("username") == 0);
