@@ -9,10 +9,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 import java.util.ArrayList;
 
-import controller.AddModelSubmissionController;
-import controller.AddMaterialsController;
-import controller.AddKeywordsController;
-import controller.AddApplicationController;
+import controllers.AddApplicationController;
+import controllers.AddKeywordsController;
+import controllers.AddMaterialsController;
+import controllers.AddModelSubmissionController;
 import model.Category;
 
 public class AddModelSubmissionServlet extends HttpServlet {

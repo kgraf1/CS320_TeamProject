@@ -1,4 +1,4 @@
-package controller;
+package controllers;
 
 import model.Category;
 import persist.IDatabase;
