@@ -19,13 +19,15 @@ public class MaterialTest {
 	//Testing the Constructor
 	@Test
 	public void testConstructor() {
-		material = new Material(5, 20, 4, "The name", "specs");
+		material = new Material(5, 20, "The name", 4, "4.99", "4 hours", "description");
 		
 		assertTrue(material.getId() == 5);
 		assertTrue(material.getModelId() == 20);
 		assertTrue(material.getQuantity() == 4);
 		assertTrue(material.getName().compareTo("The name") == 0);
-		assertTrue(material.getSpecs().compareTo("specs") == 0);
+		assertTrue(material.getDescription().compareTo("description") == 0);
+		assertTrue(material.getCost().compareTo("4.99") == 0);
+		assertTrue(material.getBuildTime().compareTo("4 hours") == 0);
 	}
 	
 	//Testing getters and setters
@@ -54,8 +56,20 @@ public class MaterialTest {
 	}
 	
 	@Test
-	public void testSpecs() {
-		material.setSpecs("I am the SPECS");
-		assertTrue(material.getSpecs().compareTo("I am the SPECS") == 0);
+	public void testDescrption() {
+		material.setDescription("I am the DESCRIPTION");
+		assertTrue(material.getDescription().compareTo("I am the DESCRIPTION") == 0);
+	}
+	
+	@Test
+	public void testCost() {
+		material.setCost("I am the COST");
+		assertTrue(material.getCost().compareTo("I am the COST") == 0);
+	}
+	
+	@Test
+	public void testBuildTime() {
+		material.setBuildTime("I am the BUILDTIME");
+		assertTrue(material.getBuildTime().compareTo("I am the BUILDTIME") == 0);
 	}
 }

@@ -142,15 +142,15 @@ public class FakeDatabase implements IDatabase {
 	}
 		
 	@Override
-	public int insertMaterialIntoMaterialTable(int modelId, int quantity, String name, String specs) {
+	public int insertMaterialIntoMaterialTable(int modelId, String name, int quantity, String cost, String buildTime, String description) {
 
 		int id = 1;
-		
+	
 		if(materials.size() > 0) {
 			id = materials.get(materials.size() - 1).getId() + 1;
 		}
 		
-		Material material = new Material(id, modelId, quantity, name, specs);
+		Material material = new Material(id, modelId, name, quantity, cost, buildTime, description);
 		
 		materials.add(material);
 		

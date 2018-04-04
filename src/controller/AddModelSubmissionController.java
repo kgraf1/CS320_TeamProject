@@ -17,7 +17,7 @@ public class AddModelSubmissionController {
 		db = DatabaseProvider.getInstance();		
 	}
 
-	public boolean create(String title, String description, String thumbnail, String engPrinciple, String citation,
+	public int create(String title, String description, String thumbnail, String engPrinciple, String citation,
 							Category category, String procedure) {
 		
 		// insert new model into DB
@@ -29,13 +29,13 @@ public class AddModelSubmissionController {
 		{
 			System.out.println("New model (ID: " + model_id + ") successfully added to PhysicalModel table: <" + title + ">");
 			
-			return true;
+			return model_id;
 		}
 		else
 		{
 			System.out.println("Failed to insert new model (ID: " + model_id + ") into PhysicalModel table: <" + title + ">");
 			
-			return false;
+			return -1;
 		}
 	}
 }
