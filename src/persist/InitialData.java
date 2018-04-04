@@ -151,7 +151,7 @@ public class InitialData {
 				material.setModelId(Integer.parseInt(i.next()));
 				material.setQuantity(Integer.parseInt(i.next()));
 				material.setName(i.next());
-				material.setSpecs(i.next());
+				material.setDescription(i.next());
 				
 				materials.add(material);
 			}

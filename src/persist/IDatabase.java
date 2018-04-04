@@ -21,8 +21,12 @@ public interface IDatabase {
 	public List<Profile> findProfileByDatabaseTitle(String title);
 	
 	//creating models
-	public PhysicalModel insertModel(String title, List<String> procedureList, List<String> keywords, String decription,
-			String thumbnail, String engPrinciple, String citation, Application application, List<Rating> ratings,
-			List<Material> materialList, Category category);
+	public int insertModelIntoPhysicalModelTable(String title, String decription, String thumbnail,
+			String engPrinciple, String citation, Category category, String procedure);
+	public int insertMaterialIntoMaterialTable(int modelId, String name, int quantity, String cost, String buildTime, String description);
+	public int insertKeywordIntoKeywordTable(int modelId, String word);
+	public int insertApplicationIntoApplicationTable(int modelId, String beforeClass, String beforeImage,
+			String duringClass, String duringImage);
+	public int insertRatingIntoRatingTable(int modelId, int rate, String comment);
 	
 }
