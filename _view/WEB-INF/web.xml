@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-xmlns="http://java.sun.com/xml/ns/javaee" 
-xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" 
-id="WebApp_ID"
- version="3.0">
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+              http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         version="2.5"
+         xmlns="http://java.sun.com/xml/ns/javaee">
   <display-name>ModelWebsiteRegistration</display-name>
   <welcome-file-list>
     <welcome-file>login.jsp</welcome-file>
   </welcome-file-list>
-  
+ 
 	<!-- Servlets -->
   <servlet>
     <servlet-name>ModelsByCategoryServlet</servlet-name>
@@ -16,7 +16,7 @@ id="WebApp_ID"
   </servlet>
   <servlet>
     <servlet-name>ModelsByKeywordServlet</servlet-name>
-    <servlet-class>servlets.ModelsByCategoryKeyword</servlet-class>
+    <servlet-class>servlets.ModelsByKeywordsServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>ModelsByMaterialServlet</servlet-name>
@@ -29,6 +29,14 @@ id="WebApp_ID"
   <servlet>
     <servlet-name>ModelsByTitleServlet</servlet-name>
     <servlet-class>servlets.ModelsByTitleServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>AddModelSubmissionServlet</servlet-name>
+  	<servlet-class>servlets.AddModelSubmissionServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>LoginServlet</servlet-name>
+  	<servlet-class>servlets.LoginServlet</servlet-class>
   </servlet>
   
   <!-- Servlet mappings -->
@@ -51,6 +59,14 @@ id="WebApp_ID"
    <servlet-mapping>
     <servlet-name>ModelsByTitleServlet</servlet-name>
     <url-pattern>/ModelsByTitle</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AddModelSubmissionServlet</servlet-name>
+    <url-pattern>/AddModelSubmission</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>LoginServlet</servlet-name>
+  	<url-pattern>/Login</url-pattern>
   </servlet-mapping>
   
 </web-app>
