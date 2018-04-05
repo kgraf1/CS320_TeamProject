@@ -23,7 +23,7 @@
 
 
 <body>
-	<form action="Login" method="post">
+	<form action="${pageContext.servletContext.contextPath}/login" method="post">
 	
 	<h3 style=color:purple>Login page</h3>
 	
@@ -37,7 +37,7 @@
 			</tr>
 			<tr>
 				<td> Password: </td>
-				<td><input type="password" name="password1"/></td>
+				<td><input type="password" name="password"/></td>
 			</tr>
 			<tr>
 				<td><input type="submit" name="submit" value="Log In"/></td>

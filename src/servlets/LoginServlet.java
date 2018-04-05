@@ -79,7 +79,7 @@ public class LoginServlet extends HttpServlet {
 			return;
 		}
 
-		System.out.println("   Invalid login - returning to /Login");
+		System.out.println("   Invalid login - returning to /login");
 
 		// Forward to view to render the result HTML document
 		req.getRequestDispatcher("/_view/login.jsp").forward(req, resp);

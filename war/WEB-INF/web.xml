@@ -42,31 +42,31 @@
   <!-- Servlet mappings -->
   <servlet-mapping>
     <servlet-name>ModelsByCategoryServlet</servlet-name>
-    <url-pattern>/ModelsByCategory</url-pattern>
+    <url-pattern>/modelsByCategory</url-pattern>
   </servlet-mapping>
    <servlet-mapping>
     <servlet-name>ModelsByKeywordServlet</servlet-name>
-    <url-pattern>/ModelsByKeyword</url-pattern>
+    <url-pattern>/modelsByKeyword</url-pattern>
   </servlet-mapping>
    <servlet-mapping>
     <servlet-name>ModelsByMaterialServlet</servlet-name>
-    <url-pattern>/ModelsByMaterial</url-pattern>
+    <url-pattern>/modelsByMaterial</url-pattern>
   </servlet-mapping>
    <servlet-mapping>
     <servlet-name>ModelsByProfileNameServlet</servlet-name>
-    <url-pattern>/ModelsByProfileName</url-pattern>
+    <url-pattern>/modelsByProfileName</url-pattern>
   </servlet-mapping>
    <servlet-mapping>
     <servlet-name>ModelsByTitleServlet</servlet-name>
-    <url-pattern>/ModelsByTitle</url-pattern>
+    <url-pattern>/modelsByTitle</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>AddModelSubmissionServlet</servlet-name>
-    <url-pattern>/AddModelSubmission</url-pattern>
+    <url-pattern>/addModelSubmission</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>LoginServlet</servlet-name>
-  	<url-pattern>/Login</url-pattern>
+  	<url-pattern>/login</url-pattern>
   </servlet-mapping>
   
 </web-app>
