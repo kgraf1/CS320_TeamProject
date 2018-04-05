@@ -3,7 +3,7 @@
 <html>
 
 <head>
-	<link rel="stylesheet" type="text/css" href="homepageStyle.css">
+	<link rel="stylesheet" type="text/css" href="/_view/homepageStyle.css">
 </head>
 
 <body>
@@ -14,7 +14,7 @@
   
   <a class="active" href="homepage.jsp">Home</a>
   
-  <a href="profilepage.jsp">Profile</a>
+  <a href="./_view/profilepage.jsp">Profile</a>
   
   
  
@@ -27,17 +27,17 @@
   </div>
 </div>
 
-<!-- Div for the categories tab. Untill catagories are implemented they all just go to the given error page  -->
+<!-- Div for the categories tab. Until catagories are implemented they all just go to the given error page  -->
 <div id ="categoriesDiv">
 	<aside id = "categories">
 		<h2>
 			Categories:
 			<br>
-			<a href = "construction.jsp">Construction</a>
+			<a href="./_view/construction.jsp">Construction</a>
 			<br>
-			<a href = "dynamics.jsp">Dynamics</a>
+			<a href = "./_view/dynamics.jsp">Dynamics</a>
 			<br>
-			<a href = "heattransfer.jsp">Heat Transfer</a>
+			<a href = "./_view/heattransfer.jsp">Heat Transfer</a>
 		</h2>
 		
 

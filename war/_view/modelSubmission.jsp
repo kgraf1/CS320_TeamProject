@@ -138,9 +138,12 @@
             <textarea id="application" name="application" placeholder="During class..." style="height:200px" value="${duringClass}"></textarea>
             <textarea id="application" name="application" placeholder="During image..." style="height:200px" value="${duringImage}"></textarea>
 
-            <button type="submit" value="Submit Model"><a href="profilepage.jsp">Submit</a></button>
+           <input type="Submit" name="submitmodel" value="Create Physical Model">
          </form>
     </div>
 
+	<form action="./profilepage.jsp" method="post">
+			<input type="Submit" name="submithome" value="Submit PhysicalModel">
+	</form>
 </body>
 </html>
