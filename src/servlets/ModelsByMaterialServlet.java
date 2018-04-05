@@ -14,7 +14,7 @@ import controllers.ModelsByMaterialController;
 public class ModelsByMaterialServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	
-	private ModelsByMaterialController controller = null;
+	private ModelsByMaterialController controller = new ModelsByMaterialController();
 	
 	@Override
 	protected void doGet (HttpServletRequest req, HttpServletResponse resp) 

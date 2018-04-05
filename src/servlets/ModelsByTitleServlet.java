@@ -15,7 +15,7 @@ import controllers.ModelsByTitleController;
 public class ModelsByTitleServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	
-	private ModelsByTitleController controller = null;
+	private ModelsByTitleController controller = new ModelsByTitleController();
 	
 	@Override
 	protected void doGet (HttpServletRequest req, HttpServletResponse resp) 

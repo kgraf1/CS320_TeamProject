@@ -14,14 +14,14 @@ import controllers.ModelsByCategoryController;
 public class ModelsByCategoryServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	
-	private ModelsByCategoryController controller = null;
+	private ModelsByCategoryController controller = new ModelsByCategoryController();
 	
 	@Override 
 	protected void doGet (HttpServletRequest req, HttpServletResponse resp)
 				throws ServletException, IOException{
 		System.out.println("\n ModelsByCategoryServlet: doGet");
 		
-		req.getRequestDispatcher("/WebContent/search.jsp");
+		req.getRequestDispatcher("ModelsByCategory.jsp").forward(req, resp);;
 	}
 	
 	@Override
@@ -39,14 +39,14 @@ public class ModelsByCategoryServlet extends HttpServlet{
 		System.out.println(req.getParameter("getStatics"));
 		
 		//decode from parameters and dispatch to controller
-		if(!req.getParameter("getConstruction").isEmpty()) {
-			models = controller.getModelByCategory(req.getParameter("getConstruction"));
+		if(req.getParameter("getConstruction")!=null) {
+			models = controller.getModelByCategory("Construction");
 		}
-		else if (!req.getParameter("getDynamics").isEmpty()) {
-			models = controller.getModelByCategory(req.getParameter("getDynamics"));
+		else if (req.getParameter("getDynamics")!=null) {
+			models = controller.getModelByCategory("Dynamics");
 		}
-		else if (!req.getParameter("getStatics").isEmpty()) {
-			models = controller.getModelByCategory(req.getParameter("getStatics"));
+		else if (req.getParameter("getStatics")!=null) {
+			models = controller.getModelByCategory("Statics");
 		}
 		
 		//get list of models returned from query
@@ -68,7 +68,7 @@ public class ModelsByCategoryServlet extends HttpServlet{
 		req.setAttribute("model", model);
 		req.setAttribute("models", models);
 		
-		req.getRequestDispatcher("/WebContent/search.jsp");
+		req.getRequestDispatcher("ModelsByCategory.jsp").forward(req,  resp);;
 	}
 	
 		

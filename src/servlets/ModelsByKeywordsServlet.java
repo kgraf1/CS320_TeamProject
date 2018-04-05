@@ -14,7 +14,7 @@ import controllers.ModelsByKeywordController;
 public class ModelsByKeywordsServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	
-	private ModelsByKeywordController controller= null;
+	private ModelsByKeywordController controller= new ModelsByKeywordController();
 	
 	@Override
 	protected void doGet (HttpServletRequest req, HttpServletResponse resp)
