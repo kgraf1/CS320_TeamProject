@@ -105,7 +105,7 @@ public class ControllersTest {
 	@Test
 	public void testModelsByTitle() {
 		ModelsByTitleController controller = new ModelsByTitleController();
-		assertNotNull(controller.getModelByTitle("How bout those stationary thingys"));
+		assertNotNull(controller.getModelByTitle("How bout those spinny thingys"));
 		assertNull(controller.getModelByTitle("Does not exist"));
 	}
 	

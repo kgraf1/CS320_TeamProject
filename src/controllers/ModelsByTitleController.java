@@ -25,11 +25,11 @@ public class ModelsByTitleController {
 	
 	
 	public ArrayList<PhysicalModel> getModelByTitle (String title){
-		String [] split = title.split(" ");
+		//String [] split = title.split(" ");
 		ArrayList <PhysicalModel> models = null;
 		
-		for(int i=0; i<split.length; i++) {
-			title=split[i];
+		
+			
 			List <PhysicalModel> modelList = db.findModelsByTitle(title);
 	
 			if(modelList.isEmpty()) {
@@ -41,7 +41,7 @@ public class ModelsByTitleController {
 					models.add(model);
 				}
 			}
-		}
+		
 		return models;
 	}	
 }
