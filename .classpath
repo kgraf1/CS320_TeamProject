@@ -4,14 +4,14 @@
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
-	</classpathentry>
+	</classpathentry> 
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="junit"/>
+	<classpathentry kind="src" path="main"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/CS320_Jetty9"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/CS320_Derby"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/CS320_Jetty9"/>
-	<classpathentry kind="lib" path="C:/Users/ktgraf/Downloads/taglibs-standard-impl-1.2.5.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

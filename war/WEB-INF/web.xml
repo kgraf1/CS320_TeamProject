@@ -7,11 +7,8 @@
   <display-name>ModelWebsiteRegistration</display-name>
   <welcome-file-list>
     <welcome-file>login.jsp</welcome-file>
-    <welcome-file>search.jsp</welcome-file>
   </welcome-file-list>
  
-  
-  
 	<!-- Servlets -->
   <servlet>
     <servlet-name>ModelsByCategoryServlet</servlet-name>
@@ -33,27 +30,43 @@
     <servlet-name>ModelsByTitleServlet</servlet-name>
     <servlet-class>servlets.ModelsByTitleServlet</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>AddModelSubmissionServlet</servlet-name>
+  	<servlet-class>servlets.AddModelSubmissionServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>LoginServlet</servlet-name>
+  	<servlet-class>servlets.LoginServlet</servlet-class>
+  </servlet>
   
   <!-- Servlet mappings -->
   <servlet-mapping>
     <servlet-name>ModelsByCategoryServlet</servlet-name>
-    <url-pattern>/ModelsByCategory</url-pattern>
+    <url-pattern>/modelsByCategory</url-pattern>
   </servlet-mapping>
    <servlet-mapping>
     <servlet-name>ModelsByKeywordServlet</servlet-name>
-    <url-pattern>/ModelsByKeyword</url-pattern>
+    <url-pattern>/modelsByKeyword</url-pattern>
   </servlet-mapping>
    <servlet-mapping>
     <servlet-name>ModelsByMaterialServlet</servlet-name>
-    <url-pattern>/ModelsByMaterial</url-pattern>
+    <url-pattern>/modelsByMaterial</url-pattern>
   </servlet-mapping>
    <servlet-mapping>
     <servlet-name>ModelsByProfileNameServlet</servlet-name>
-    <url-pattern>/ModelsByProfileName</url-pattern>
+    <url-pattern>/modelsByProfileName</url-pattern>
   </servlet-mapping>
    <servlet-mapping>
     <servlet-name>ModelsByTitleServlet</servlet-name>
-    <url-pattern>/ModelsByTitle</url-pattern>
+    <url-pattern>/modelsByTitle</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AddModelSubmissionServlet</servlet-name>
+    <url-pattern>/addModelSubmission</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>LoginServlet</servlet-name>
+  	<url-pattern>/login</url-pattern>
   </servlet-mapping>
   
 </web-app>
