@@ -18,11 +18,6 @@ public class ModelByTitleQuery {
 		System.out.print("Enter a title: ");
 		String title = keyboard.nextLine();
 		
-		String split[] = title.split(" ");
-		
-		for(int i=0; i<split.length; i++) {
-			
-			title=split[i];
 			//get the DB instance and execute transaction
 			IDatabase db = DatabaseProvider.getInstance();
 			List<PhysicalModel> modelList = db.findModelsByTitle(title);
@@ -38,4 +33,4 @@ public class ModelByTitleQuery {
 			}
 		}
 	}
-}
+
