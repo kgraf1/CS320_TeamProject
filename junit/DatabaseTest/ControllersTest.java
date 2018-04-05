@@ -3,6 +3,7 @@ package DatabaseTest;
 import static org.junit.Assert.*;
 
 import java.util.List;
+import java.util.ArrayList;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -43,5 +44,14 @@ public class ControllersTest {
 		//AddKeywordsController controller = new AddKeywordsController();
 		//assertTrue(controller.create(modelId, test, test, test, test));
 		//assertFalse(controller.create(modelId, test, test, test, test));
+	}
+	
+	@Test
+	public void testModelsByCategoryController() {
+		String category="Construction";
+		ModelsByCategoryController controller = new ModelsByCategoryController();
+		ArrayList<PhysicalModel> models = controller.getModelByCategory(category);
+		
+		assertTrue(!models.isEmpty());
 	}
 }

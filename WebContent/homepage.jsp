@@ -27,20 +27,22 @@
   </div>
 </div>
 
-<!-- Div for the categories tab. Untill catagories are implemented they all just go to the given error page  -->
+<!-- Div for the categories tab. Until categories are implemented they all just go to the given error page  -->
 <div id ="categoriesDiv">
 	<aside id = "categories">
-		<h2>
-			Categories:
+			<h2>Categories:</h2>
 			<br>
-			<a href = "construction.jsp">Construction</a>
+			<form action="${pageContext.servletContext.contextPath}/ModelsByCategory" method="post">
+				<input class="hiddenButton" type="submit" name="getConstruction" value="Construction"/>
+			</form>
 			<br>
-			<a href = "dynamics.jsp">Dynamics</a>
+			<form action="${pageContext.servletContext.contextPath}/ModelsByCategory" method="post">
+				<input class="hiddenButton" type="submit" name="getDynamics" value="Dynamics"/>
+			</form>
 			<br>
-			<a href = "heattransfer.jsp">Heat Transfer</a>
-		</h2>
-		
-
+			<form action="${pageContext.servletContext.contextPath}/ModelsByCategory" method="post">
+				<input class="hiddenButton" type="submit" name="getStatics" value="Statics"/>
+			</form>
 	</aside>
 </div>
 

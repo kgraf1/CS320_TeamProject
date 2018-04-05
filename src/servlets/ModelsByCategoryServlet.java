@@ -21,7 +21,7 @@ public class ModelsByCategoryServlet extends HttpServlet{
 				throws ServletException, IOException{
 		System.out.println("\n ModelsByCategoryServlet: doGet");
 		
-		req.getRequestDispatcher("/WebContent/ModelsByCategory.jsp");
+		req.getRequestDispatcher("/WebContent/search.jsp");
 	}
 	
 	@Override
@@ -34,11 +34,23 @@ public class ModelsByCategoryServlet extends HttpServlet{
 		String category = null;
 		String errorMessage = null;
 		
+		System.out.println(req.getParameter("getConstruction"));
+		System.out.println(req.getParameter("getDynamics"));
+		System.out.println(req.getParameter("getStatics"));
+		
 		//decode from parameters and dispatch to controller
-		category = req.getParameter("category");
+		if(!req.getParameter("getConstruction").isEmpty()) {
+			models = controller.getModelByCategory(req.getParameter("getConstruction"));
+		}
+		else if (!req.getParameter("getDynamics").isEmpty()) {
+			models = controller.getModelByCategory(req.getParameter("getDynamics"));
+		}
+		else if (!req.getParameter("getStatics").isEmpty()) {
+			models = controller.getModelByCategory(req.getParameter("getStatics"));
+		}
 		
 		//get list of models returned from query
-		models = controller.getModelByCategory(category);
+		
 		
 		//any models found?
 		if(models == null) {
@@ -55,5 +67,9 @@ public class ModelsByCategoryServlet extends HttpServlet{
 		req.setAttribute("errorMessage", errorMessage);
 		req.setAttribute("model", model);
 		req.setAttribute("models", models);
+		
+		req.getRequestDispatcher("/WebContent/search.jsp");
 	}
+	
+		
 }

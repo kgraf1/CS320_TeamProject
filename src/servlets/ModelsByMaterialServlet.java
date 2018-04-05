@@ -21,7 +21,7 @@ public class ModelsByMaterialServlet extends HttpServlet{
 				throws ServletException, IOException{
 		System.out.println("\n ModelsByMaterialServlet: doGet");
 		
-		req.getRequestDispatcher("/WebContent/ModelsByMaterial.jsp").forward(req,  resp);
+		req.getRequestDispatcher("/WebContent/search.jsp").forward(req,  resp);
 			
 	}
 	
@@ -60,6 +60,6 @@ public class ModelsByMaterialServlet extends HttpServlet{
 		req.setAttribute("models", models);
 		
 		//Forward to view to render the result HTML document
-		req.getRequestDispatcher("/WebContent/ModelByMaterial.jsp").forward(req, resp);
+		req.getRequestDispatcher("/WebContent/search.jsp").forward(req, resp);
 	}
 }

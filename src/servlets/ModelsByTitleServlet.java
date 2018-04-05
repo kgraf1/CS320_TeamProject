@@ -22,7 +22,7 @@ public class ModelsByTitleServlet extends HttpServlet{
 				throws ServletException, IOException{
 		System.out.println("\n ModelsByTitleServlet: doGet");
 		
-		req.getRequestDispatcher("/WebContent/ModelsByTitle.jsp").forward(req,  resp);
+		req.getRequestDispatcher("/WebContent/search.jsp").forward(req,  resp);
 			
 	}
 	
@@ -61,6 +61,6 @@ public class ModelsByTitleServlet extends HttpServlet{
 		req.setAttribute("models", models);
 		
 		//Forward to view to render the result HTML document
-		req.getRequestDispatcher("/WebContent/ModelByTitle.jsp").forward(req, resp);
+		req.getRequestDispatcher("/WebContent/search.jsp").forward(req, resp);
 	}
 }

@@ -21,7 +21,7 @@ public class ModelsByKeywordsServlet extends HttpServlet{
 				throws ServletException, IOException {
 		System.out.println("\n ModelsByKeywordsServlet: doGet");
 		
-		req.getRequestDispatcher("/WebContent/ModelsByKeywords.jsp");
+		req.getRequestDispatcher("/WebContent/search.jsp");
 	}
 	
 	@Override
@@ -59,6 +59,6 @@ public class ModelsByKeywordsServlet extends HttpServlet{
 		req.setAttribute("models", models);
 		
 		//Forward to view to render the result HTML document
-		req.getRequestDispatcher("/WebContent/ModelByKeywords.jsp");
+		req.getRequestDispatcher("/WebContent/search.jsp");
 	}
 }

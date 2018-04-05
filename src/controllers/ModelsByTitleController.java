@@ -9,6 +9,7 @@ import model.PhysicalModel;
 
 import persist.DatabaseProvider;
 import persist.DerbyDatabase;
+import persist.FakeDatabase;
 import persist.IDatabase;
 
 
@@ -18,7 +19,7 @@ public class ModelsByTitleController {
 	
 	public ModelsByTitleController () {
 		// creating DB instance here
-		DatabaseProvider.setInstance(new DerbyDatabase());
+		DatabaseProvider.setInstance(new FakeDatabase());
 		db = DatabaseProvider.getInstance();		
 	}
 	

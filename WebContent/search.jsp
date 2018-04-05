@@ -19,22 +19,6 @@
 	</head>
 
 	<body>
-		<br>
-		<form action="${pageContext.servletContext.contextPath}/modelsbytitle" method="get">
-			<input type="Submit" name="submitmodelsbytitle" value="Search for Models By Title">
-		</form>
-		<br>
-		<form action="${pageContext.servletContext.contextPath}/modelsbykeywords" method="post">
-			<input type="Submit" name="submitmodelbykeyword" value="Search for Models by Keywords">
-		</form>	
-		<br>			
-		<form action="${pageContext.servletContext.contextPath}/modelsbymaterial" method="post">
-			<input type="Submit" name="submitmodelbymaterial" value="Search for Models by Material">
-		</form>	
-		<br>			
-		<form action="${pageContext.servletContext.contextPath}/modelsbyprofilename" method="get">
-			<input type="Submit" name="submitmodelbyprofilename" value="Search for Models by Profile Name">
-		</form>
-		<br>
+		Search Page YAY
 	</body>
 </html>
