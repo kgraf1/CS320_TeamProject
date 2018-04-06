@@ -22,7 +22,7 @@ public class ModelsByProfileNameServlet extends HttpServlet{
 				throws ServletException, IOException{
 		System.out.println("\n ModelsByProfileNameServlet: doGet");
 		
-		req.getRequestDispatcher("/WebContent/search.jsp").forward(req,  resp);
+		req.getRequestDispatcher("/_view/search.jsp").forward(req,  resp);
 			
 	}
 	
@@ -61,6 +61,6 @@ public class ModelsByProfileNameServlet extends HttpServlet{
 		req.setAttribute("models", models);
 		
 		//Forward to view to render the result HTML document
-		req.getRequestDispatcher("/WebContent/search.jsp").forward(req, resp);
+		req.getRequestDispatcher(req.getContextPath() + "/Search").forward(req, resp);
 	}
 }

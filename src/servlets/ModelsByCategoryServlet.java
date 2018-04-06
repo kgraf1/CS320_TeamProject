@@ -21,7 +21,7 @@ public class ModelsByCategoryServlet extends HttpServlet{
 				throws ServletException, IOException{
 		System.out.println("\n ModelsByCategoryServlet: doGet");
 		
-		req.getRequestDispatcher("ModelsByCategory.jsp").forward(req, resp);;
+		req.getRequestDispatcher("/_view/ModelsByCategory.jsp").forward(req, resp);;
 	}
 	
 	@Override
@@ -68,7 +68,7 @@ public class ModelsByCategoryServlet extends HttpServlet{
 		req.setAttribute("model", model);
 		req.setAttribute("models", models);
 		
-		req.getRequestDispatcher("ModelsByCategory.jsp").forward(req,  resp);;
+		req.getRequestDispatcher("/_view/ModelsByCategory.jsp").forward(req,  resp);
 	}
 	
 		

@@ -67,7 +67,7 @@ public class ControllersTest {
 		String test = "test";
 		Category cat = Category.STATICS;
 		AddModelSubmissionController controller = new AddModelSubmissionController();
-		assertTrue(controller.create(test, test,test,test,test,cat ,test) >=0);
+		assertTrue(controller.create(test, "test2","test3","test4","test5",cat,"test6") != -1);
 		
 	}
 	

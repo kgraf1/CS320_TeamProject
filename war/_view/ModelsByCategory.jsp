@@ -17,29 +17,14 @@
 	<div class="topnav">
   		<div class = "title"> Engineering Models </div>
   
-  		<a class="active" href="homepage.jsp">Home</a>
+  		<a class="active" href="${pageContext.servletContext.contextPath}/_view/homepage.jsp">Home</a>
   
-  		<a href="profilepage.jsp">Profile</a>
+  		<a href="${pageContext.servletContext.contextPath}/_view/profilepage.jsp">Profile</a>
   
-  		<div class="search-container">
-    		<form action="search.jsp">
-      			<input type="text" placeholder="Search.." name="search" >
-      			<button type="submit">Submit</button>
-      		</form>
-  		</div>
+  		
 	</div>
 
-	<form action="${pageContext.servletContext.contextPath}/ModelsByCategory" method="post">
-		<c:forEach items="${models}" var="model">
-			<tr class="modelRow">
-				<tr>
-					<td class="modelName">${model.title}</td>
-				</tr>
-				<tr>
-					<td class="modelDescription">${model.description}</td>
-				</tr>
-		</c:forEach>
-	</form>
+
 
 </body>
 </html>
