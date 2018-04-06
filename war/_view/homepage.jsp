@@ -3,7 +3,7 @@
 <html>
 
 <head>
-	<link rel="stylesheet" type="text/css" href="/_view/homepageStyle.css">
+	<link rel="stylesheet" type="text/css" href="${pageContext.servletContext.contextPath}/_view/homepageStyle.css">
 </head>
 
 <body>
@@ -12,35 +12,32 @@
 <div class="topnav">
   <div class = "title"> Engineering Models </div>
   
-  <a class="active" href="homepage.jsp">Home</a>
+  <a class="active" href="${pageContext.servletContext.contextPath}/_view/homepage.jsp">Home</a>
   
-  <a href="./_view/profilepage.jsp">Profile</a>
+  <a href="${pageContext.servletContext.contextPath}/_view/profilepage.jsp">Profile</a>
+  
+  <a href="${pageContext.servletContext.contextPath}/_view/search.jsp">Search Models</a>
   
   
- 
-  <div class="search-container">
-    <form action="search.jsp">
-      <input type="text" placeholder="Search.." name="search" >
-      <button type="submit">Submit</button>
-      
-    </form>
-  </div>
 </div>
 
-<!-- Div for the categories tab. Until catagories are implemented they all just go to the given error page  -->
+
+<!-- Div for the categories tab. Until categories are implemented they all just go to the given error page  -->
 <div id ="categoriesDiv">
 	<aside id = "categories">
-		<h2>
-			Categories:
+			<h2>Categories:</h2>
 			<br>
-			<a href="./_view/construction.jsp">Construction</a>
+			<form action="${pageContext.servletContext.contextPath}/ModelsByCategory" method="post">
+				<input class="hiddenButton" type="submit" name="getConstruction" value="Construction"/>
+			</form>
 			<br>
-			<a href = "./_view/dynamics.jsp">Dynamics</a>
+			<form action="${pageContext.servletContext.contextPath}/ModelsByCategory" method="post">
+				<input class="hiddenButton" type="submit" name="getDynamics" value="Dynamics"/>
+			</form>
 			<br>
-			<a href = "./_view/heattransfer.jsp">Heat Transfer</a>
-		</h2>
-		
-
+			<form action="${pageContext.servletContext.contextPath}/ModelsByCategory" method="post">
+				<input class="hiddenButton" type="submit" name="getStatics" value="Statics"/>
+			</form>
 	</aside>
 </div>
 

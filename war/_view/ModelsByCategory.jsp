@@ -21,25 +21,10 @@
   
   		<a href="profilepage.jsp">Profile</a>
   
-  		<div class="search-container">
-    		<form action="search.jsp">
-      			<input type="text" placeholder="Search.." name="search" >
-      			<button type="submit">Submit</button>
-      		</form>
-  		</div>
+  		
 	</div>
 
-	<form action="${pageContext.servletContext.contextPath}/ModelsByCategory" method="post">
-		<c:forEach items="${models}" var="model">
-			<tr class="modelRow">
-				<tr>
-					<td class="modelName">${model.title}</td>
-				</tr>
-				<tr>
-					<td class="modelDescription">${model.description}</td>
-				</tr>
-		</c:forEach>
-	</form>
+
 
 </body>
 </html>

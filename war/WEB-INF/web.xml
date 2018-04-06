@@ -42,23 +42,23 @@
   <!-- Servlet mappings -->
   <servlet-mapping>
     <servlet-name>ModelsByCategoryServlet</servlet-name>
-    <url-pattern>/modelsByCategory</url-pattern>
+    <url-pattern>/ModelsByCategory</url-pattern>
   </servlet-mapping>
    <servlet-mapping>
     <servlet-name>ModelsByKeywordServlet</servlet-name>
-    <url-pattern>/modelsByKeyword</url-pattern>
+    <url-pattern>/ModelsByKeyword</url-pattern>
   </servlet-mapping>
    <servlet-mapping>
     <servlet-name>ModelsByMaterialServlet</servlet-name>
-    <url-pattern>/modelsByMaterial</url-pattern>
+    <url-pattern>/ModelsByMaterial</url-pattern>
   </servlet-mapping>
    <servlet-mapping>
     <servlet-name>ModelsByProfileNameServlet</servlet-name>
-    <url-pattern>/modelsByProfileName</url-pattern>
+    <url-pattern>/ModelsByProfileName</url-pattern>
   </servlet-mapping>
    <servlet-mapping>
     <servlet-name>ModelsByTitleServlet</servlet-name>
-    <url-pattern>/modelsByTitle</url-pattern>
+    <url-pattern>/ModelsByTitle</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>AddModelSubmissionServlet</servlet-name>
