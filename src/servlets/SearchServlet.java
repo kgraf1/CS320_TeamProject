@@ -18,7 +18,7 @@ public class SearchServlet extends HttpServlet{
 				throws ServletException, IOException{
 		System.out.println("\n ModelsByCategoryServlet: doGet");
 		
-		req.getRequestDispatcher("results.jsp").forward(req, resp);
+		req.getRequestDispatcher("/_view/results.jsp").forward(req, resp);
 	}
 	
 	@Override
@@ -26,19 +26,19 @@ public class SearchServlet extends HttpServlet{
 				throws ServletException, IOException{
 		
 		if(req.getParameter("getKeyword")!=null) {
-			req.getRequestDispatcher(req.getContextPath() + "/modelsByKeyword").forward(req, resp);
+			req.getRequestDispatcher(req.getContextPath() + "/ModelsByKeyword").forward(req, resp);
 		}
 		else if(req.getParameter("getTitle")!=null) {
-			req.getRequestDispatcher(req.getContextPath() + "/modelsByTitle").forward(req, resp);
+			req.getRequestDispatcher(req.getContextPath() + "/ModelsByTitle").forward(req, resp);
 		}
 		else if(req.getParameter("getMaterial")!=null) {
-			req.getRequestDispatcher(req.getContextPath() + "/modelsByMaterial").forward(req, resp);
+			req.getRequestDispatcher(req.getContextPath() + "/ModelsByMaterial").forward(req, resp);
 		}
 		else if(req.getParameter("getProfile")!=null) {
 			req.getRequestDispatcher(req.getContextPath() + "/modelsByProfileName").forward(req, resp);
 		}
 		else {
-			req.getRequestDispatcher(req.getContextPath() + "/modelsByKeyword").forward(req, resp);
+			req.getRequestDispatcher(req.getContextPath() + "/ModelsByKeyword").forward(req, resp);
 		}
 		
 	}

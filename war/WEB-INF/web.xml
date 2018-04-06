@@ -38,6 +38,10 @@
   	<servlet-name>LoginServlet</servlet-name>
   	<servlet-class>servlets.LoginServlet</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>SearchServlet</servlet-name>
+  	<servlet-class>servlets.SearchServlet</servlet-class>
+  </servlet>
   
   <!-- Servlet mappings -->
   <servlet-mapping>
@@ -67,6 +71,10 @@
   <servlet-mapping>
   	<servlet-name>LoginServlet</servlet-name>
   	<url-pattern>/login</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>SearchServlet</servlet-name>
+  	<url-pattern>/Search</url-pattern>
   </servlet-mapping>
   
 </web-app>

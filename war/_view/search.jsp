@@ -1,6 +1,4 @@
 <!DOCTYPE html>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 <html>
 	<head>
@@ -19,22 +17,22 @@
 	</head>
 
 	<body>
-		<br>
-		<form action="${pageContext.servletContext.contextPath}/modelsbytitle" method="get">
-			<input type="Submit" name="submitmodelsbytitle" value="Search for Models By Title">
-		</form>
-		<br>
-		<form action="${pageContext.servletContext.contextPath}/modelsbykeywords" method="post">
-			<input type="Submit" name="submitmodelbykeyword" value="Search for Models by Keywords">
-		</form>	
-		<br>			
-		<form action="${pageContext.servletContext.contextPath}/modelsbymaterial" method="post">
-			<input type="Submit" name="submitmodelbymaterial" value="Search for Models by Material">
-		</form>	
-		<br>			
-		<form action="${pageContext.servletContext.contextPath}/modelsbyprofilename" method="get">
-			<input type="Submit" name="submitmodelbyprofilename" value="Search for Models by Profile Name">
-		</form>
-		<br>
+	<div class="search-container">
+    <form action="${pageContext.servletContext.contextPath}/Search">
+      <input type="text" placeholder="Search.." name="searchInput" >
+      <button type="submit">Submit</button>
+		<aside>
+		
+		<input type="radio" id="getKeyword" name="search"/>
+		<label for="getKeyword">Search by Keyword</label><br>
+		<input type="radio" id="getTitle" name="search"/>
+		<label for="getTitle">Search by Title</label><br>
+		<input type="radio" id="getMaterial" name="search"/>
+		<label for="getMaterial">Search by Material</label><br>
+		<input type="radio"	id="getProfile" name="search"/>
+		<label for="getProfile">Search by Profile</label><br>
+		</aside>
+	</form>
+	</div>
 	</body>
 </html>
