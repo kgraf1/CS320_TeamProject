@@ -33,16 +33,16 @@ public class ModelsByTitleServlet extends HttpServlet{
 		
 		ArrayList<PhysicalModel> models = null;
 		String errorMessage = null;
-		String title = null;
+		String searchInput = null;
 		PhysicalModel model = null;
 		
 		controller = new ModelsByTitleController();
 		
 		//decode from parameters and dispatch to controller
-		title = req.getParameter("title");
+		searchInput = req.getParameter("searchInput");
 		
 		//get list of models returned from query
-		models = controller.getModelByTitle(title);
+		models = controller.getModelByTitle(searchInput);
 		
 		//any models found?
 		if(models == null) {
@@ -53,7 +53,7 @@ public class ModelsByTitleServlet extends HttpServlet{
 		}
 		
 		//add parameters as request attributes
-		req.setAttribute("title", title);
+		req.setAttribute("searchInput", searchInput);
 		
 		//Add result objects as request attributes
 		req.setAttribute("errorMessage", errorMessage);
@@ -61,6 +61,6 @@ public class ModelsByTitleServlet extends HttpServlet{
 		req.setAttribute("models", models);
 		
 		//Forward to view to render the result HTML document
-		req.getRequestDispatcher(req.getContextPath() + "/Search").forward(req, resp);
+		req.getRequestDispatcher("/_view/ModelsByTitle.jsp").forward(req, resp);
 	}
 }

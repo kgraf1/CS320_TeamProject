@@ -16,30 +16,35 @@ public class SearchServlet extends HttpServlet{
 	@Override 
 	protected void doGet (HttpServletRequest req, HttpServletResponse resp)
 				throws ServletException, IOException{
-		System.out.println("\n ModelsByCategoryServlet: doGet");
+		System.out.println("\n SearchServlet: doGet");
 		
-		req.getRequestDispatcher("/_view/results.jsp").forward(req, resp);
+		req.getRequestDispatcher("/_view/search.jsp").forward(req, resp);
 	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 				throws ServletException, IOException{
 		
-		if(req.getParameter("getKeyword")!=null) {
-			req.getRequestDispatcher(req.getContextPath() + "/ModelsByKeyword").forward(req, resp);
+		System.out.println("\n	SearchServlet: doPost");
+		
+		System.out.println(req.getParameter("search"));
+		
+		if(req.getParameter("search").equals("getKeyword")) {
+			
+			req.getRequestDispatcher("./ModelsByKeyword").forward(req, resp);
 		}
-		else if(req.getParameter("getTitle")!=null) {
-			req.getRequestDispatcher(req.getContextPath() + "/ModelsByTitle").forward(req, resp);
+		else if(req.getParameter("search").equals("getTitle")) {
+			req.getRequestDispatcher("./ModelsByTitle").forward(req, resp);
 		}
-		else if(req.getParameter("getMaterial")!=null) {
-			req.getRequestDispatcher(req.getContextPath() + "/ModelsByMaterial").forward(req, resp);
+		else if(req.getParameter("search").equals("getMaterial")) {
+			req.getRequestDispatcher("./ModelsByMaterial").forward(req, resp);
 		}
-		else if(req.getParameter("getProfile")!=null) {
-			req.getRequestDispatcher(req.getContextPath() + "/modelsByProfileName").forward(req, resp);
+		else if(req.getParameter("search").equals("getProfile")) {
+			req.getRequestDispatcher("./ModelsByProfileName").forward(req, resp);
 		}
-		else {
-			req.getRequestDispatcher(req.getContextPath() + "/ModelsByKeyword").forward(req, resp);
-		}
+		//else {
+			//req.getRequestDispatcher("./ModelsByKeyword").forward(req, resp);
+		//}
 		
 	}
 }

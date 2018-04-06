@@ -207,7 +207,7 @@ public class FakeDatabaseTests {
 			else {
 				assertTrue(models.size()==1);
 				assertTrue(models.get(0).getId()==1);
-				assertTrue(models.get(0).getDecription().equals("Those spinny thingys are so descriptive and I am going to decribe them in my decription which is what this is"));
+				assertTrue(models.get(0).getDescription().equals("Those spinny thingys are so descriptive and I am going to decribe them in my decription which is what this is"));
 			}
 			
 			title="How bout those stationary thingys";
@@ -218,7 +218,7 @@ public class FakeDatabaseTests {
 			else {
 				assertTrue(models.size()==1);
 				assertTrue(models.get(0).getId()==2);
-				assertTrue(models.get(0).getDecription().equals("Those stationary thingys are boring compared to the spiny thingys"));
+				assertTrue(models.get(0).getDescription().equals("Those stationary thingys are boring compared to the spiny thingys"));
 			}
 		}
 }

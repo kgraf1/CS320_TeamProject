@@ -9,6 +9,18 @@ h1{ /*Currently unused */
 h2{
 	font-size: 40px; text-align: center;
 }
+.hiddenButton{
+	margin:30px;
+	background:none!important;
+	color:blue;
+	size:100px;
+	border:none;
+	padding:0!important;
+	font:inherit;
+	border-bottom:1px solid blue;
+	cursor: pointer;
+}
+
 #search{/* was trying to make a search bar. This does nothing at the moment */
 	float: right;
 }

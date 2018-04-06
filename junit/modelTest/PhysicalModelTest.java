@@ -30,7 +30,7 @@ public class PhysicalModelTest {
 		assertEquals(model.getId(), 1);
 		assertTrue(model.getProfileId() == 6);
 		assertTrue(model.getTitle().compareTo("the title") == 0);
-		assertTrue(model.getDecription().compareTo("the description") == 0);
+		assertTrue(model.getDescription().compareTo("the description") == 0);
 		assertTrue(model.getThumbnail().compareTo("the thumbnail") == 0);
 		assertTrue(model.getEngPrinciple().compareTo("the engPrinciple") == 0);
 		assertTrue(model.getCitation().compareTo("the citation") == 0);
@@ -66,7 +66,7 @@ public class PhysicalModelTest {
 	@Test
 	public void testDescription() {
 		model.setDescription("This is the description");
-		assertTrue(model.getDecription().compareTo("This is the description") == 0);
+		assertTrue(model.getDescription().compareTo("This is the description") == 0);
 	}
 
 	@Test

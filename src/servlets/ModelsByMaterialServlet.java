@@ -32,16 +32,16 @@ public class ModelsByMaterialServlet extends HttpServlet{
 		
 		ArrayList<PhysicalModel> models = null;
 		String errorMessage = null;
-		String material = null;
+		String searchInput = null;
 		PhysicalModel model = null;
 		
 		controller = new ModelsByMaterialController();
 		
 		//decode from parameters and dispatch to controller
-		material = req.getParameter("material");
+		searchInput = req.getParameter("searchInput");
 		
 		//get list of models returned from query
-		models = controller.getModelByMaterialName(material);
+		models = controller.getModelByMaterialName(searchInput);
 		
 		//any models found?
 		if(models == null) {
@@ -52,7 +52,7 @@ public class ModelsByMaterialServlet extends HttpServlet{
 		}
 		
 		//add parameters as request attributes
-		req.setAttribute("material", material);
+		req.setAttribute("searchInput", searchInput);
 		
 		//Add result objects as request attributes
 		req.setAttribute("errorMessage", errorMessage);
@@ -60,6 +60,6 @@ public class ModelsByMaterialServlet extends HttpServlet{
 		req.setAttribute("models", models);
 		
 		//Forward to view to render the result HTML document
-		req.getRequestDispatcher(req.getContextPath() + "/Search").forward(req, resp);
+		req.getRequestDispatcher("/_view/ModelsByMaterial.jsp").forward(req, resp);
 	}
 }

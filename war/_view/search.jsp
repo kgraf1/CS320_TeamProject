@@ -3,6 +3,9 @@
 <html>
 	<head>
 		<title>Model Website Search</title>
+		
+		<link rel="stylesheet" type="text/css" href="${pageContext.servletContext.contextPath}/_view/homepageStyle.css">
+		
 		<style type="text/css">
 			.error {
 				color: red;
@@ -17,19 +20,32 @@
 	</head>
 
 	<body>
-	<div class="search-container">
-    <form action="${pageContext.servletContext.contextPath}/Search">
+	
+	<div class="topnav">
+  		<div class = "title"> Engineering Models </div>
+  
+  		<a class="active" href="${pageContext.servletContext.contextPath}/_view/homepage.jsp">Home</a>
+  
+  		<a href="${pageContext.servletContext.contextPath}/_view/profilepage.jsp">Profile</a>
+  		
+  		<a href="${pageContext.servletContext.contextPath}/_view/search.jsp">Search Models</a>
+  		
+	</div>
+	
+	
+	<div style="padding-top:30px;" class="search-container">
+    <form action="${pageContext.servletContext.contextPath}/Search" method="post">
       <input type="text" placeholder="Search.." name="searchInput" >
       <button type="submit">Submit</button>
 		<aside>
 		
-		<input type="radio" id="getKeyword" name="search"/>
+		<input type="radio" id="getKeyword" name="search" value="getKeyword"/>
 		<label for="getKeyword">Search by Keyword</label><br>
-		<input type="radio" id="getTitle" name="search"/>
+		<input type="radio" id="getTitle" name="search" value="getTitle"/>
 		<label for="getTitle">Search by Title</label><br>
-		<input type="radio" id="getMaterial" name="search"/>
+		<input type="radio" id="getMaterial" name="search" value="getMaterial"/>
 		<label for="getMaterial">Search by Material</label><br>
-		<input type="radio"	id="getProfile" name="search"/>
+		<input type="radio"	id="getProfile" name="search" value="getProfile"/>
 		<label for="getProfile">Search by Profile</label><br>
 		</aside>
 	</form>

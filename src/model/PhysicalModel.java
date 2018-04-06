@@ -9,7 +9,7 @@ public class PhysicalModel {
 	private int id;
 	private int profileId;
 	private String title;
-	private String decription;
+	private String description;
 	private String thumbnail;
 	private String engPrinciple;
 	private String citation;
@@ -21,12 +21,12 @@ public class PhysicalModel {
 		
 	}
 	
-	public PhysicalModel(int id, int profileId, String title, String decription, String thumbnail, 
+	public PhysicalModel(int id, int profileId, String title, String description, String thumbnail, 
 						String engPrinciple, String citation, Category category,String procedure) {
 		this.id = id;
 		this.profileId = profileId;
 		this.title = title;
-		this.decription = decription;
+		this.description = description;
 		this.thumbnail = thumbnail;
 		this.engPrinciple = engPrinciple;
 		this.citation = citation;
@@ -47,8 +47,8 @@ public class PhysicalModel {
 	public void setCategory(Category category) { this.category = category; }
 	public Category getCategory() { return category; }
 	
-	public void setDescription(String description) { this.decription = description; }
-	public String getDecription() { return decription; }
+	public void setDescription(String description) { this.description = description; }
+	public String getDescription() { return description; }
 	
 	public void setThumbnail(String thumbnail) { this.thumbnail = thumbnail; }
 	public String getThumbnail() { return thumbnail; }

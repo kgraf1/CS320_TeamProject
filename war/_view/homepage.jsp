@@ -24,19 +24,19 @@
 
 <!-- Div for the categories tab. Until categories are implemented they all just go to the given error page  -->
 <div id ="categoriesDiv">
-	<aside id = "categories">
+	<aside >
 			<h2>Categories:</h2>
 			<br>
 			<form action="${pageContext.servletContext.contextPath}/ModelsByCategory" method="post">
-				<input class="hiddenButton" type="submit" name="getConstruction" value="Construction"/>
+				<input style="font-size:30px;" class="hiddenButton" type="submit" name="getConstruction" value="Construction"/>
 			</form>
 			<br>
 			<form action="${pageContext.servletContext.contextPath}/ModelsByCategory" method="post">
-				<input class="hiddenButton" type="submit" name="getDynamics" value="Dynamics"/>
+				<input style="font-size: 30px;" class="hiddenButton" type="submit" name="getDynamics" value="Dynamics"/>
 			</form>
 			<br>
 			<form action="${pageContext.servletContext.contextPath}/ModelsByCategory" method="post">
-				<input class="hiddenButton" type="submit" name="getStatics" value="Statics"/>
+				<input style="font-size:30px;" class="hiddenButton" type="submit" name="getStatics" value="Statics"/>
 			</form>
 	</aside>
 </div>

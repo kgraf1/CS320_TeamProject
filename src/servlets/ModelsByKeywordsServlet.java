@@ -31,16 +31,16 @@ public class ModelsByKeywordsServlet extends HttpServlet{
 		
 		ArrayList<PhysicalModel> models = null;
 		String errorMessage = null;
-		String keywords = null;
+		String searchInput = null;
 		PhysicalModel model = null;
 		
 		controller = new ModelsByKeywordController();
 		
 		//decode form parameters and dispatch to controller 
-		keywords = req.getParameter("keywords");
+		searchInput = req.getParameter("searchInput");
 		
 		//get list of models returned from query
-		models = controller.getModelByKeywords(keywords);
+		models = controller.getModelByKeywords(searchInput);
 		
 		//any models found?
 		if(models == null) {
@@ -51,7 +51,7 @@ public class ModelsByKeywordsServlet extends HttpServlet{
 		}
 		
 		//add parameters as request attributes
-		req.setAttribute("keywords", keywords);
+		req.setAttribute("searchInput", req.getParameter("searchInput"));
 		
 		//add result objects as request attributes
 		req.setAttribute("errorMessage", errorMessage);
@@ -59,6 +59,6 @@ public class ModelsByKeywordsServlet extends HttpServlet{
 		req.setAttribute("models", models);
 		
 		//Forward to view to render the result HTML document
-		req.getRequestDispatcher(req.getContextPath() + "/Search").forward(req, resp);
+		req.getRequestDispatcher("/_view/ModelsByKeyword.jsp").forward(req, resp);
 	}
 }

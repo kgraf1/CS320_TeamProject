@@ -21,16 +21,7 @@
         <a class="active" href="homepage.jsp">Home</a>
 
         <a href="profilepage.jsp">Profile</a>
-
-
-
-        <div class="search-container">
-            <form action="search.jsp">
-                <input type="text" placeholder="Search.." name="search">
-                <button type="submit">Submit</button>
-            </form>
-        </div>
-    </div>
+</div>
     
     <!-- Page Container -->
     <div class="container content" style="max-width:1400px;margin-top:80px">

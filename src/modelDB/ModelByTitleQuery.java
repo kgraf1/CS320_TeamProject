@@ -28,7 +28,7 @@ public class ModelByTitleQuery {
 			}
 			else {
 				for(PhysicalModel model: modelList) {
-					System.out.println(model.getTitle() + " " + model.getDecription());
+					System.out.println(model.getTitle() + " " + model.getDescription());
 				}
 			}
 		}
