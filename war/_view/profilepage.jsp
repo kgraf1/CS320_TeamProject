@@ -21,6 +21,8 @@
         <a class="active" href="homepage.jsp">Home</a>
 
         <a href="profilepage.jsp">Profile</a>
+        
+        <a href="${pageContext.servletContext.contextPath}/_view/search.jsp">Search Models</a>
 </div>
     
     <!-- Page Container -->
