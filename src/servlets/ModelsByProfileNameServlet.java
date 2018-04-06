@@ -61,6 +61,6 @@ public class ModelsByProfileNameServlet extends HttpServlet{
 		req.setAttribute("models", models);
 		
 		//Forward to view to render the result HTML document
-		req.getRequestDispatcher("/WebContent/search.jsp").forward(req, resp);
+		req.getRequestDispatcher(req.getContextPath() + "/Search").forward(req, resp);
 	}
 }

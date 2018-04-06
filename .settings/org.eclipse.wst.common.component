@@ -3,7 +3,7 @@
     <wb-module deploy-name="CS320_TeamProject">
                 
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
-                
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/main"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/junit"/>
                 

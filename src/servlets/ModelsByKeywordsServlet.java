@@ -59,6 +59,6 @@ public class ModelsByKeywordsServlet extends HttpServlet{
 		req.setAttribute("models", models);
 		
 		//Forward to view to render the result HTML document
-		req.getRequestDispatcher("/WebContent/search.jsp");
+		req.getRequestDispatcher(req.getContextPath() + "/Search").forward(req, resp);
 	}
 }
