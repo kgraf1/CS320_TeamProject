@@ -1,7 +1,7 @@
 package controllers;
 
 import persist.DatabaseProvider;
-import persist.DerbyDatabase;
+import persist.FakeDatabase;
 import persist.IDatabase;
 
 import java.util.List;
@@ -14,7 +14,7 @@ public class AddMaterialsController {
 	public AddMaterialsController() {
 		
 		// creating DB instance here
-		DatabaseProvider.setInstance(new DerbyDatabase());
+		DatabaseProvider.setInstance(new FakeDatabase());
 		db = DatabaseProvider.getInstance();		
 	}
 

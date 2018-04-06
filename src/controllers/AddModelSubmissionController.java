@@ -3,7 +3,7 @@ package controllers;
 import model.Category;
 import persist.IDatabase;
 import persist.DatabaseProvider;
-import persist.DerbyDatabase;
+import persist.FakeDatabase;
 
 
 public class AddModelSubmissionController {
@@ -13,7 +13,7 @@ public class AddModelSubmissionController {
 	public AddModelSubmissionController() {
 		
 		// creating DB instance here
-		DatabaseProvider.setInstance(new DerbyDatabase());
+		DatabaseProvider.setInstance(new FakeDatabase());
 		db = DatabaseProvider.getInstance();		
 	}
 
@@ -23,7 +23,7 @@ public class AddModelSubmissionController {
 		// insert new model into DB
 		Integer model_id = db.insertModelIntoPhysicalModelTable(title, description, thumbnail, engPrinciple, citation,
 																category, procedure);
-
+		
 		// check if the insertion succeeded
 		if (model_id > 0)
 		{

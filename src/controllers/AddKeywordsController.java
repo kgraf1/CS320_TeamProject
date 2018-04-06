@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import persist.DatabaseProvider;
-import persist.DerbyDatabase;
+import persist.FakeDatabase;
 import persist.IDatabase;
 
 public class AddKeywordsController {
@@ -14,7 +14,7 @@ public class AddKeywordsController {
 	public AddKeywordsController() {
 		
 		// creating DB instance here
-		DatabaseProvider.setInstance(new DerbyDatabase());
+		DatabaseProvider.setInstance(new FakeDatabase());
 		db = DatabaseProvider.getInstance();		
 	}
 

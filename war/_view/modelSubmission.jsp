@@ -22,7 +22,7 @@
             <textarea id="name" name="name" placeholder="Name... " value="${name}"></textarea>
 
             <label for="Category">Category</label>
-            <select id="category" name="category" value="${category}">
+            <select name="category">
                 <option value="" disabled selected hidden>Please Choose...</option>
                 <option value="construction">Construction</option>
                 <option value="dynamics">Dynamics</option>
@@ -141,9 +141,9 @@
            <input type="Submit" name="submitmodel" value="Create Physical Model">
          </form>
     </div>
-
+<!--
 	<form action="./profilepage.jsp" method="post">
-			<input type="Submit" name="submithome" value="Submit PhysicalModel">
-	</form>
+			<input type="Submit" name="submitmodel" value="Submit PhysicalModel">
+	</form> -->
 </body>
 </html>

@@ -138,11 +138,15 @@ public class FakeDatabase implements IDatabase {
 
 		int id = 1;
 		
-		if(physicalModels.size() > 0) {
+		System.out.println("In Fake database method");
+		
+		if(physicalModels.size() > 0) {			
 			id = physicalModels.get(physicalModels.size() - 1).getId() + 1;
 		}
 		
 		int profileId = profiles.get(profiles.size() - 1).getId() + 1;
+		
+		System.out.println("The id is: " + id);
 		
 		PhysicalModel model = new PhysicalModel(id, profileId, title, decription, thumbnail, engPrinciple, citation,
 									category, procedure);

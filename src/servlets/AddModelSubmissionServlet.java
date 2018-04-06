@@ -48,14 +48,17 @@ public class AddModelSubmissionServlet extends HttpServlet {
 		// decode POSTed form parameters and dispatch to controller
 		try {
 			String name = req.getParameter("name");
-			category = Category.valueOf(req.getParameter("category"));
+			category = Category.valueOf(req.getParameter("category").toUpperCase());
 			String description = req.getParameter("description");
 			String thumbnail = req.getParameter("thumbnail");
 			String engPrinciple = req.getParameter("engPrinciple");
 			String citation = req.getParameter("citation");
 			String procedure = req.getParameter("procedure");
 			
+			
 			//The lists will contain materialName, quantity, cost, buildTime, and description in that order
+			
+			System.out.println("In servlet about to get material parameters!");
 			
 			List<String> material1 = new ArrayList<String> ();
 			material1.add(req.getParameter("material1"));
@@ -166,7 +169,7 @@ public class AddModelSubmissionServlet extends HttpServlet {
 				
 				modelCreated = modelController.create(name, description, thumbnail, engPrinciple, citation,
 											category, procedure);
-				if(modelCreated > 0) {
+				if(modelCreated >= 0) {
 					materialsCreated = materialsController.create(modelCreated, materials);
 					keywordsCreated = keywordsController.create(modelCreated, keywords);
 					applicationCreated = applicationController.create(modelCreated, beforeClass, beforeImage, duringClass, duringImage);
@@ -262,6 +265,6 @@ public class AddModelSubmissionServlet extends HttpServlet {
 		req.setAttribute("errorMessage", errorMessage);
 		
 		// Forward to view to render the result HTML document
-		req.getRequestDispatcher("./_view/modelSubmission.jsp").forward(req, resp);
+		req.getRequestDispatcher("./_view/profilepage.jsp").forward(req, resp);
 	}
 }
