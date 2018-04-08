@@ -265,6 +265,6 @@ public class AddModelSubmissionServlet extends HttpServlet {
 		req.setAttribute("errorMessage", errorMessage);
 		
 		// Forward to view to render the result HTML document
-		req.getRequestDispatcher("./_view/profilepage.jsp").forward(req, resp);
+		req.getRequestDispatcher("./_view/success.jsp").forward(req, resp);
 	}
 }
