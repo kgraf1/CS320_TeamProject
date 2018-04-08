@@ -14,7 +14,6 @@ public class AddKeywordsController {
 	public AddKeywordsController() {
 		
 		// creating DB instance here
-		DatabaseProvider.setInstance(new FakeDatabase());
 		db = DatabaseProvider.getInstance();		
 	}
 

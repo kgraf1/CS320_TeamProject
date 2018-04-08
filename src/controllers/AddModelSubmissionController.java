@@ -13,7 +13,6 @@ public class AddModelSubmissionController {
 	public AddModelSubmissionController() {
 		
 		// creating DB instance here
-		DatabaseProvider.setInstance(new FakeDatabase());
 		db = DatabaseProvider.getInstance();		
 	}
 

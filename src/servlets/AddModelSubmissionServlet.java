@@ -14,6 +14,8 @@ import controllers.AddKeywordsController;
 import controllers.AddMaterialsController;
 import controllers.AddModelSubmissionController;
 import model.Category;
+import persist.DatabaseProvider;
+import persist.FakeDatabase;
 
 public class AddModelSubmissionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -162,6 +164,8 @@ public class AddModelSubmissionServlet extends HttpServlet {
 			}
 			// otherwise, create the model by calling the controller
 			else {
+				DatabaseProvider.setInstance(new FakeDatabase());
+				
 				AddModelSubmissionController modelController = new AddModelSubmissionController();
 				AddMaterialsController materialsController = new AddMaterialsController();
 				AddKeywordsController keywordsController = new AddKeywordsController();
