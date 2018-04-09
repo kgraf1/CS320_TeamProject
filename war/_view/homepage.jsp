@@ -28,16 +28,37 @@
 			<h2>Categories:</h2>
 			<br>
 			<form action="${pageContext.servletContext.contextPath}/ModelsByCategory" method="post">
+				<input style="font-size:30px;" class="hiddenButton" type="submit" name="getThermo" value="Thermodynamics"/>
+			</form>
+			<br>
+			<form action="${pageContext.servletContext.contextPath}/ModelsByCategory" method="post">
 				<input style="font-size:30px;" class="hiddenButton" type="submit" name="getConstruction" value="Construction"/>
 			</form>
 			<br>
 			<form action="${pageContext.servletContext.contextPath}/ModelsByCategory" method="post">
-				<input style="font-size: 30px;" class="hiddenButton" type="submit" name="getDynamics" value="Dynamics"/>
+				<input style="font-size:30px;" class="hiddenButton" type="submit" name="getDynamics" value="Dynamics"/>
+			</form>
+			<br>
+			<form action="${pageContext.servletContext.contextPath}/ModelsByCategory" method="post">
+				<input style="font-size:30px;" class="hiddenButton" type="submit" name="getFluids" value="Fluids"/>
+			</form>
+			<br>
+			<form action="${pageContext.servletContext.contextPath}/ModelsByCategory" method="post">
+				<input style="font-size:30px;" class="hiddenButton" type="submit" name="getHeat" value="Heat Transfer"/>
+			</form>
+			<br>
+			<form action="${pageContext.servletContext.contextPath}/ModelsByCategory" method="post">
+				<input style="font-size:30px;" class="hiddenButton" type="submit" name="getMaterial" value="Material Science"/>
+			</form>
+			<br>
+			<form action="${pageContext.servletContext.contextPath}/ModelsByCategory" method="post">
+				<input style="font-size:30px;" class="hiddenButton" type="submit" name="getMechanics" value="Mechanics"/>
 			</form>
 			<br>
 			<form action="${pageContext.servletContext.contextPath}/ModelsByCategory" method="post">
 				<input style="font-size:30px;" class="hiddenButton" type="submit" name="getStatics" value="Statics"/>
 			</form>
+			
 	</aside>
 </div>
 

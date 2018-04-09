@@ -4,9 +4,23 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Success!</title>
+<title>Added Model!</title>
+<link rel="stylesheet" type="text/css" href="${pageContext.servletContext.contextPath}/_view/homepageStyle.css">
 </head>
 <body>
+
+<div class="topnav">
+  <div class = "title"> Engineering Models </div>
+  
+  <a class="active" href="${pageContext.servletContext.contextPath}/_view/homepage.jsp">Home</a>
+  
+  <a href="${pageContext.servletContext.contextPath}/_view/profilepage.jsp">Profile</a>
+  
+  <a href="${pageContext.servletContext.contextPath}/_view/search.jsp">Search Models</a>
+  
+  
+</div>
+
 <h1> Model Added Successfully!</h1>
 
 <form action="${pageContext.servletContext.contextPath}/_view/profilepage.jsp" method="post">

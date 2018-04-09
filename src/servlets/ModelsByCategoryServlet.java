@@ -34,16 +34,37 @@ public class ModelsByCategoryServlet extends HttpServlet{
 		String category = null;
 		String errorMessage = null;
 		
+		System.out.println(req.getParameter("getThermo"));
 		System.out.println(req.getParameter("getConstruction"));
 		System.out.println(req.getParameter("getDynamics"));
+		System.out.println(req.getParameter("getFluids"));
+		System.out.println(req.getParameter("getHeat"));
+		System.out.println(req.getParameter("getMaterial"));
+		System.out.println(req.getParameter("getMechanics"));
 		System.out.println(req.getParameter("getStatics"));
 		
+		
 		//decode from parameters and dispatch to controller
-		if(req.getParameter("getConstruction")!=null) {
+		if(req.getParameter("getThermo")!=null) {
+			models = controller.getModelByCategory("Thermodynamics");
+		}
+		else if(req.getParameter("getConstruction")!=null) {
 			models = controller.getModelByCategory("Construction");
 		}
 		else if (req.getParameter("getDynamics")!=null) {
 			models = controller.getModelByCategory("Dynamics");
+		}
+		else if (req.getParameter("getFluids")!=null) {
+			models = controller.getModelByCategory("Fluids");
+		}
+		else if (req.getParameter("getHeat")!=null) {
+			models = controller.getModelByCategory("Heattransfer");
+		}
+		else if (req.getParameter("getMaterial")!=null) {
+			models = controller.getModelByCategory("Materialscience");
+		}
+		else if (req.getParameter("getMechanics")!=null) {
+			models = controller.getModelByCategory("Mechanics");
 		}
 		else if (req.getParameter("getStatics")!=null) {
 			models = controller.getModelByCategory("Statics");
