@@ -26,7 +26,7 @@ public class ModelsByProfileNameController {
 public ArrayList<PhysicalModel> getModelByProfileFirstOrLastName (String name){
 		
 		String [] split = name.split(" ");
-		ArrayList <PhysicalModel> models = null;
+		ArrayList <PhysicalModel> models = new ArrayList<PhysicalModel>();
 		
 		for(int i=0; i<split.length; i++) {
 			name=split[i];
@@ -36,11 +36,15 @@ public ArrayList<PhysicalModel> getModelByProfileFirstOrLastName (String name){
 				models=null;
 			}
 			else {
-				models=new ArrayList<PhysicalModel>();
 				for(PhysicalModel model:modelList) {
+					if(!models.contains(model)) {
 					models.add(model);
+					}
 				}
 			}
+		}
+		for(int i =0; i<models.size(); i++) {
+			System.out.println(models.get(i));
 		}
 		return models;
 	}

@@ -10,10 +10,8 @@ h2{
 	font-size: 40px; text-align: center;
 }
 .hiddenButton{
-	margin:30px;
 	background:none!important;
 	color:blue;
-	size:100px;
 	border:none;
 	padding:0!important;
 	font:inherit;

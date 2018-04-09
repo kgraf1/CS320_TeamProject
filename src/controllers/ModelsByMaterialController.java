@@ -26,7 +26,7 @@ public class ModelsByMaterialController {
 public ArrayList<PhysicalModel> getModelByMaterialName (String material){
 		
 		String [] split = material.split(" ");
-		ArrayList <PhysicalModel> models = null;
+		ArrayList <PhysicalModel> models = new ArrayList<PhysicalModel> ();
 		
 		for(int i=0; i<split.length; i++) {
 			material=split[i];
@@ -36,9 +36,10 @@ public ArrayList<PhysicalModel> getModelByMaterialName (String material){
 				models=null;
 			}
 			else {
-				models=new ArrayList<PhysicalModel>();
 				for(PhysicalModel model:modelList) {
+					if(!models.contains(model)) {
 					models.add(model);
+					}
 				}
 			}
 		}

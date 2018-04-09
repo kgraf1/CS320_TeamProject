@@ -1,5 +1,7 @@
 package model;
 
+
+
 public class Profile {
 	private int id;
 	private String username;
@@ -9,9 +11,10 @@ public class Profile {
 	private String lastName;
 	private boolean loggedIn;  //check with team if this is okay
 	
-	public Profile() {
+	public Profile () {
 		
 	}
+	
 	
 	public Profile(int id, String username, String password, String firstName,
 			String lastName, String email) {
@@ -42,8 +45,11 @@ public class Profile {
 	
 	public String getLastName() { return lastName; }
 	public void setLastName(String lastName) { this.lastName = lastName; }
+
 	
 	public void logIn() { loggedIn = true; }
 	public void logOut() { loggedIn = false; }
 	public boolean isLoggedIn() { return loggedIn; }
+	
+	
 }

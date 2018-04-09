@@ -25,7 +25,6 @@ public class ModelsByTitleController {
 	
 	
 	public ArrayList<PhysicalModel> getModelByTitle (String title){
-		//String [] split = title.split(" ");
 		ArrayList <PhysicalModel> models = null;
 		
 		

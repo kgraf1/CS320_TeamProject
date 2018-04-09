@@ -29,9 +29,13 @@
 				<td><input type="text" name="username"/></td>
 			</tr>
 			<tr>
-				<td>Name: </td>
-				<td><input type="text" name="name"/></td>
+				<td>First Name: </td>
+				<td><input type="text" name="firstName"/></td>
 			</tr>
+			<tr>
+				<td>Last Name: </td>
+				<td><input type="text" name="lastName"/></td>
+			
 			<tr>
 				<td>Email: </td>
 				<td><input type="text" name="email"/></td>

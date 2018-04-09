@@ -25,7 +25,7 @@ public class ModelsByKeywordController {
 public ArrayList<PhysicalModel> getModelByKeywords (String keywords){
 		
 		String [] split = keywords.split(" ");
-		ArrayList <PhysicalModel> models = null;
+		ArrayList <PhysicalModel> models = new ArrayList<PhysicalModel>();
 		
 		for(int i=0; i<split.length; i++) {
 			String keyword=split[i];
@@ -35,9 +35,10 @@ public ArrayList<PhysicalModel> getModelByKeywords (String keywords){
 				models=null;
 			}
 			else {
-				models=new ArrayList<PhysicalModel>();
 				for(PhysicalModel model:modelList) {
+					if(!models.contains(model)) {
 					models.add(model);
+					}
 				}
 			}
 		}
