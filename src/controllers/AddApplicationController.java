@@ -14,7 +14,6 @@ public class AddApplicationController {
 	public AddApplicationController() {
 		
 		// creating DB instance here
-		DatabaseProvider.setInstance(new FakeDatabase());
 		db = DatabaseProvider.getInstance();		
 	}
 
