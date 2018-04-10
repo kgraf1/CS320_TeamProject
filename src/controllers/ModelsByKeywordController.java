@@ -17,8 +17,7 @@ public class ModelsByKeywordController {
 	private IDatabase db = null;
 	
 	public ModelsByKeywordController () {
-		// creating DB instance here
-		DatabaseProvider.setInstance(new FakeDatabase());
+		// retrieving DB instance here
 		db = DatabaseProvider.getInstance();		
 	}	
 	

@@ -18,8 +18,7 @@ public class ModelsByTitleController {
 	private IDatabase db = null;
 	
 	public ModelsByTitleController () {
-		// creating DB instance here
-		DatabaseProvider.setInstance(new FakeDatabase());
+		// retrieving DB instance here
 		db = DatabaseProvider.getInstance();		
 	}
 	

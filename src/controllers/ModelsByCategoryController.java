@@ -17,8 +17,7 @@ public class ModelsByCategoryController {
 	private IDatabase db = null;
 	
 	public ModelsByCategoryController (){
-		// creating DB instance here
-		DatabaseProvider.setInstance(new FakeDatabase());
+		// retrieving DB instance here
 		db = DatabaseProvider.getInstance();	
 	}
 	

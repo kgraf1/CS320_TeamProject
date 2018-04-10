@@ -164,8 +164,6 @@ public class AddModelSubmissionServlet extends HttpServlet {
 			}
 			// otherwise, create the model by calling the controller
 			else {
-				DatabaseProvider.setInstance(new FakeDatabase());
-				
 				AddModelSubmissionController modelController = new AddModelSubmissionController();
 				AddMaterialsController materialsController = new AddMaterialsController();
 				AddKeywordsController keywordsController = new AddKeywordsController();

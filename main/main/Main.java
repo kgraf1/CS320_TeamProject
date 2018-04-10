@@ -1,6 +1,8 @@
 package main;
 
 import java.io.File;
+import persist.DatabaseProvider;
+import persist.FakeDatabase;
 
 import org.eclipse.jetty.server.Server;
 
@@ -23,6 +25,9 @@ public class Main {
 		
 		// Inform user that server is running
 		System.out.println("RUNNING: web server on port 8080");
+		
+		//Instantiates the fake database for consistent use of the same instance between all controllers
+		DatabaseProvider.setInstance(new FakeDatabase());
 		
         // The use of server.join() the will make the current thread join and
         // wait until the server is done executing.
