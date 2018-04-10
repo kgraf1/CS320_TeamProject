@@ -220,4 +220,29 @@ public class FakeDatabase implements IDatabase {
 		
 		return rating.getId();
 	}
+	
+	@Override
+	public List<PhysicalModel> findModelsByProfileId(int profileId) {
+		List<PhysicalModel> models = new ArrayList<> ();
+		
+		for(PhysicalModel model : physicalModels) {
+			if(model.getProfileId() == profileId) {
+				models.add(model);
+			}
+		}
+		
+		return models;
+	}
+	
+	@Override
+	public Profile findProfileByProfileId(int profileId) {
+		
+		for(Profile curProfile : profiles) {
+			if(curProfile.getId() == profileId) {
+				return curProfile;
+			}
+		}
+		
+		return null;
+	}
 }

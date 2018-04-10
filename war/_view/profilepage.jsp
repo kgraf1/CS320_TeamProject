@@ -37,8 +37,8 @@
                         <h4>My Profile</h4>
                         <p><img src="C:\Users\katek\Downloads\avatar3.png" style="height:106px;width:106px;border-radius:50%;" alt="Avatar"></p>
                         <hr>
-                        <p>Professor of Engineering</p>
-                        <p>York, PA</p>
+                        <p>${profile.fistName} ${profile.lastName}</p>
+                        <p>${profile.email}</p>
                     </div>
                 </div>
                 <br>
@@ -55,41 +55,18 @@
             <!-- Middle Column -->
             <div class="col middle">
 
-                <div class="container card" style="margin:16px!important; width:757px">
-                    <br>
-                    <img src="C:\Users\katek\source\repos\hammer.jpg" alt="Avatar" style="width:60px;float:left!important;border-radius:50%;margin-right:16px!important;">
-                    <h4 style="text-align:center;">When Worlds Collide</h4><br>
-                    <hr class="clear">
-                    <p style="font-weight:bold;">Model Description:</p> <p> This model takes two objects and demonstrates yada yada yada...</p>
-                    <p style="font-weight:bold;">Time:</p> <p> about 3 minutes</p>
-                    <div style="margin:0 -16px;padding:0 8px;">
-                    </div>
-                    <button type="button"class="button" style="width:150px;">See more!</button>
-                </div>
-
-                <div class="container card" style="margin:16px!important; width:757px">
-                    <br>
-                    <img src="C:\Users\katek\source\repos\hammer.jpg" alt="Avatar" style="width:60px;float:left!important;border-radius:50%;margin-right:16px!important;">
-                    <h4 style="text-align:center;">When Worlds Collide</h4><br>
-                    <hr class="clear">
-                    <p style="font-weight:bold;">Model Description:</p> <p> This model takes two objects and demonstrates yada yada yada...</p>
-                    <p style="font-weight:bold;">Time:</p> <p> about 3 minutes</p>
-                    <div style="margin:0 -16px;padding:0 8px">
-                    </div>
-                    <button type="button" class="button" style="width:150px;">See more!</button>
-                </div>
-
-                <div class="container card" style="margin:16px!important; width:757px">
-                    <br>
-                    <img src="C:\Users\katek\source\repos\hammer.jpg" alt="Avatar" style="width:60px;float:left!important;border-radius:50%;margin-right:16px!important;">
-                    <h4 style="text-align:center;">When Worlds Collide</h4><br>
-                    <hr class="clear">
-                    <p style="font-weight:bold;">Model Description:</p> <p> This model takes two objects and demonstrates yada yada yada...</p>
-                    <p style="font-weight:bold;">Time:</p> <p> about 3 minutes</p>
-                    <div style="margin:0 -16px;padding:0 8px">
-                    </div>
-                    <button type="button" class="button" style="width:150px;">See more!</button>
-                </div>
+				<c:forEach items="${models}" var="model">
+			        <div class="container card" style="margin:16px!important; width:757px">
+                    	<br>
+                    	<h4 style="text-align:center;"> ${model.title} </h4><br>
+                    	<hr class="clear">
+                    	<p style="font-weight:bold;">Model Description:</p> <p> ${model.description} </p>
+                    	<p style="font-weight:bold;">Time:</p> <p> about 3 minutes</p>
+                    	<div style="margin:0 -16px;padding:0 8px;">
+                    	</div>
+                    	<button type="button"class="button" style="width:150px;">See more!</button>
+                	</div>
+			    </c:forEach>
 
                 <!-- End Middle Column -->
             </div>

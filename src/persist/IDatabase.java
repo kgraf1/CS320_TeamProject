@@ -16,9 +16,11 @@ public interface IDatabase {
 	public List<PhysicalModel> findModelsByCategory(String category);
 	public List<PhysicalModel> findModelsByKeyword(String keyword);
 	public List<PhysicalModel> findModelsByMaterialName(String materialName);
+	public List<PhysicalModel> findModelsByProfileId(int profileId);
 	
 	//finding users
 	public List<Profile> findProfileByDatabaseTitle(String title);
+	public Profile findProfileByProfileId(int profileId);
 	
 	//creating models
 	public int insertModelIntoPhysicalModelTable(String title, String decription, String thumbnail,
