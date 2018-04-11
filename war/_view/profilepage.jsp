@@ -61,7 +61,6 @@
                     	<h4 style="text-align:center;"> ${model.title} </h4><br>
                     	<hr class="clear">
                     	<p style="font-weight:bold;">Model Description:</p> <p> ${model.description} </p>
-                    	<p style="font-weight:bold;">Time:</p> <p> about 3 minutes</p>
                     	<div style="margin:0 -16px;padding:0 8px;">
                     	</div>
                     	<button type="button"class="button" style="width:150px;">See more!</button>
