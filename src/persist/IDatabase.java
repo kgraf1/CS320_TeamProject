@@ -27,6 +27,8 @@ public interface IDatabase {
 	public int insertKeywordIntoKeywordTable(int modelId, String word);
 	public int insertApplicationIntoApplicationTable(int modelId, String beforeClass, String beforeImage,
 			String duringClass, String duringImage);
+	public int insertProfileIntoProfileTable(String firstName, String lastName, String username, String email, String password);
 	public int insertRatingIntoRatingTable(int modelId, int rate, String comment);
+	public List<Profile> getAllProfiles();
 	
 }

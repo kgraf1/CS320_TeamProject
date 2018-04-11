@@ -206,6 +206,25 @@ public class FakeDatabase implements IDatabase {
 	}
 	
 	@Override
+	public int insertProfileIntoProfileTable (String firstName, String lastName, String username, String email, String password) {
+		int id = 1;
+		
+		if(profiles.size()>0) {
+			id = profiles.get(profiles.size()-1).getId() + 1;
+		}
+		
+		Profile profile = new Profile(id, username, password, firstName, lastName, email);
+		profiles.add(profile);
+		
+		return profile.getId();
+	}
+	
+	@Override 
+	public List<Profile> getAllProfiles(){
+		return profiles;
+	}
+	
+	@Override
 	public int insertRatingIntoRatingTable(int modelId, int rate, String comment) {
 
 		int id = 1;
