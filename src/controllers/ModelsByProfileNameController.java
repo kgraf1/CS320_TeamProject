@@ -32,7 +32,7 @@ public ArrayList<PhysicalModel> getModelByProfileFirstOrLastName (String name){
 			List <PhysicalModel> modelList = db.findModelsByProfileFirstOrLastName(name);
 	
 			if(modelList.isEmpty()) {
-				models=null;
+				return null;
 			}
 			else {
 				for(PhysicalModel model:modelList) {
