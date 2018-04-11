@@ -44,10 +44,10 @@
 			
 			<div class="keywords">
 				<textarea id="keyword1" name="keyword1" placeholder="keyword" style="height:100px;width:150px;" value="${keyword1}"></textarea>
-				<textarea id="keyword2" name="keyword1" placeholder="keyword" style="height:100px;width:150px;" value="${keyword2}"></textarea>
-				<textarea id="keyword3" name="keyword1" placeholder="keyword" style="height:100px;width:150px;" value="${keyword3}"></textarea>
-				<textarea id="keyword4" name="keyword1" placeholder="keyword" style="height:100px;width:150px;" value="${keyword4}"></textarea>
-				<textarea id="keyword5" name="keyword1" placeholder="keyword" style="height:100px;width:150px;" value="${keyword5}"></textarea>
+				<textarea id="keyword2" name="keyword2" placeholder="keyword" style="height:100px;width:150px;" value="${keyword2}"></textarea>
+				<textarea id="keyword3" name="keyword3" placeholder="keyword" style="height:100px;width:150px;" value="${keyword3}"></textarea>
+				<textarea id="keyword4" name="keyword4" placeholder="keyword" style="height:100px;width:150px;" value="${keyword4}"></textarea>
+				<textarea id="keyword5" name="keyword5" placeholder="keyword" style="height:100px;width:150px;" value="${keyword5}"></textarea>
 			</div>
 			
             <label for="materialdata" style="margin-left: 100px;">Materials Used</label>
