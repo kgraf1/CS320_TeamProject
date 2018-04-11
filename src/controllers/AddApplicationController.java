@@ -18,12 +18,18 @@ public class AddApplicationController {
 	}
 
 	public boolean create(int modelId, String beforeClass, String beforeImage, String duringClass, String duringImage) {
-		
+		System.out.println("Create from AddApplicationController is being called");
 		int id = -1;
-		
+		if(beforeClass == null && beforeImage == null && duringClass == null && duringImage == null) {
+			System.out.println("Failed to insert new application (ID: " + id + ") into Application table. All are null");
+			return false;
+		}
+		else {
+			System.out.println("At least one attribute is not null, adding to the database");
+		}
 		// insert the application into DB
 		id = db.insertApplicationIntoApplicationTable(modelId, beforeClass, beforeImage, duringClass, duringImage);
-
+		
 		// check if the insertion succeeded
 		if (id != -1)
 		{

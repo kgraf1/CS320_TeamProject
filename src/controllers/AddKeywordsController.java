@@ -22,9 +22,17 @@ public class AddKeywordsController {
 		List<Integer> keywordIds = new ArrayList<Integer> ();
 		
 		// insert the materials into DB
+		for(int i =0; i<keywords.size();i++) {
+			if(keywords.get(i)== null) {
+				keywords.remove(i);
+				i--;
+			}
+		}
+		
 		for(String word : keywords) {
 			if(word != null) {
 				keywordIds.add(db.insertKeywordIntoKeywordTable(modelId, word));
+				System.out.println("Keyword "+word+" has been added");
 			}
 		}
 

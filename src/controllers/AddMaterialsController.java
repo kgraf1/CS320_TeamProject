@@ -20,12 +20,23 @@ public class AddMaterialsController {
 	public boolean create(int modelId, List<List<String>> materials) {
 		
 		List<Integer> materialIds = new ArrayList<Integer> ();
+		System.out.println("Adding New Materials");
 		
+		for(int i = 0; i < materials.size();i++) {
+			if(materials.get(i).get(0)==null || materials.get(i).get(0).length() == 0) {
+				materials.remove(i);
+				i--;
+			}
+		}
 		// insert the materials into DB
 		for(List<String> material : materials) {
 			if(material.get(0) != null) {
-				materialIds.add(db.insertMaterialIntoMaterialTable(modelId, material.get(0), Integer.parseInt(material.get(1)), 
+				materialIds.add(db.insertMaterialIntoMaterialTable(modelId, material.get(0), material.get(1), 
 																material.get(2), material.get(3), material.get(4)));
+				System.out.println("Material "+material.get(0)+" is not null, adding to fake database");
+			}
+			else{
+				System.out.println("Material "+material.get(0)+" is null, will not be added to fake database");
 			}
 		}
 

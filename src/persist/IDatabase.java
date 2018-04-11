@@ -23,7 +23,7 @@ public interface IDatabase {
 	//creating models
 	public int insertModelIntoPhysicalModelTable(String title, String decription, String thumbnail,
 			String engPrinciple, String citation, Category category, String procedure);
-	public int insertMaterialIntoMaterialTable(int modelId, String name, int quantity, String cost, String buildTime, String description);
+	public int insertMaterialIntoMaterialTable(int modelId, String name, String quantity, String cost, String buildTime, String description);
 	public int insertKeywordIntoKeywordTable(int modelId, String word);
 	public int insertApplicationIntoApplicationTable(int modelId, String beforeClass, String beforeImage,
 			String duringClass, String duringImage);
