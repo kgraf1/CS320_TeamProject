@@ -42,10 +42,16 @@ public class AddMaterialsController {
 
 		// check if the insertions succeeded
 		if (!materialIds.contains(-1))
-		{
+		{	
+			if(materialIds.size()==0) {
+				System.out.println("There are no new materials to add");
+				return true;
+			}
+			else {
 			System.out.println("New material(s) (IDs: " +  materialIds.toString() + ") successfully added to Materials table.");
 			
 			return true;
+			}
 		}
 		else
 		{
