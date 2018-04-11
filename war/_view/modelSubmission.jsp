@@ -133,10 +133,10 @@
             </div>
             
             <label for="application">Application</label>
-            <textarea id="application" name="application" placeholder="Before class..." style="height:200px" value="${beforeClass}"></textarea>
-            <textarea id="application" name="application" placeholder="Before image..." style="height:200px" value="${beforeImage}"></textarea>
-            <textarea id="application" name="application" placeholder="During class..." style="height:200px" value="${duringClass}"></textarea>
-            <textarea id="application" name="application" placeholder="During image..." style="height:200px" value="${duringImage}"></textarea>
+            <textarea id="application" name="beforeClass" placeholder="Before class..." style="height:200px" value="${beforeClass}"></textarea>
+            <textarea id="application" name="beforeImage" placeholder="Before image..." style="height:200px" value="${beforeImage}"></textarea>
+            <textarea id="application" name="duringClass" placeholder="During class..." style="height:200px" value="${duringClass}"></textarea>
+            <textarea id="application" name="duringImage" placeholder="During image..." style="height:200px" value="${duringImage}"></textarea>
 
            <input type="Submit" name="submitmodel" value="Create Physical Model">
          </form>
