@@ -28,72 +28,75 @@
 	<form action="${pageContext.servletContext.contextPath}/DisplayModel" method="post">
 	
 		<div>
-			${model.title}
+			<h1>${model.title}</h1>
 		</div>
-		<div>
-			${model.description}
+		<div style="border:2px solid gray">
+			<h3>Description:</h3>
+				<div style="padding-left:20px">${model.description}</div><br>
 		</div>
-		<div>
-			${model.category}
+		<br>
+		<div style="border: 2px solid gray">
+			<h3>Category:</h3>
+				<div style="padding-left:20px">${model.category}</div><br>
 		</div>
-		<div>
-			${model.engPrinciple}
+		<br>
+		<div style="border: 2px solid gray">
+			<h3>Engineering Principle:</h3>
+				<div style="padding-left:20px">${model.engPrinciple}</div><br>
 		</div>
-		<div>
-			${model.thumbnail}
+		<br>
+		<div style="border: 2px solid gray">
+			<h3>Thumbnail:</h3>
+				<div style="padding-left:20px">${model.thumbnail}</div><br>
 		</div>
-		<div>
-			${model.citation}
+		<br>
+		<div style="border: 2px solid gray">
+			<h3>Citation:</h3>
+				<div style="padding-left:20px">${model.citation}</div><br>
 		</div>
-		<div>
-			${model.procedure}
+		<br>
+		<div style="border: 2px solid gray">
+			<h3>Procedure:</h3>
+				<div style="padding-left:20px">${model.procedure}</div><br>
 		</div>
-		<div>
-			${application.beforeClass}
-		</div>
-		<div>
-			${application.beforeImage}
-		</div>
-		<div>
-			${application.duringClass}
-		</div>
-		<div>
-			${application.duringImage}
-		</div>
-		<div>
+		<br>
+		<div style="border: 2px solid gray">
+			<h3>Application:</h3>
+				<h4 style="padding-left:20px">Before Class:</h4>
+					<div style="padding-left:40px">${application.beforeClass}</div><br>
+				<h4 style="padding-left:20px">Before Image:</h4>	
+					<div style="padding-left:40px">${application.beforeImage}</div><br>
+				<h4 style="padding-left:20px">During Class:</h4>	
+					<div style="padding-left:40px">${application.duringClass}</div><br>
+				<h4 style="padding-left:20px">During Image:</h4>	
+					<div style="padding-left:40px">${application.duringImage}</div><br>
+		</div>	
+		<br>	
+		<div style="border: 2px solid gray">
+			<h3>Keywords:</h3>
 			<c:forEach items="${keywords}" var="keyword">
-				<div>
-					${keyword.word}
-				</div>
+				<div style="padding-left:20px">${keyword.word}</div><br>
 			</c:forEach>
 		</div>
-		<div>
+		<br>
+		<div style="border: 2px solid gray">
+		<h3>Materials:</h3>
 			<c:forEach items="${materials}" var="material">
-				<div style="font:bold">
-					${material.name}
-				</div>
-				<div style="padding-left:20px">
-					${material.quantity}
-				</div>
-				<div style="padding-left:20px">
-					${material.description}
-				</div>
-				<div style="padding-left:20px">
-					${material.buildTime}
-				</div>
-				<div style="padding-left:20px">
-					${material.cost}
-				</div>
+				<div style="font:bold; padding-left:20px;">${material.name}</div><br>
+				<div style="padding-left:40px">Quantity: ${material.quantity}</div><br>
+				<div style="padding-left:40px">Description: ${material.description}</div><br>
+				<div style="padding-left:40px">Build Time: ${material.buildTime}</div><br>
+				<div style="padding-left:40px">Cost: ${material.cost}</div><br>
 			</c:forEach>
 		</div>
-		<div>
+		<br>
+		<div style="border:2px solid gray">
+			<h3>Ratings:</h3>
 			<c:forEach items="${ratings}" var="rating">
-				<div>
-					${rating.rate}
-				</div>
-				<div>
-					${rating.comment}
-				</div>
+				<div style="padding-left:20px">${rating.rate}</div><br>
+				
+				<h4>Comment:</h4>
+					<div style="padding-left:20px">${rating.comment}</div><br>
 			</c:forEach>
 		</div>
 	
