@@ -155,7 +155,7 @@ public class AddModelSubmissionServlet extends HttpServlet {
 			//get Application
 			String beforeClass = req.getParameter("beforeClass");
 			String beforeImage = req.getParameter("beforeImage");
-			String duringClass = req.getParameter("duringImage");
+			String duringClass = req.getParameter("duringClass");
 			String duringImage = req.getParameter("duringImage");
 			
 			// check to make sure the user input a name and description
