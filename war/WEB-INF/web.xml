@@ -42,6 +42,10 @@
   	<servlet-name>SearchServlet</servlet-name>
   	<servlet-class>servlets.SearchServlet</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>ProfileServlet</servlet-name>
+  	<servlet-class>servlets.ProfileServlet</servlet-class>
+  </servlet>
   
   <!-- Servlet mappings -->
   <servlet-mapping>
@@ -75,6 +79,10 @@
   <servlet-mapping>
   	<servlet-name>SearchServlet</servlet-name>
   	<url-pattern>/Search</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ProfileServlet</servlet-name>
+  	<url-pattern>/profile</url-pattern>
   </servlet-mapping>
   
 </web-app>

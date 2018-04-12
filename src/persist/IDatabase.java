@@ -16,9 +16,11 @@ public interface IDatabase {
 	public List<PhysicalModel> findModelsByCategory(String category);
 	public List<PhysicalModel> findModelsByKeyword(String keyword);
 	public List<PhysicalModel> findModelsByMaterialName(String materialName);
+	public List<PhysicalModel> findModelsByProfileId(int profileId);
 	
 	//finding users
 	public List<Profile> findProfileByDatabaseTitle(String title);
+	public Profile findProfileByProfileId(int profileId);
 	
 	//creating models
 	public int insertModelIntoPhysicalModelTable(String title, String decription, String thumbnail,
@@ -27,6 +29,8 @@ public interface IDatabase {
 	public int insertKeywordIntoKeywordTable(int modelId, String word);
 	public int insertApplicationIntoApplicationTable(int modelId, String beforeClass, String beforeImage,
 			String duringClass, String duringImage);
+	public int insertProfileIntoProfileTable(String firstName, String lastName, String username, String email, String password);
 	public int insertRatingIntoRatingTable(int modelId, int rate, String comment);
+	public List<Profile> getAllProfiles();
 	
 }

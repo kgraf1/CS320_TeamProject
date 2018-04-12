@@ -99,7 +99,7 @@ public class ControllersTest {
 		ModelsByProfileNameController controller = new ModelsByProfileNameController();
 		assertNotNull(controller.getModelByProfileFirstOrLastName("Bob Jones"));
 		assertNotNull(controller.getModelByProfileFirstOrLastName("Billy Bob"));
-		assertNull(controller.getModelByProfileFirstOrLastName("Bill Omlette"));
+		assertTrue(controller.getModelByProfileFirstOrLastName("Not inDatabase") == null);
 	}
 	
 	@Test
@@ -109,4 +109,10 @@ public class ControllersTest {
 		assertNull(controller.getModelByTitle("Does not exist"));
 	}
 	
+	@Test
+	public void testProfileController() {
+		ProfileController controller = new ProfileController();
+		assertNotNull(controller.getModels(1));
+		assertNotNull(controller.getProfile(1));
+	}
 }

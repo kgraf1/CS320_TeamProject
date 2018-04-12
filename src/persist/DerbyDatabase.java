@@ -32,9 +32,11 @@ public class DerbyDatabase implements IDatabase {
 	public List<PhysicalModel> findModelsByCategory(Category category) { return null; }
 	public List<PhysicalModel> findModelsByKeyword(String keyword) { return null; }
 	public List<PhysicalModel> findModelsByMaterialName(String materialName) { return null; }
+	public List<PhysicalModel> findModelsByProfileId(int profileId) { return null; }
 	
 	//finding users
 	public List<Profile> findProfileByDatabaseTitle(String title) { return null; }
+	public Profile findProfileByProfileId(int profileId) { return null; }
 	
 	//creating models
 	public int insertModelIntoPhysicalModelTable(String title, String decription, String thumbnail,
@@ -56,6 +58,18 @@ public class DerbyDatabase implements IDatabase {
 	@Override
 	public List<PhysicalModel> findModelsByCategory(String category) {
 		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int insertProfileIntoProfileTable(String firstName, String lastName, String username, String email,
+			String password) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+	@Override 
+	public List<Profile> getAllProfiles(){
 		return null;
 	}
 }

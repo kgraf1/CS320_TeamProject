@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import persist.FakeDatabase;
 
 import model.Profile;
 import controllers.LoginController;
@@ -35,52 +36,51 @@ public class LoginServlet extends HttpServlet {
 
 		System.out.println("\nLoginServlet: doPost");
 
+		String submitType = req.getParameter("submit");
+		controller = new LoginController(profile);
+		
 		String errorMessage = null;
-		String name = null;
-		String pw = null;
 		boolean validLogin = false;
+		Profile profile = null;
 
-		// Decode form parameters and dispatch to controller
-		name = req.getParameter("username");
-		pw   = req.getParameter("password");
-
-		System.out.println("   Name: <" + name + "> PW: <" + pw + ">");			
-
-		if (name == null || pw == null || name.equals("") || pw.equals("")) {
-			errorMessage = "Please specify both user name and password";
-		} else {
-			profile = new Profile();
-			controller = new LoginController(profile);
-			validLogin = controller.validateCredentials(name, pw);
-
-			if (!validLogin) {
-				errorMessage = "Username and/or password invalid";
+		if(submitType.equals("Register")) {
+			System.out.println("Registering");
+			profile = new Profile ();
+			String firstName = req.getParameter("firstName");
+			String lastName = req.getParameter("lastName");
+			String username = req.getParameter("username");
+			String email = req.getParameter("email");
+			String password  = null;
+			if(req.getParameter("password1").equals(req.getParameter("password2"))) {
+				password = req.getParameter("password1");
+				System.out.println("Heading to controller");
+				controller.Register(firstName, lastName, username, email, password);
+			}
+			if((controller.checkUserName(username)==true) && (controller.checkPassword(password)==true)){
+				validLogin = true;
+				errorMessage = null;
+				req.getSession().setAttribute("username", username);
+				resp.sendRedirect(req.getContextPath() + "/_view/homepage.jsp");
+			}
+			else {
+				errorMessage="Invalid Login, please try again";
+				req.getRequestDispatcher("/_view/login.jsp").forward(req, resp);
 			}
 		}
-
-		// Add parameters as request attributes
-		req.setAttribute("username", req.getParameter("username"));
-		req.setAttribute("password", req.getParameter("password"));
-
-		// Add result objects as request attributes
-		req.setAttribute("errorMessage", errorMessage);
-		req.setAttribute("login",        validLogin);
-
-		// if login is valid, start a session
-		if (validLogin) {
-			System.out.println("   Valid login - starting session, redirecting to /homepage");
-
-			// store user object in session
-			req.getSession().setAttribute("user", name);
-
-			// redirect to /homepage page
-			req.getRequestDispatcher("/_view/homepage.jsp").forward(req, resp);
-			return;
+		else {
+			String username = req.getParameter("username");
+			String password = req.getParameter("password");
+			if((controller.checkUserName(username)==true) && (controller.checkPassword(password)==true)){
+				validLogin = true;
+				errorMessage = null;
+				req.getSession().setAttribute("username", username);
+				resp.sendRedirect(req.getContextPath() + "/_view/homepage.jsp");
+			}
+			else {
+				errorMessage="Invalid Login, please try again";
+				req.getRequestDispatcher("/_view/login.jsp").forward(req,resp);
+			}
 		}
-
-		System.out.println("   Invalid login - returning to /login");
-
-		// Forward to view to render the result HTML document
-		req.getRequestDispatcher("/_view/login.jsp").forward(req, resp);
+		
 	}
 }
