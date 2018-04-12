@@ -32,9 +32,11 @@ public class DerbyDatabase implements IDatabase {
 	public List<PhysicalModel> findModelsByCategory(Category category) { return null; }
 	public List<PhysicalModel> findModelsByKeyword(String keyword) { return null; }
 	public List<PhysicalModel> findModelsByMaterialName(String materialName) { return null; }
+	public List<PhysicalModel> findModelsByProfileId(int profileId) { return null; }
 	
 	//finding users
 	public List<Profile> findProfileByDatabaseTitle(String title) { return null; }
+	public Profile findProfileByProfileId(int profileId) { return null; }
 	
 	//creating models
 	public int insertModelIntoPhysicalModelTable(String title, String decription, String thumbnail,
