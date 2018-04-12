@@ -30,7 +30,7 @@ public ArrayList<PhysicalModel> getModelByMaterialName (String material){
 		for(int i=0; i<split.length; i++) {
 			material=split[i];
 			List <PhysicalModel> modelList = db.findModelsByMaterialName(material);
-	
+			System.out.println("ModelsByMaterial is looking for: "+material); 
 			if(modelList.isEmpty()) {
 				models=null;
 			}
@@ -38,6 +38,10 @@ public ArrayList<PhysicalModel> getModelByMaterialName (String material){
 				for(PhysicalModel model:modelList) {
 					if(!models.contains(model)) {
 					models.add(model);
+					System.out.println("Adding "+model.getTitle()+" to models to return");
+					}
+					else {
+						System.out.println(model.getTitle()+" is already in the array");
 					}
 				}
 			}

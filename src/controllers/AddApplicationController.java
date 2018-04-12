@@ -18,12 +18,20 @@ public class AddApplicationController {
 	}
 
 	public boolean create(int modelId, String beforeClass, String beforeImage, String duringClass, String duringImage) {
-		
+		System.out.println("Create from AddApplicationController is being called");
 		int id = -1;
-		
+		//System.out.println("beforeClass is: "+beforeClass+" beforeImage is: "+beforeImage+
+		//		" duringClass is: "+duringClass+" duringImage is: "+duringImage);
+		if(beforeClass.equals("") && beforeImage.equals("") && duringClass.equals("") && duringImage.equals("")) {
+			System.out.println("Failed to insert new application (ID: " + id + ") into Application table. All feilds are empty");
+			return false;
+		}
+		else {
+			System.out.println("At least one attribute is not empty, adding to the database");
+		}
 		// insert the application into DB
 		id = db.insertApplicationIntoApplicationTable(modelId, beforeClass, beforeImage, duringClass, duringImage);
-
+		
 		// check if the insertion succeeded
 		if (id != -1)
 		{
@@ -33,7 +41,7 @@ public class AddApplicationController {
 		}
 		else
 		{			
-			System.out.println("Failed to insert new application (ID: " + id + ") into Application table.");
+			System.out.println("Failed to insert new application (ID: " + id + ") into Application table: id = -1");
 			
 			return false;
 		}

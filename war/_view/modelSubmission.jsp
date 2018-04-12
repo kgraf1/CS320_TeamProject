@@ -44,10 +44,10 @@
 			
 			<div class="keywords">
 				<textarea id="keyword1" name="keyword1" placeholder="keyword" style="height:100px;width:150px;" value="${keyword1}"></textarea>
-				<textarea id="keyword2" name="keyword1" placeholder="keyword" style="height:100px;width:150px;" value="${keyword2}"></textarea>
-				<textarea id="keyword3" name="keyword1" placeholder="keyword" style="height:100px;width:150px;" value="${keyword3}"></textarea>
-				<textarea id="keyword4" name="keyword1" placeholder="keyword" style="height:100px;width:150px;" value="${keyword4}"></textarea>
-				<textarea id="keyword5" name="keyword1" placeholder="keyword" style="height:100px;width:150px;" value="${keyword5}"></textarea>
+				<textarea id="keyword2" name="keyword2" placeholder="keyword" style="height:100px;width:150px;" value="${keyword2}"></textarea>
+				<textarea id="keyword3" name="keyword3" placeholder="keyword" style="height:100px;width:150px;" value="${keyword3}"></textarea>
+				<textarea id="keyword4" name="keyword4" placeholder="keyword" style="height:100px;width:150px;" value="${keyword4}"></textarea>
+				<textarea id="keyword5" name="keyword5" placeholder="keyword" style="height:100px;width:150px;" value="${keyword5}"></textarea>
 			</div>
 			
             <label for="materialdata" style="margin-left: 100px;">Materials Used</label>
@@ -133,10 +133,10 @@
             </div>
             
             <label for="application">Application</label>
-            <textarea id="application" name="application" placeholder="Before class..." style="height:200px" value="${beforeClass}"></textarea>
-            <textarea id="application" name="application" placeholder="Before image..." style="height:200px" value="${beforeImage}"></textarea>
-            <textarea id="application" name="application" placeholder="During class..." style="height:200px" value="${duringClass}"></textarea>
-            <textarea id="application" name="application" placeholder="During image..." style="height:200px" value="${duringImage}"></textarea>
+            <textarea id="application" name="beforeClass" placeholder="Before class..." style="height:200px" value="${beforeClass}"></textarea>
+            <textarea id="application" name="beforeImage" placeholder="Before image..." style="height:200px" value="${beforeImage}"></textarea>
+            <textarea id="application" name="duringClass" placeholder="During class..." style="height:200px" value="${duringClass}"></textarea>
+            <textarea id="application" name="duringImage" placeholder="During image..." style="height:200px" value="${duringImage}"></textarea>
 
            <input type="Submit" name="submitmodel" value="Create Physical Model">
          </form>
