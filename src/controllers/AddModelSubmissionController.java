@@ -16,11 +16,14 @@ public class AddModelSubmissionController {
 		db = DatabaseProvider.getInstance();		
 	}
 
-	public int create(String title, String description, String thumbnail, String engPrinciple, String citation,
+	public int create(String username, String title, String description, String thumbnail, String engPrinciple, String citation,
 							Category category, String procedure) {
 		
+		// get current profileId
+		int profileId = db.findProfileIdByUsername(username);
+		
 		// insert new model into DB
-		Integer model_id = db.insertModelIntoPhysicalModelTable(title, description, thumbnail, engPrinciple, citation,
+		Integer model_id = db.insertModelIntoPhysicalModelTable(profileId, title, description, thumbnail, engPrinciple, citation,
 																category, procedure);
 		
 		// check if the insertion succeeded

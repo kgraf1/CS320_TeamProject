@@ -22,7 +22,7 @@ public class ProfileServlet extends HttpServlet {
 				throws ServletException, IOException{
 		System.out.println("\n ProfileServlet: doGet");
 		
-		req.getRequestDispatcher("/_view/profile.jsp").forward(req, resp);
+		req.getRequestDispatcher("/_view/profilepage.jsp").forward(req, resp);
 	}
 	
 	@Override
@@ -30,23 +30,24 @@ public class ProfileServlet extends HttpServlet {
 				throws ServletException, IOException{
 		
 		System.out.println("\n	ProfileServlet: doPost");
-		
-		String profileId = null;
+	
 		List<PhysicalModel> models = new ArrayList<> ();
 		String errorMessage = null;
 		
 		ProfileController controller = new ProfileController();
 		
-		profileId = req.getParameter("profileId");
+		String username = (String)req.getSession().getAttribute("username");
+		int profileId = controller.getProfileIdByUsername(username);
 		
-		models = controller.getModels(Integer.parseInt(profileId));
-		Profile profile = controller.getProfile(Integer.parseInt(profileId));
+		models = controller.getModels(profileId);
+		Profile profile = controller.getProfile(profileId);
 		
 		req.setAttribute("models", models);
 		req.setAttribute("profile", profile);
 		req.setAttribute("errorMessage", errorMessage);
 		
+		System.out.println("Displaying " + models.size() + " models.");
 		//Forward to view to render the result HTML document
-		req.getRequestDispatcher("/_view/profile.jsp").forward(req, resp);	
+		req.getRequestDispatcher("./_view/profilepage.jsp").forward(req, resp);	
 	}
 }

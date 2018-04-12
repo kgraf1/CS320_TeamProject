@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html>
 <title>Profile Page</title>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 
 
-<link rel="stylesheet" type="text/css" href="profilepage.css">
-<link rel="stylesheet" type="text/css" href="homepageStyle.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/_view/profilepage.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/_view/homepageStyle.css">
 <!-- import the homepage css for navigation bar-->
 <style>
    
@@ -17,15 +19,15 @@
     <!-- Top Navigation -->
     <div class="topnav">
         <div class="title"> Engineering Models </div>
-
-        <a class="active" href="${pageContext.servletContext.contextPath}/_view/homepage.jsp">Home</a>
-
+		<a class="active" href="${pageContext.servletContext.contextPath}/_view/homepage.jsp">Home</a>
         <a href="${pageContext.servletContext.contextPath}/_view/profilepage.jsp" method="post">Profile</a>
-        
         <a href="${pageContext.servletContext.contextPath}/_view/search.jsp">Search Models</a>
-</div>
+	</div>
     
-    <!-- Page Container -->
+    <!-- Page Container -->   	
+   	
+    <form action="${pageContext.servletContext.contextPath}/profilePage" method="post">
+ 
     <div class="container content" style="max-width:1400px;margin-top:80px">
         <!-- The Grid -->
         <div class="row">
@@ -35,9 +37,8 @@
                 <div class="card">
                     <div class="container" style="display:inline-block;width:auto;text-align:center!important;">
                         <h4>My Profile</h4>
-                        <p><img src="C:\Users\katek\Downloads\avatar3.png" style="height:106px;width:106px;border-radius:50%;" alt="Avatar"></p>
                         <hr>
-                        <p>${profile.fistName} ${profile.lastName}</p>
+                        <p>${profile.firstName} ${profile.lastName}</p>
                         <p>${profile.email}</p>
                     </div>
                 </div>
@@ -45,7 +46,7 @@
 
                 <div class="card">
                     <div class="container">
-                        <p><button type="button" class="button" style="width:300px;"><a href="modelSubmission.jsp">Submit a model</a></button></p>
+                        <p><button type="button" class="button" style="width:300px;"><a href="./_view/modelSubmission.jsp">Submit a model</a></button></p>
                     </div>
                 </div>
 
@@ -66,16 +67,15 @@
                     	<button type="button"class="button" style="width:150px;">See more!</button>
                 	</div>
 			    </c:forEach>
-
-                <!-- End Middle Column -->
-            </div>
+			</div>
+				
+            <!-- End Middle Column -->
 
             <!-- Right Column -->
             <div class="col right">
                 <div class="card" style="text-align:center;">
                     <div class="container" style="display:inline-block;width:auto;text-align:center!important;">
                         <p>Upcoming Events:</p>
-                        <img src="" alt="Image" style="width:100%;">
                         <p><strong>Holiday</strong></p>
                         <p>Friday 15:00</p>
                         <p><button class="button" style="color:#000!important;background-color:#dfe5e8!important;width:100%;">Info</button></p>
@@ -86,7 +86,6 @@
                 <div class="card" style="text-align:center;">
                     <div class="container" style="display:inline-block;width:auto;text-align:center!important;">
                         <p>Friend Request</p>
-                        <img src="" alt="Image" style="width:50%"><br>
                         <span>Jane Doe</span>
                         <div class="row" style="opacity:0.60;">
                             <div style="float:left;width:49.99999%">
@@ -117,9 +116,6 @@
 
         <!-- End Page Container -->
     </div>
-    <br>
-
-   
-   
+    </form>
 </body>
 </html>
