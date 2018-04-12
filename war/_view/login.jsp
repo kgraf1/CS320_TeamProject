@@ -41,7 +41,7 @@
 			</tr>
 			<tr>
 				<td><input type="submit" name="submit" value="Log In"/></td>
-				<td><a href="register.jsp">Registration</a></td>
+				<td><a href="${pageContext.servletContext.contextPath}/_view/register.jsp">Registration</a></td>
 			</tr>
 		</table>
 	</form>

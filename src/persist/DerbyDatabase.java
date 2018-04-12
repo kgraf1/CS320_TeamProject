@@ -60,4 +60,16 @@ public class DerbyDatabase implements IDatabase {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public int insertProfileIntoProfileTable(String firstName, String lastName, String username, String email,
+			String password) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+	@Override 
+	public List<Profile> getAllProfiles(){
+		return null;
+	}
 }

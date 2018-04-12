@@ -19,7 +19,7 @@
 		</style>
 </head>
 <body>
-	<form action="Login" method="post">
+	<form action="${pageContext.servletContext.contextPath}/login" method="post">
 	
 	<h3 style=color:purple>Registration</h3>
 	
