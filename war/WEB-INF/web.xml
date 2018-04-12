@@ -46,6 +46,10 @@
   	<servlet-name>ProfileServlet</servlet-name>
   	<servlet-class>servlets.ProfileServlet</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>DisplayModelServlet</servlet-name>
+  	<servlet-class>servlets.DisplayModelServlet</servlet-class>
+  </servlet>
   
   <!-- Servlet mappings -->
   <servlet-mapping>
@@ -83,6 +87,10 @@
   <servlet-mapping>
   	<servlet-name>ProfileServlet</servlet-name>
   	<url-pattern>/profile</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>DisplayModelServlet</servlet-name>
+  	<url-pattern>/DisplayModel</url-pattern>
   </servlet-mapping>
   
 </web-app>

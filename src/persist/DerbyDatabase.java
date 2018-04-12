@@ -5,12 +5,14 @@ import java.util.List;
 
 import model.Application;
 import model.Category;
+import model.Keyword;
 import model.Material;
 import model.PhysicalModel;
 import model.Profile;
 import model.Rating;
 
 public class DerbyDatabase implements IDatabase {	
+	
 	
 	// The main method creates the database tables and loads the initial data.
 	public static void main(String[] args) throws IOException {
@@ -70,6 +72,36 @@ public class DerbyDatabase implements IDatabase {
 	
 	@Override 
 	public List<Profile> getAllProfiles(){
+		return null;
+	}
+
+	@Override
+	public PhysicalModel findModelByModelId(int modelId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Keyword> findKeywordsByModelId(int modelId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Material> findMaterialsByModelId(int modelId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Application findApplicationByModelId(int modelId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Rating> findRatingsByModelId(int modelId) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 }

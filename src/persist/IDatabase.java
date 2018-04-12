@@ -2,6 +2,7 @@ package persist;
 
 import model.PhysicalModel;
 import model.Rating;
+import model.Keyword;
 import model.Application;
 import model.Category;
 import model.Material;
@@ -17,6 +18,7 @@ public interface IDatabase {
 	public List<PhysicalModel> findModelsByKeyword(String keyword);
 	public List<PhysicalModel> findModelsByMaterialName(String materialName);
 	public List<PhysicalModel> findModelsByProfileId(int profileId);
+	public PhysicalModel findModelByModelId(int modelId);
 	
 	//finding users
 	public List<Profile> findProfileByDatabaseTitle(String title);
@@ -32,5 +34,12 @@ public interface IDatabase {
 	public int insertProfileIntoProfileTable(String firstName, String lastName, String username, String email, String password);
 	public int insertRatingIntoRatingTable(int modelId, int rate, String comment);
 	public List<Profile> getAllProfiles();
+	
+	
+	//getting other model information 
+	public List<Keyword> findKeywordsByModelId(int modelId);
+	public List<Material> findMaterialsByModelId(int modelId);
+	public Application findApplicationByModelId(int modelId);
+	public List<Rating> findRatingsByModelId(int modelId);
 	
 }

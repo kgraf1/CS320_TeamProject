@@ -30,7 +30,7 @@
 			<c:forEach items="${models}" var="model">
 				<tr class="modelRow">
 					<tr>
-						<td class="modelTitle">${model.title}</td>
+						<td class="modelTitle"><button class="hiddenButton" onclick="form.action='DisplayModel';" name="modelID" value="${model.id}">${model.title}</button></td>
 					</tr>
 					<tr>
 						<td class="modelDescription">${model.description}</td>
