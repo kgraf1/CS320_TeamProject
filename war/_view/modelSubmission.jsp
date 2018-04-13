@@ -3,6 +3,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="modelSubmission.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.servletContext.contextPath}/_view/homepageStyle.css">
 </head>
 
 <body>
@@ -13,8 +14,19 @@
 	</c:if>
 	--> 
 	
-    <h3 style="text-align: center;">Model Submission</h3>
+    
+	
+	<div class="topnav">
+  		<div class = "title"> Engineering Models </div>
+  		<h3 style="text-align: center;">Model Submission</h3>
+  		<a class="active" href="${pageContext.servletContext.contextPath}/_view/homepage.jsp">Home</a>
+  
+  		<a href="${pageContext.servletContext.contextPath}/_view/profilepage.jsp">Profile</a>
 
+		<a href="${pageContext.servletContext.contextPath}/_view/search.jsp">Search Models</a>
+  		
+	</div>
+	
     <div class="container">
         <form action="${pageContext.servletContext.contextPath}/addModelSubmission" method="post">
         

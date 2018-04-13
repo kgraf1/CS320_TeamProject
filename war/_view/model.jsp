@@ -92,6 +92,7 @@
 		<br>
 		<div style="border:2px solid gray">
 			<h3>Ratings:</h3>
+			<h3>An average rating of ${average}</h3>
 			<c:forEach items="${ratings}" var="rating">
 				<div style="padding-left:20px">${rating.rate}</div><br>
 				
