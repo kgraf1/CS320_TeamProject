@@ -14,7 +14,7 @@
 	--> 
 	
     <h3 style="text-align: center;">Model Submission</h3>
-
+	<button type="button" class="button" style="width:300px;"><a href="${pageContext.servletContext.contextPath}/_view/profilepage.jsp">Return to Profile</a></button>
     <div class="container">
         <form action="${pageContext.servletContext.contextPath}/addModelSubmission" method="post">
         
