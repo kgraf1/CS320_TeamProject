@@ -64,7 +64,7 @@
                     	<p style="font-weight:bold;">Model Description:</p> <p> ${model.description} </p>
                     	<div style="margin:0 -16px;padding:0 8px;">
                     	</div>
-                    	<button type="button"class="button" style="width:150px;">See more!</button>
+                    	<button class="button" onclick="form.action='DisplayModel';" style:"width:150px;" name="modelID" value="${model.id}">See more!</button>
                 	</div>
 			    </c:forEach>
 			</div>
