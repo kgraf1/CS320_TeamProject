@@ -104,4 +104,10 @@ public class DerbyDatabase implements IDatabase {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public Profile findProfileByModelId(int modelId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

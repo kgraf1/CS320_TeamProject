@@ -41,5 +41,5 @@ public interface IDatabase {
 	public List<Material> findMaterialsByModelId(int modelId);
 	public Application findApplicationByModelId(int modelId);
 	public List<Rating> findRatingsByModelId(int modelId);
-	
+	public Profile findProfileByModelId(int modelId);
 }
