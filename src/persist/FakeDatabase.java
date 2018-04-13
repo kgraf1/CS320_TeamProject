@@ -268,6 +268,17 @@ public class FakeDatabase implements IDatabase {
 		return null;
 	}
 	
+@Override 
+	public Profile findProfileByModelId(int modelId) {
+		for(Profile profile: profiles) {
+			if(profile.getId()==findModelByModelId(modelId).getProfileId()) {
+				return profile;
+			}
+		}
+		return null;
+	}
+
+	
 	@Override 
 	public List<Keyword> findKeywordsByModelId(int modelId) {
 		ArrayList<Keyword> getKeywords = new ArrayList<Keyword>();
@@ -293,6 +304,7 @@ public class FakeDatabase implements IDatabase {
 		}
 		return getMaterials;
 	}
+
 	
 	@Override 
 	public List<Rating> findRatingsByModelId(int modelId) {

@@ -6,9 +6,16 @@ h1{ /*Currently unused */
 	text-align: center; 
 	
 }
+.Author{
+	text-align: center;
+	font-size:30px;
+	margin: auto auto auto auto;
+	font-weight:bold;
+}
 h2{
 	font-size: 40px; text-align: center;
 }
+
 .hiddenButton{
 	background:none!important;
 	color:blue;

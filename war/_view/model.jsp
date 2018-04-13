@@ -30,6 +30,7 @@
 		<div>
 			<h1>${model.title}</h1>
 		</div>
+		<div><center>Written By: <button class="hiddenButton" onclick="form.action='ModelsByProfileName';" name="searchInput" value="${profile.firstName} ${profile.lastName}">${profile.firstName} ${profile.lastName}</button></center></div><br>
 		<div style="border:2px solid gray">
 			<h3>Description:</h3>
 				<div style="padding-left:20px">${model.description}</div><br>
@@ -37,7 +38,7 @@
 		<br>
 		<div style="border: 2px solid gray">
 			<h3>Category:</h3>
-				<div style="padding-left:20px">${model.category}</div><br>
+				<div style="padding-left:20px"><button class="hiddenButton" onclick="form.action='ModelsByCategory';" name="searchInput" value="${model.category}">${model.category}</button></div><br>
 		</div>
 		<br>
 		<div style="border: 2px solid gray">
@@ -75,14 +76,14 @@
 		<div style="border: 2px solid gray">
 			<h3>Keywords:</h3>
 			<c:forEach items="${keywords}" var="keyword">
-				<div style="padding-left:20px">${keyword.word}</div><br>
+				<div style="padding-left:20px"><button class="hiddenButton" onclick="form.action='ModelsByKeyword';" name="searchInput" value="${keyword.word}">${keyword.word}</button></div><br>
 			</c:forEach>
 		</div>
 		<br>
 		<div style="border: 2px solid gray">
 		<h3>Materials:</h3>
 			<c:forEach items="${materials}" var="material">
-				<div style="font:bold; padding-left:20px;">${material.name}</div><br>
+				<div style="font:bold; padding-left:20px;"><button class="hiddenButton" onclick="form.action='ModelsByMaterial';" name="searchInput" value="${material.name}">${material.name}</button></div><br>
 				<div style="padding-left:40px">Quantity: ${material.quantity}</div><br>
 				<div style="padding-left:40px">Description: ${material.description}</div><br>
 				<div style="padding-left:40px">Build Time: ${material.buildTime}</div><br>
@@ -91,12 +92,14 @@
 		</div>
 		<br>
 		<div style="border:2px solid gray">
-			<h3>Ratings:</h3>
+			<h3 style="padding-left:20px">Ratings:</h3>
+			<h4 style="padding-left:40px;">An average rating of ${average}</h4>
 			<c:forEach items="${ratings}" var="rating">
-				<div style="padding-left:20px">${rating.rate}</div><br>
+				<h4 style="padding-left:20px">Rating</h4>
+					<div style="padding-left:40px">${rating.rate}</div><br>
 				
-				<h4>Comment:</h4>
-					<div style="padding-left:20px">${rating.comment}</div><br>
+				<h4 style="padding-left:40px">Comment:</h4>
+					<div style="padding-left:60px">${rating.comment}</div><br>
 			</c:forEach>
 		</div>
 	

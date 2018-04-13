@@ -116,4 +116,10 @@ public class ControllersTest {
 		assertNotNull(controller.getModels(1));
 		assertNotNull(controller.getProfile(1));
 	}
+	@Test
+	public void testRatingsByModelIdController() {
+		RatingsByModelIdController controller = new RatingsByModelIdController();
+		assertNotNull(controller.getRatingsByModelId(1));
+		assertNotNull(controller.getAverageByModelId(1));
+	}
 }

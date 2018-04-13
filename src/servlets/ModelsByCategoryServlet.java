@@ -69,6 +69,30 @@ public class ModelsByCategoryServlet extends HttpServlet{
 		else if (req.getParameter("getStatics")!=null) {
 			models = controller.getModelByCategory("Statics");
 		}
+		else if(req.getParameter("searchInput").equals("CONSTRUCTION")) {
+			models=controller.getModelByCategory("Construction");
+		}
+		else if(req.getParameter("searchInput").equals("THERMODYNAMICS")) {
+			models=controller.getModelByCategory("Thermodynamics");
+		}
+		else if(req.getParameter("searchInput").equals("DYNAMICS")) {
+			models=controller.getModelByCategory("Dynamics");
+		}
+		else if(req.getParameter("searchInput").equals("FLUIDS")) {
+			models=controller.getModelByCategory("Fluids");
+		}
+		else if(req.getParameter("searchInput").equals("HEATTRANSFER")) {
+			models=controller.getModelByCategory("Heattransfer");
+		}
+		else if(req.getParameter("searchInput").equals("MATERIALSCIENCE")) {
+			models=controller.getModelByCategory("Materialscience");
+		}
+		else if(req.getParameter("searchInput").equals("MECHANICS")) {
+			models=controller.getModelByCategory("Mechanics");
+		}
+		else if(req.getParameter("searchInput").equals("STATICS")) {
+			models=controller.getModelByCategory("Statics");
+		}
 		
 		//get list of models returned from query
 		
