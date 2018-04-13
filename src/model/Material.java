@@ -4,7 +4,7 @@ public class Material {
 	
 	private int id;
 	private int modelId;
-	private int quantity;
+	private String quantity;
 	private String name;
 	private String description;
 	private String buildTime;
@@ -14,7 +14,7 @@ public class Material {
 		
 	}
 	
-	public Material (int id, int modelId, String name, int quantity, String cost, String buildTime, String description) {
+	public Material (int id, int modelId, String name, String quantity, String cost, String buildTime, String description) {
 		this.id = id;
 		this.modelId = modelId;
 		this.quantity = quantity;
@@ -26,7 +26,7 @@ public class Material {
 	
 	public void setId(int id) { this.id = id; }
 	public void setModelId(int modelId) { this.modelId = modelId; }
-	public void setQuantity(int quantity) { this.quantity = quantity; }
+	public void setQuantity(String quantity) { this.quantity = quantity; }
 	public void setName(String name) { this.name = name; }
 	public void setDescription(String description) { this.description = description; }
 	public void setBuildTime(String buildTime) { this.buildTime = buildTime; }
@@ -34,7 +34,7 @@ public class Material {
 	
 	public int getId() { return id; }
 	public int getModelId() { return modelId; }
-	public int getQuantity() { return quantity;	}
+	public String getQuantity() { return quantity;	}
 	public String getName() { return name; }
 	public String getDescription() { return description; }
 	public String getBuildTime() { return buildTime; }

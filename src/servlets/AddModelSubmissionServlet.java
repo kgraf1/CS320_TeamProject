@@ -27,7 +27,7 @@ public class AddModelSubmissionServlet extends HttpServlet {
 		System.out.println("AddModelSubmission Servlet: doGet");	
 		
 		// call JSP to generate empty form
-		req.getRequestDispatcher("/_view/addModelSubmission.jsp").forward(req, resp);
+		req.getRequestDispatcher("/_view/modelSubmission.jsp").forward(req, resp);
 	}
 	
 	@Override
@@ -155,7 +155,7 @@ public class AddModelSubmissionServlet extends HttpServlet {
 			//get Application
 			String beforeClass = req.getParameter("beforeClass");
 			String beforeImage = req.getParameter("beforeImage");
-			String duringClass = req.getParameter("duringImage");
+			String duringClass = req.getParameter("duringClass");
 			String duringImage = req.getParameter("duringImage");
 			
 			// check to make sure the user input a name and description
@@ -266,7 +266,7 @@ public class AddModelSubmissionServlet extends HttpServlet {
 		
 		req.setAttribute("errorMessage", errorMessage);
 		
-		// Forward to view to render the result HTML document
-		req.getRequestDispatcher("./_view/success.jsp").forward(req, resp);
+		// Forward to view to render the profile HTML document
+		resp.sendRedirect(req.getContextPath() + "/profilePage");
 	}
 }

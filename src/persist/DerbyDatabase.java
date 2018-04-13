@@ -5,12 +5,14 @@ import java.util.List;
 
 import model.Application;
 import model.Category;
+import model.Keyword;
 import model.Material;
 import model.PhysicalModel;
 import model.Profile;
 import model.Rating;
 
 public class DerbyDatabase implements IDatabase {	
+	
 	
 	// The main method creates the database tables and loads the initial data.
 	public static void main(String[] args) throws IOException {
@@ -43,7 +45,7 @@ public class DerbyDatabase implements IDatabase {
 	public int insertModelIntoPhysicalModelTable(int profileId, String title, String decription, String thumbnail,
 			String engPrinciple, String citation, Category category, String procedure) { return 0; }
 	
-	public int insertMaterialIntoMaterialTable(int modelId, String name, int quantity, String cost, String buildTime, String description) { return 0;}
+	public int insertMaterialIntoMaterialTable(int modelId, String name, String quantity, String cost, String buildTime, String description) { return 0;}
 	public int insertKeywordIntoKeywordTable(int modelId, String word) { return 0; }
 	public int insertApplicationIntoApplicationTable(int modelId, String beforeClass, String beforeImage,
 			String duringClass, String duringImage) { return 0; }
@@ -71,6 +73,36 @@ public class DerbyDatabase implements IDatabase {
 	
 	@Override 
 	public List<Profile> getAllProfiles(){
+		return null;
+	}
+
+	@Override
+	public PhysicalModel findModelByModelId(int modelId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Keyword> findKeywordsByModelId(int modelId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Material> findMaterialsByModelId(int modelId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Application findApplicationByModelId(int modelId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Rating> findRatingsByModelId(int modelId) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 }

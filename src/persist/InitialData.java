@@ -149,7 +149,7 @@ public class InitialData {
 				Material material = new Material();
 				material.setId(materialId++);
 				material.setModelId(Integer.parseInt(i.next()));
-				material.setQuantity(Integer.parseInt(i.next()));
+				material.setQuantity(i.next());
 				material.setName(i.next());
 				material.setDescription(i.next());
 				

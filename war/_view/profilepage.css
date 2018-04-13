@@ -29,18 +29,15 @@ body {
 }
 
 .left {
-    /*width: 24.99999%;*/
-    width: 100px;
+    width: 24.99999%;
 }
 
 .middle {
-    /*width: 58.33333%;*/
-    width: 100px;
+    width: 58.33333%;
 }
 
 .right {
-    /*width: 16.66666%;*/
-    width: 100px;
+    width: 16.66666%;
 }
 
 .card {

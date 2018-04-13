@@ -19,8 +19,8 @@
     <!-- Top Navigation -->
     <div class="topnav">
         <div class="title"> Engineering Models </div>
-		<a class="active" href="${pageContext.servletContext.contextPath}/_view/homepage.jsp">Home</a>
-        <a href="${pageContext.servletContext.contextPath}/_view/profilepage.jsp" method="post">Profile</a>
+		<a href="${pageContext.servletContext.contextPath}/_view/homepage.jsp">Home</a>
+        <a class="active" href="${pageContext.servletContext.contextPath}/_view/profilepage.jsp" method="post">Profile</a>
         <a href="${pageContext.servletContext.contextPath}/_view/search.jsp">Search Models</a>
 	</div>
     
@@ -46,7 +46,7 @@
 
                 <div class="card">
                     <div class="container">
-                        <p><button type="button" class="button" style="width:300px;"><a href="./_view/modelSubmission.jsp">Submit a model</a></button></p>
+                    	<input type="Submit" class="button" style="width:300px;margin-top:15px;" name="SubmitModel" value="Submit Model">
                     </div>
                 </div>
 

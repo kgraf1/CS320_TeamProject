@@ -117,13 +117,19 @@ public class FakeDatabase implements IDatabase {
 		List<PhysicalModel> list = new ArrayList<PhysicalModel> ();
 		
 		for(PhysicalModel model : physicalModels) {
+			System.out.println("\nNow checking model "+model.getTitle());
 			for(int i =0; i<materials.size(); i++) {
 				if((materials.get(i).getName().equals(materialName)) && (materials.get(i).getModelId()==model.getId())){
 					list.add(model);
+					System.out.println(materials.get(i).getName()+" equals " +materialName);
+				}
+				else {
+					System.out.println(materials.get(i).getName()+" does not equal " +"'"+materialName+"'");
 				}
 				
 			}
 		}
+		
 		return list;
 	}
 		
@@ -155,7 +161,7 @@ public class FakeDatabase implements IDatabase {
 	}
 		
 	@Override
-	public int insertMaterialIntoMaterialTable(int modelId, String name, int quantity, String cost, String buildTime, String description) {
+	public int insertMaterialIntoMaterialTable(int modelId, String name, String quantity, String cost, String buildTime, String description) {
 
 		int id = 1;
 	
@@ -249,6 +255,66 @@ public class FakeDatabase implements IDatabase {
 		}
 		
 		return models;
+	}
+	
+	@Override 
+	public PhysicalModel findModelByModelId(int modelId) {
+		
+		for(PhysicalModel model : physicalModels) {
+			if(model.getId() == modelId) {
+				return model;
+			}
+		}
+		return null;
+	}
+	
+	@Override 
+	public List<Keyword> findKeywordsByModelId(int modelId) {
+		ArrayList<Keyword> getKeywords = new ArrayList<Keyword>();
+		
+		
+		for(Keyword keyword : keywords) {
+			if(keyword.getModelId()==modelId) {
+				getKeywords.add(keyword);
+			}
+		}
+		return getKeywords;
+	}
+	
+	@Override 
+	public List<Material> findMaterialsByModelId(int modelId) {
+		ArrayList<Material> getMaterials = new ArrayList<Material>();
+		
+		
+		for(Material material: materials) {
+			if(material.getModelId()==modelId) {
+				getMaterials.add(material);
+			}
+		}
+		return getMaterials;
+	}
+	
+	@Override 
+	public List<Rating> findRatingsByModelId(int modelId) {
+		ArrayList<Rating> getRatings = new ArrayList<Rating>();
+		
+		
+		for(Rating rating:ratings) {
+			if(rating.getModelId()==modelId) {
+				getRatings.add(rating);
+			}
+		}
+		return getRatings;
+	}
+	
+	@Override 
+	public Application findApplicationByModelId(int modelId) {
+				
+		for(Application application:applications) {
+			if(application.getModelId()==modelId) {
+				return application;			}
+		}
+		return null;
 	}
 	
 	@Override

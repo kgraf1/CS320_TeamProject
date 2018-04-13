@@ -22,15 +22,6 @@ public class ProfileServlet extends HttpServlet {
 				throws ServletException, IOException{
 		System.out.println("\n ProfileServlet: doGet");
 		
-		req.getRequestDispatcher("/_view/profilepage.jsp").forward(req, resp);
-	}
-	
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-				throws ServletException, IOException{
-		
-		System.out.println("\n	ProfileServlet: doPost");
-	
 		List<PhysicalModel> models = new ArrayList<> ();
 		String errorMessage = null;
 		
@@ -47,7 +38,18 @@ public class ProfileServlet extends HttpServlet {
 		req.setAttribute("errorMessage", errorMessage);
 		
 		System.out.println("Displaying " + models.size() + " models.");
-		//Forward to view to render the result HTML document
-		req.getRequestDispatcher("./_view/profilepage.jsp").forward(req, resp);	
+		
+		req.getRequestDispatcher("/_view/profilepage.jsp").forward(req, resp);
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+				throws ServletException, IOException{
+		
+		System.out.println("\n	ProfileServlet: doPost");
+		
+		if(req.getParameter("SubmitModel") != null) {
+			resp.sendRedirect(req.getContextPath() + "/addModelSubmission");
+		}	
 	}
 }

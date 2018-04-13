@@ -14,10 +14,11 @@
   
   <a class="active" href="${pageContext.servletContext.contextPath}/_view/homepage.jsp">Home</a>
   
-  <form action="${pageContext.servletContext.contextPath}/profilePage" method="post">
-  	<!--<a href="${pageContext.servletContext.contextPath}/_view/profilepage.jsp">Profile</a>-->
-  	<input type="submit" name="getProfile" value="Profile"/>
-  </form>
+  <a>
+  	<form action="${pageContext.servletContext.contextPath}/profilePage" method="get">
+  		<input type="submit" style="background:none;border:0;font-size:15px;" name="getProfile" value="Profile"/>
+  	</form>
+ </a>
   
   <a href="${pageContext.servletContext.contextPath}/_view/search.jsp">Search Models</a>
   
