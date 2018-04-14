@@ -28,7 +28,7 @@
             	<textarea id="newrate" name="newrate" placeholder="Rating out of 5" style="height:100px;width:250px;" value="${newrate}"></textarea>
             	<textarea id="newrate" name="newcomment" placeholder="Comment" style="height:100px;width:250px;" value="${newcomment}"></textarea>
             </div>
-         <input type="Submit" name="submitrating" value="modelId"> 
+         <input type="Submit" name="submitrating" value="Add New Rating!"> 
 	</form>
 </body>
 </html>
