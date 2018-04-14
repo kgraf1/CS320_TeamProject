@@ -45,7 +45,8 @@ public class DisplayModelServlet extends HttpServlet{
 		List <Rating> ratings=null;
 		double average;
 		int id = Integer.parseInt(req.getParameter("modelID"));
-	
+		
+		
 		
 		db = DatabaseProvider.getInstance();
 		model = db.findModelByModelId(id);
@@ -56,6 +57,7 @@ public class DisplayModelServlet extends HttpServlet{
 		ratings = controller.getRatingsByModelId(id);
 		average = controller.getAverageByModelId(id);
 		
+		
 		req.setAttribute("model", model);
 		req.setAttribute("profile", profile);
 		req.setAttribute("keywords", keywords);
@@ -63,6 +65,8 @@ public class DisplayModelServlet extends HttpServlet{
 		req.setAttribute("application", application);
 		req.setAttribute("ratings", ratings);
 		req.setAttribute("average", average);
+		
+		req.setAttribute("modelId",id);
 		
 		req.getRequestDispatcher("/_view/model.jsp").forward(req, resp);
 	}
