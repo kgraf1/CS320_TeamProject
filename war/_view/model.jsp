@@ -100,8 +100,13 @@
 					<div style="padding-left:20px">${rating.comment}</div><br>
 			</c:forEach>
 		</div>
-	
+		<br>
+		<div class="materialList" style="border: 2px solid gray">
+		<td class="AddRating"><button class="hiddenButton" method = "get" onclick="form.action='addRatingSubmission';"  name="modelID" value="${model.id}">Add a New Rating</button></td>
+            </div>
+         
 	</form>
+	
 	
 </body>
 </html>
