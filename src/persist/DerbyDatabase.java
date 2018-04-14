@@ -39,9 +39,10 @@ public class DerbyDatabase implements IDatabase {
 	//finding users
 	public List<Profile> findProfileByDatabaseTitle(String title) { return null; }
 	public Profile findProfileByProfileId(int profileId) { return null; }
+	public int findProfileIdByUsername(String username) { return 0; }
 	
 	//creating models
-	public int insertModelIntoPhysicalModelTable(String title, String decription, String thumbnail,
+	public int insertModelIntoPhysicalModelTable(int profileId, String title, String decription, String thumbnail,
 			String engPrinciple, String citation, Category category, String procedure) { return 0; }
 	
 	public int insertMaterialIntoMaterialTable(int modelId, String name, String quantity, String cost, String buildTime, String description) { return 0;}
@@ -101,6 +102,12 @@ public class DerbyDatabase implements IDatabase {
 
 	@Override
 	public List<Rating> findRatingsByModelId(int modelId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Profile findProfileByModelId(int modelId) {
 		// TODO Auto-generated method stub
 		return null;
 	}

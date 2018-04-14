@@ -23,9 +23,10 @@ public interface IDatabase {
 	//finding users
 	public List<Profile> findProfileByDatabaseTitle(String title);
 	public Profile findProfileByProfileId(int profileId);
+	public int findProfileIdByUsername(String username);
 	
 	//creating models
-	public int insertModelIntoPhysicalModelTable(String title, String decription, String thumbnail,
+	public int insertModelIntoPhysicalModelTable(int profileId, String title, String decription, String thumbnail,
 			String engPrinciple, String citation, Category category, String procedure);
 	public int insertMaterialIntoMaterialTable(int modelId, String name, String quantity, String cost, String buildTime, String description);
 	public int insertKeywordIntoKeywordTable(int modelId, String word);
@@ -41,5 +42,5 @@ public interface IDatabase {
 	public List<Material> findMaterialsByModelId(int modelId);
 	public Application findApplicationByModelId(int modelId);
 	public List<Rating> findRatingsByModelId(int modelId);
-	
+	public Profile findProfileByModelId(int modelId);
 }

@@ -14,6 +14,7 @@ import model.Application;
 import model.Keyword;
 import model.Material;
 import model.PhysicalModel;
+import model.Profile;
 import model.Rating;
 import persist.DatabaseProvider;
 import persist.IDatabase;
@@ -37,6 +38,7 @@ public class DisplayModelServlet extends HttpServlet{
 		System.out.println("\n DisplayModelServlet: doPost");
 		RatingsByModelIdController controller = new RatingsByModelIdController();
 		PhysicalModel model = null;
+		Profile profile = null;
 		List <Keyword> keywords = null;
 		List <Material> materials=null;
 		Application application = null;
@@ -48,6 +50,7 @@ public class DisplayModelServlet extends HttpServlet{
 		
 		db = DatabaseProvider.getInstance();
 		model = db.findModelByModelId(id);
+		profile = db.findProfileByModelId(id);
 		keywords = db.findKeywordsByModelId(id);
 		materials = db.findMaterialsByModelId(id);
 		application = db.findApplicationByModelId(id);
@@ -56,6 +59,7 @@ public class DisplayModelServlet extends HttpServlet{
 		
 		
 		req.setAttribute("model", model);
+		req.setAttribute("profile", profile);
 		req.setAttribute("keywords", keywords);
 		req.setAttribute("materials", materials);
 		req.setAttribute("application", application);

@@ -23,9 +23,11 @@
 
 <h1> Model Added Successfully!</h1>
 
-<form action="${pageContext.servletContext.contextPath}/_view/profilepage.jsp" method="post">
+<a href="${pageContext.servletContext.contextPath}/_view/profilepage.jsp">Return to profile page</a>
+
+<!--<form action="${pageContext.servletContext.contextPath}/_view/profilepage.jsp" method="get">
 			<input type="Submit" name="submitmodel" value="Return To Profile Page">
-</form> 
+</form> -->
 
 </body>
 </html>

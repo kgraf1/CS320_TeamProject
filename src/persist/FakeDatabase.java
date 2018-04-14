@@ -139,7 +139,7 @@ public class FakeDatabase implements IDatabase {
 	}
 		
 	@Override
-	public int insertModelIntoPhysicalModelTable(String title, String decription, String thumbnail,
+	public int insertModelIntoPhysicalModelTable(int profileId, String title, String decription, String thumbnail,
 			String engPrinciple, String citation, Category category, String procedure) {
 
 		int id = 1;
@@ -149,8 +149,6 @@ public class FakeDatabase implements IDatabase {
 		if(physicalModels.size() > 0) {			
 			id = physicalModels.get(physicalModels.size() - 1).getId() + 1;
 		}
-		
-		int profileId = profiles.get(profiles.size() - 1).getId() + 1;
 		
 		System.out.println("The id is: " + id);
 		
@@ -270,6 +268,17 @@ public class FakeDatabase implements IDatabase {
 		return null;
 	}
 	
+@Override 
+	public Profile findProfileByModelId(int modelId) {
+		for(Profile profile: profiles) {
+			if(profile.getId()==findModelByModelId(modelId).getProfileId()) {
+				return profile;
+			}
+		}
+		return null;
+	}
+
+	
 	@Override 
 	public List<Keyword> findKeywordsByModelId(int modelId) {
 		ArrayList<Keyword> getKeywords = new ArrayList<Keyword>();
@@ -295,6 +304,7 @@ public class FakeDatabase implements IDatabase {
 		}
 		return getMaterials;
 	}
+
 	
 	@Override 
 	public List<Rating> findRatingsByModelId(int modelId) {
@@ -329,5 +339,17 @@ public class FakeDatabase implements IDatabase {
 		}
 		
 		return null;
+	}
+	
+	@Override
+	public int findProfileIdByUsername(String username) {
+		
+		for(Profile curProfile : profiles) {
+			if(curProfile.getUsername().equals(username)) {
+				return curProfile.getId();
+			}
+		}
+		
+		return -1;
 	}
 }
