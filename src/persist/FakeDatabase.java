@@ -134,11 +134,6 @@ public class FakeDatabase implements IDatabase {
 	}
 		
 	@Override
-	public List<Profile> findProfileByDatabaseTitle(String title) {
-		return null;
-	}
-		
-	@Override
 	public int insertModelIntoPhysicalModelTable(String title, String decription, String thumbnail,
 			String engPrinciple, String citation, Category category, String procedure) {
 

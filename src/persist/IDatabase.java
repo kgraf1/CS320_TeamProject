@@ -21,7 +21,6 @@ public interface IDatabase {
 	public PhysicalModel findModelByModelId(int modelId);
 	
 	//finding users
-	public List<Profile> findProfileByDatabaseTitle(String title);
 	public Profile findProfileByProfileId(int profileId);
 	
 	//creating models
