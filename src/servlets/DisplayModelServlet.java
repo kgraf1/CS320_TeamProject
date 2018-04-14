@@ -62,8 +62,7 @@ public class DisplayModelServlet extends HttpServlet{
 		req.setAttribute("ratings", ratings);
 		req.setAttribute("average", average);
 		
-		
-		
+		req.setAttribute("modelId",id);
 		
 		req.getRequestDispatcher("/_view/model.jsp").forward(req, resp);
 	}
