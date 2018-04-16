@@ -65,9 +65,10 @@ public class ControllersTest {
 	@Test
 	public void testAddModelSubmission() {
 		String test = "test";
+		String username = "username";
 		Category cat = Category.STATICS;
 		AddModelSubmissionController controller = new AddModelSubmissionController();
-		assertTrue(controller.create(test, "test2","test3","test4","test5",cat,"test6") != -1);
+		assertTrue(controller.create(username, test, "test2","test3","test4","test5",cat,"test6") != -1);
 		
 	}
 	

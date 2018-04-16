@@ -27,7 +27,7 @@ public class AddModelSubmissionServlet extends HttpServlet {
 		System.out.println("AddModelSubmission Servlet: doGet");	
 		
 		// call JSP to generate empty form
-		req.getRequestDispatcher("/_view/addModelSubmission.jsp").forward(req, resp);
+		req.getRequestDispatcher("/_view/modelSubmission.jsp").forward(req, resp);
 	}
 	
 	@Override
@@ -56,7 +56,7 @@ public class AddModelSubmissionServlet extends HttpServlet {
 			String engPrinciple = req.getParameter("engPrinciple");
 			String citation = req.getParameter("citation");
 			String procedure = req.getParameter("procedure");
-			
+			String username = (String)req.getSession().getAttribute("username");
 			
 			//The lists will contain materialName, quantity, cost, buildTime, and description in that order
 			
@@ -169,7 +169,7 @@ public class AddModelSubmissionServlet extends HttpServlet {
 				AddKeywordsController keywordsController = new AddKeywordsController();
 				AddApplicationController applicationController = new AddApplicationController();
 				
-				modelCreated = modelController.create(name, description, thumbnail, engPrinciple, citation,
+				modelCreated = modelController.create(username, name, description, thumbnail, engPrinciple, citation,
 											category, procedure);
 				if(modelCreated >= 0) {
 					materialsCreated = materialsController.create(modelCreated, materials);
@@ -266,7 +266,7 @@ public class AddModelSubmissionServlet extends HttpServlet {
 		
 		req.setAttribute("errorMessage", errorMessage);
 		
-		// Forward to view to render the result HTML document
-		req.getRequestDispatcher("./_view/success.jsp").forward(req, resp);
+		// Forward to view to render the profile HTML document
+		resp.sendRedirect(req.getContextPath() + "/profilePage");
 	}
 }

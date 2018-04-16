@@ -28,7 +28,34 @@ public class DerbyDatabase implements IDatabase {
 		System.out.println("Success!");
 	}
 	
+<<<<<<< HEAD
 	//Jason's methods 
+=======
+	//finding models
+	public List<PhysicalModel> findModelsByProfileId(Long id) { return null; }
+	public List<PhysicalModel> findModelsByTitle(String title) { return null; }
+	public List<PhysicalModel> findModelsByCategory(Category category) { return null; }
+	public List<PhysicalModel> findModelsByKeyword(String keyword) { return null; }
+	public List<PhysicalModel> findModelsByMaterialName(String materialName) { return null; }
+	public List<PhysicalModel> findModelsByProfileId(int profileId) { return null; }
+	
+	//finding users
+	public List<Profile> findProfileByDatabaseTitle(String title) { return null; }
+	public Profile findProfileByProfileId(int profileId) { return null; }
+	public int findProfileIdByUsername(String username) { return 0; }
+	
+	//creating models
+	public int insertModelIntoPhysicalModelTable(int profileId, String title, String decription, String thumbnail,
+			String engPrinciple, String citation, Category category, String procedure) { return 0; }
+	
+	public int insertMaterialIntoMaterialTable(int modelId, String name, String quantity, String cost, String buildTime, String description) { return 0;}
+	public int insertKeywordIntoKeywordTable(int modelId, String word) { return 0; }
+	public int insertApplicationIntoApplicationTable(int modelId, String beforeClass, String beforeImage,
+			String duringClass, String duringImage) { return 0; }
+	public int insertRatingIntoRatingTable(int modelId, int rate, String comment) { return 0; }
+
+
+>>>>>>> branch 'master' of git@github.com:kgraf1/CS320_TeamProject.git
 	@Override
 	public List<Rating> findRatingsByModelId(int modelId) {
 		// TODO Auto-generated method stub

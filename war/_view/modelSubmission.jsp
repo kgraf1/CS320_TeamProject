@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="modelSubmission.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/_view/modelSubmission.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.servletContext.contextPath}/_view/homepageStyle.css">
 </head>
 
@@ -153,9 +153,5 @@
            <input type="Submit" name="submitmodel" value="Create Physical Model">
          </form>
     </div>
-<!--
-	<form action="./profilepage.jsp" method="post">
-			<input type="Submit" name="submitmodel" value="Submit PhysicalModel">
-	</form> -->
 </body>
 </html>

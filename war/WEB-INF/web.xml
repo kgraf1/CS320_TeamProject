@@ -50,6 +50,10 @@
   	<servlet-name>DisplayModelServlet</servlet-name>
   	<servlet-class>servlets.DisplayModelServlet</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>AddRatingSubmissionServlet</servlet-name>
+  	<servlet-class>servlets.AddRatingSubmissionServlet</servlet-class>
+  </servlet>
   
   <!-- Servlet mappings -->
   <servlet-mapping>
@@ -86,11 +90,14 @@
   </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>ProfileServlet</servlet-name>
-  	<url-pattern>/profile</url-pattern>
+  	<url-pattern>/profilePage</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>DisplayModelServlet</servlet-name>
   	<url-pattern>/DisplayModel</url-pattern>
   </servlet-mapping>
-  
+  <servlet-mapping>
+  	<servlet-name>AddRatingSubmissionServlet</servlet-name>
+  	<url-pattern>/addRatingSubmission</url-pattern>
+  </servlet-mapping>
 </web-app>

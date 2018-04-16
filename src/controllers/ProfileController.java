@@ -31,4 +31,11 @@ private IDatabase db = null;
 		
 		return profile;
 	}
+	
+	public int getProfileIdByUsername(String username) {
+		
+		int id = db.findProfileIdByUsername(username);
+		
+		return id;
+	}
 }
