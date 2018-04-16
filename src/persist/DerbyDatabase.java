@@ -79,7 +79,7 @@ public class DerbyDatabase implements IDatabase {
 	}
 
 	private Connection connect() throws SQLException {
-		Connection conn = DriverManager.getConnection("jdbc:derby:C:/Users/katek/CS320_TeamProject/database.db;create=true");		
+		Connection conn = DriverManager.getConnection("jdbc:derby:C:/Users/katek/git/CS320_TeamProject/database.db;create=true");		
 		
 		// Set autocommit() to false to allow the execution of
 		// multiple queries/statements as part of the same transaction.
@@ -168,49 +168,108 @@ public class DerbyDatabase implements IDatabase {
 			public Boolean execute(Connection conn) throws SQLException {
 				PreparedStatement stmt1 = null;
 				PreparedStatement stmt2 = null;
-				PreparedStatement stmt3 = null;				
+				PreparedStatement stmt3 = null;	
+				PreparedStatement stmt4 = null;
+				PreparedStatement stmt5 = null;
+				PreparedStatement stmt6 = null;
 			
 				try {
 					stmt1 = conn.prepareStatement(
-						"create table authors (" +
-						"	author_id integer primary key " +
-						"		generated always as identity (start with 1, increment by 1), " +									
-						"	lastname varchar(40)," +
-						"	firstname varchar(40)" +
-						")"
-					);	
+							"create table profiles (" +
+							"	profile_id integer primary key " +
+							"		generated always as identity (start with 1, increment by 1), " +
+							"	username varchar(70)," +
+							"	password varchar(15)," +
+							"   firstName varchar(50)," +
+							"   lastName varchar(50)," + 
+							"   email varchar(50)" +
+							")"
+					);
 					stmt1.executeUpdate();
 					
-					System.out.println("Authors table created");
+					System.out.println("Profiles table created");	
 					
 					stmt2 = conn.prepareStatement(
-							"create table books (" +
-							"	book_id integer primary key " +
-							"		generated always as identity (start with 1, increment by 1), " +
-//							"	author_id integer constraint author_id references authors, " +  	// this is now in the BookAuthors table
-							"	title varchar(70)," +
-							"	isbn varchar(15)," +
-							"   published integer" +
-							")"
-					);
+						"create table models (" +
+						"	model_id integer primary key " +
+						"		generated always as identity (start with 1, increment by 1), " +	
+						"   profile_id integer constraint profile_id references profiles," + 
+						"   title varchar(40)," +
+						"   description varchar(250)," + 
+						"   thumbnail varchar(100)," + 
+						"   engPrinciple varchar(100)," +
+						"   citation varchar(100)," +
+						"   category varchar(20)," +
+						"   steps varchar(150)" +
+						")"
+					);	
 					stmt2.executeUpdate();
 					
-					System.out.println("Books table created");					
+					System.out.println("Models table created");				
 					
 					stmt3 = conn.prepareStatement(
-							"create table bookAuthors (" +
-							"	book_id   integer constraint book_id references books, " +
-							"	author_id integer constraint author_id references authors " +
+							"create table materials (" +
+							"	material_id integer primary key " +
+							"		generated always as identity (start with 1, increment by 1), " +
+							"	material_model_id integer constraint material_model_id references models," +
+							"	quantity float," +
+							"   name varchar(50)," +
+							"   description varchar(100)" + 
 							")"
 					);
-					stmt3.executeUpdate();
+					stmt3.executeUpdate();					
 					
-					System.out.println("BookAuthors table created");					
+					System.out.println("Materials table created");	
+					
+					stmt4 = conn.prepareStatement(
+							"create table ratings (" +
+							"	rating_id integer primary key " +
+							"		generated always as identity (start with 1, increment by 1), " +
+							"	rating_model_id integer constraint rating_model_id references models," +
+							"	rate float," +
+							"   comment varchar(70)" +
+							")"
+					);
+					stmt4.executeUpdate();
+					
+					System.out.println("Ratings table created");
+					
+					stmt5 = conn.prepareStatement(
+							"create table keywords (" +
+							"	keyword_id integer primary key " +
+							"		generated always as identity (start with 1, increment by 1), " +
+							"	keyword_model_id integer constraint keyword_model_id references models," +
+							"	word varchar(50)" +
+							")"
+					);
+					stmt5.executeUpdate();
+					
+					System.out.println("Keywords table created");	
+					
+					stmt6 = conn.prepareStatement(
+							"create table applications (" +
+							"	application_id integer primary key " +
+							"		generated always as identity (start with 1, increment by 1), " +
+							"	application_model_id integer constraint applciation_model_id references models," +
+							"	beforeClass varchar(150)," +
+							"   beforeImage varchar(150)," +
+							"   duringClass varchar(150)," +
+							"   duringImage varchar(150)" +
+							")"
+					);
+					stmt6.executeUpdate();
+					
+					System.out.println("Application table created");	
+					
 										
 					return true;
 				} finally {
 					DBUtil.closeQuietly(stmt1);
 					DBUtil.closeQuietly(stmt2);
+					DBUtil.closeQuietly(stmt3);
+					DBUtil.closeQuietly(stmt4);
+					DBUtil.closeQuietly(stmt5);
+					DBUtil.closeQuietly(stmt6);
 				}
 			}
 		});
@@ -265,8 +324,8 @@ public class DerbyDatabase implements IDatabase {
 					System.out.println("Profiles table populated");
 					
 					// must completely populate PhysicalModel table
-					insertModel = conn.prepareStatement("insert into models (profileId, title, description, thumbnail, engPrinciple, citation,"
-							+ "category, procedure) values (?, ?, ?, ?, ?, ?, ?, ?)");
+					insertModel = conn.prepareStatement("insert into models (profile_id, title, description, thumbnail, engPrinciple, citation,"
+							+ "category, steps) values (?, ?, ?, ?, ?, ?, ?, ?)");
 					for (PhysicalModel model : modelList) {
 						insertModel.setInt(1, model.getProfileId());
 						insertModel.setString(2, model.getTitle());
@@ -284,7 +343,7 @@ public class DerbyDatabase implements IDatabase {
 					System.out.println("Models table populated");
 					
 					// must completely populate Materials table
-					insertMaterial = conn.prepareStatement("insert into materials (modelId, quantity, name, description) values (?, ?, ?, ?)");
+					insertMaterial = conn.prepareStatement("insert into materials (material_model_id, quantity, name, description) values (?, ?, ?, ?)");
 					for (Material material : materialList) {
 						insertMaterial.setInt(1, material.getModelId());
 						insertMaterial.setString(2, material.getQuantity());
@@ -298,7 +357,7 @@ public class DerbyDatabase implements IDatabase {
 					System.out.println("Materials table populated");					
 					
 					// must completely populate Application table
-					insertApplication = conn.prepareStatement("insert into applications (modelId, beforeClass, beforeImage, duringClass, duringImage) values (?, ?, ?, ?, ?)");
+					insertApplication = conn.prepareStatement("insert into applications (application_model_id, beforeClass, beforeImage, duringClass, duringImage) values (?, ?, ?, ?, ?)");
 					for (Application application : applicationList) {
 						insertApplication.setInt(1, application.getModelId());
 						insertApplication.setString(2, application.getBeforeClass());
@@ -313,7 +372,7 @@ public class DerbyDatabase implements IDatabase {
 					System.out.println("Applications table populated");					
 					
 					// must completely populate Ratings table
-					insertRating = conn.prepareStatement("insert into ratings (modelId, rate, comment) values (?, ?, ?)");
+					insertRating = conn.prepareStatement("insert into ratings (rating_model_id, rate, comment) values (?, ?, ?)");
 					for (Rating rating : ratingList) {
 						insertRating.setInt(1, rating.getModelId());
 						insertRating.setInt(2, rating.getRate());
@@ -326,7 +385,7 @@ public class DerbyDatabase implements IDatabase {
 					System.out.println("Ratings table populated");
 					
 					// must completely populate Keywords table
-					insertKeyword = conn.prepareStatement("insert into keywords (modelId, word) values (?, ?)");
+					insertKeyword = conn.prepareStatement("insert into keywords (keyword_model_id, word) values (?, ?)");
 					for (Keyword keyword : keywordList) {
 						insertKeyword.setInt(1, keyword.getModelId());
 						insertKeyword.setString(2, keyword.getWord());
