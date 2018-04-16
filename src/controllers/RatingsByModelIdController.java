@@ -53,4 +53,16 @@ public class RatingsByModelIdController {
 		}
 		return average;
 	}
+	public boolean addRatingByModelId(int modelId, int rate, String comment) {
+		System.out.println("Attempting to insert a new Rating");
+		int rateId =db.insertRatingIntoRatingTable(modelId, rate, comment);
+		if(rateId !=-1) {
+			System.out.println("Rating for model #"+modelId+" added successfully");
+			return true;
+		}
+		else {
+			System.out.println("Rating for model #"+modelId+" not added");
+			return false;
+		}
+	}
 }
