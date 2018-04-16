@@ -132,18 +132,10 @@ public class FakeDatabase implements IDatabase {
 		
 		return list;
 	}
-		
-	@Override
-<<<<<<< HEAD
-	public int insertModelIntoPhysicalModelTable(String title, String decription, String thumbnail,
-=======
-	public List<Profile> findProfileByDatabaseTitle(String title) {
-		return null;
-	}
+
 		
 	@Override
 	public int insertModelIntoPhysicalModelTable(int profileId, String title, String decription, String thumbnail,
->>>>>>> branch 'master' of git@github.com:kgraf1/CS320_TeamProject.git
 			String engPrinciple, String citation, Category category, String procedure) {
 
 		int id = 1;

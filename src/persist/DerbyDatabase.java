@@ -412,7 +412,6 @@ public class DerbyDatabase implements IDatabase {
 	
 	public List<PhysicalModel> findModelsByTitle(String title) { return null; }
 	
-	
 
 	@Override
 	public List<PhysicalModel> findModelsByCategory(String category) {
@@ -435,39 +434,303 @@ public class DerbyDatabase implements IDatabase {
 	
 	//Kaitlyn's methods
 	@Override
-	public Profile findProfileByModelId(int modelId) {
-		//TODO Auto-generated method stub
-		return null;
+	public Profile findProfileByModelId(final int modelId) {
+		return executeTransaction(new Transaction <Profile> () {
+			@Override
+			public Profile execute(Connection conn) throws SQLException {
+				PreparedStatement stmt = null;
+				ResultSet resultSet = null;
+				
+				//try to retrieve profile by modelId
+				try {
+					stmt = conn.prepareStatement(
+							"select profiles.*" + 
+							"from profiles, models" +
+							"where models.id = ?" +
+							"and profiles.id = models.profile_id" 
+					);
+					stmt.setInt(1, modelId);
+					
+					//execute the query, get the result
+					resultSet = stmt.executeQuery();
+					Profile profile = new Profile();
+					loadProfile(profile, resultSet, 1);
+					
+					return profile;
+				}
+				finally{
+					DBUtil.closeQuietly(resultSet);
+					DBUtil.closeQuietly(stmt);
+				}
+			}
+		});
 	}
+	
 	
 	@Override
-	public Application findApplicationByModelId(int modelId) {
-		// TODO Auto-generated method stub
-		return null;
+	public Application findApplicationByModelId(final int modelId) {
+		return executeTransaction(new Transaction <Application> () {
+			@Override
+			public Application execute(Connection conn) throws SQLException {
+				PreparedStatement stmt = null;
+				ResultSet resultSet = null;
+				
+				//try to retrieve profile by modelId
+				try {
+					stmt = conn.prepareStatement(
+							"select applications.*" + 
+							"from applications, models" +
+							"where models.id = ?" +
+							"and applications.model_id = models.id" 
+					);
+					stmt.setInt(1, modelId);
+					
+					//execute the query, get the result
+					resultSet = stmt.executeQuery();
+					Application application = new Application();
+					loadApplication(application, resultSet, 1);
+					
+					return application;
+				}
+				finally{
+					DBUtil.closeQuietly(resultSet);
+					DBUtil.closeQuietly(stmt);
+				}
+			}
+		});
 	}
 	
-	public int insertRatingIntoRatingTable(int modelId, int rate, String comment) { return 0; }
+	public int insertRatingIntoRatingTable(final int modelId, final int rate, final String comment) {
+		return executeTransaction (new Transaction <Integer>() {
+			@Override
+			public Integer execute(Connection conn)throws SQLException {
+				PreparedStatement stmt1 = null;
+				PreparedStatement stmt2 = null;
+				ResultSet resultSet = null;
+							
+				
+				//for saving model id and rating id
+				Integer rating_id = -1;
+				
+				try {
+					//insert new rating into rating table
+					//prepare SQL insert statement to add new rating to rating table
+					stmt1 = conn.prepareStatement(
+							"insert into rating (model_id, rate, comment) " +
+									" values(?, ?, ?) "
+					);
+					stmt1.setInt(1, modelId);
+					stmt1.setInt(2, rate);
+					stmt1.setString(3, comment);
+				
+					//execute the update
+					stmt1.executeUpdate();
+				
+					System.out.println("New rating <" + rate + "> inserted into Ratings table"); 
+				
+					//now retrieve rating_id to check that it inserted correctly
+					//prepare SQl statement to retrieve rating_id for new Rating
+					stmt2 = conn.prepareStatement(
+							"select rating_id from ratings" +
+									"where rating = ? and comment = ?"
+					);
+					stmt2.setInt(1, rate);
+					stmt2.setString(2, comment);
+					
+					//executeQuery 
+					resultSet = stmt2.executeQuery();
+					
+					//get the result
+					if(resultSet.next()) {
+						rating_id = resultSet.getInt(1);
+						System.out.println("New rating <" + rate + "> ID:" + rating_id);
+					}
+					else {
+						System.out.print("New rating <" + rate +"> not found in Ratings table");
+					}
+					
+					return rating_id;
+				}
+				finally {
+					DBUtil.closeQuietly(stmt1);
+					DBUtil.closeQuietly(stmt2);
+					DBUtil.closeQuietly(resultSet);
+				}
+			}
+		});
+	}
 
 	@Override
-	public int insertProfileIntoProfileTable(String firstName, String lastName, String username, String email,
-			String password) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int insertProfileIntoProfileTable(final String firstName, final String lastName, final String username, final String email,
+			final String password) {
+		return executeTransaction (new Transaction <Integer>() {
+			@Override
+			public Integer execute(Connection conn)throws SQLException {
+				PreparedStatement stmt1 = null;
+				PreparedStatement stmt2 = null;
+				PreparedStatement stmt3 = null;
+				PreparedStatement stmt4 = null;
+				ResultSet resultSet1 = null;
+				ResultSet resultSet2 = null;
+							
+				
+				//for saving model id and rating id
+				Integer profile_id = -1;
+				
+				try {
+					//try to retrieve profile_id from DB
+					stmt1 = conn.prepareStatement(
+							"select profile_id from profiles" +
+							"where username=? and password=?"
+					);
+					stmt1.setString(1, username);
+					stmt1.setString(2, password);
+					
+					//execute the query, get the result
+					resultSet1 = stmt1.executeQuery();
+					
+					//if Profile was found, then save profile_id
+					if(resultSet1.next()) {
+						profile_id = resultSet1.getInt(1);
+						System.out.println("User <" + firstName + " " + lastName + "> already exists");
+					}
+					else {
+						System.out.println("User <" + firstName + " " + lastName + "> not found, continue inserting");
+						
+						//if the Profile is new, insert new Profile into profiles table 
+						//insert new profile into profile table
+						//prepare SQL insert statement to add new rating to rating table
+						stmt2 = conn.prepareStatement(
+								"insert into profiles (firstName, lastName, username, email, password) " +
+										" values(?, ?, ?, ?, ?, ?) "
+						);
+						stmt2.setString(1, firstName);
+						stmt2.setString(2, lastName);
+						stmt2.setString(3, username);
+						stmt2.setString(4,  email);
+						stmt2.setString(5, password);
+					
+						//execute the update
+						stmt2.executeUpdate();
+					
+						System.out.println("New user <" + firstName + " " + lastName + "> inserted into Profiles table"); 
+					
+					}
+					
+					//try to retrieve profile_id for new profile
+					stmt3 = conn.prepareStatement(
+							"select profile_id from profiles" +
+							"where username = ? and password = ?"
+					);
+					stmt3.setString(1, username);
+					stmt3.setString(2, password);
+					
+					//execute the query
+					resultSet2 = stmt3.executeQuery();
+					
+					//get the result
+					if(resultSet2.next()) {
+						profile_id = resultSet2.getInt(1);
+						System.out.println("New user <" + firstName + " " + lastName + "> ID: " + profile_id);
+					}
+					else {
+						System.out.println("Insertion of new user failed");
+					}
+					return profile_id;
+				}
+				finally {
+					DBUtil.closeQuietly(stmt1);
+					DBUtil.closeQuietly(stmt2);
+					DBUtil.closeQuietly(stmt3);
+					DBUtil.closeQuietly(resultSet1);
+					DBUtil.closeQuietly(resultSet2);
+				}
+			}
+		});
+	}
+	
+	
+	@Override
+	public List<PhysicalModel> findModelsByProfileFirstOrLastName(final String name) {
+		return executeTransaction (new Transaction<List<PhysicalModel>>() {
+			@Override
+			public List<PhysicalModel> execute(Connection conn) throws SQLException {
+				PreparedStatement stmt = null;
+				ResultSet resultSet = null;
+				
+				try {
+					stmt = conn.prepareStatement(
+							"select models.*" + 
+							"from models, profiles" +
+							"where profiles.firstName LIKE %?% and profiles.lastName LIKE %?%" +
+							"and profiles.id = models.profile_id"
+					);
+					
+					stmt.setString(1, name);
+					stmt.setString(2, name);
+					
+					List<PhysicalModel> result = new ArrayList<PhysicalModel>();
+					
+					resultSet = stmt.executeQuery();
+							
+					//for testing that a result was returned
+					Boolean found = false;
+					
+					while (resultSet.next()) {
+						found = true;
+						
+						PhysicalModel model = new PhysicalModel();
+						loadModel (model, resultSet, 1);
+						
+						result.add(model);
+					}
+					
+					
+					return result;
+				}
+				finally {
+					DBUtil.closeQuietly(resultSet);
+					DBUtil.closeQuietly(stmt);
+				}
+			}
+		});
 	}
 	
 	@Override
-	public List<PhysicalModel> findModelsByProfileFirstOrLastName(String name) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	//finding models
-		public List<PhysicalModel> findModelsByProfileId(Long id) { return null; }
-	
-	@Override
-	public int findProfileIdByUsername(String username) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int findProfileIdByUsername(final String username) {
+		return executeTransaction (new Transaction <Integer> () {
+			@Override
+			public Integer execute(Connection conn) throws SQLException {
+				PreparedStatement stmt = null;
+				ResultSet resultSet = null;
+				Integer profile_id = -1;
+				
+				try {
+					stmt = conn.prepareStatement(
+						"select profiles.*"
+						+ "from profiles"
+						+ "where profiles.username = ?"
+					);
+					stmt.setString(1, username);
+					
+					resultSet = stmt.executeQuery();
+					
+					if (resultSet.next()) {
+						profile_id = resultSet.getInt(1);
+						System.out.println("Profile id: " + profile_id + "was retrieved");
+					}
+					else {
+						System.out.println("Profile was not retrieved successfully");
+					}
+					
+					return profile_id;
+				}
+				finally {
+					DBUtil.closeQuietly(stmt);
+					DBUtil.closeQuietly(resultSet);
+				}
+			}
+		});
 	}	
 	//end of Kaitlyn's methods
 
