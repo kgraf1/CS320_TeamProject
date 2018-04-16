@@ -102,8 +102,25 @@
 					<div style="padding-left:60px">${rating.comment}</div><br>
 			</c:forEach>
 		</div>
-	
+		<br>
+		  <!--  
+		  <div class="materialList" style="border: 2px solid gray">
+			<h3>Add a new Rating! Test with just onclick</h3>
+            	<textarea id="newrating" name="newrate" placeholder="Rating out of 5" style="height:100px;width:250px;" value = "${newrating}"></textarea>
+            	<textarea id="newcomment" name="newcomment" placeholder="Comment" style="height:100px;width:250px;" value = "${newcomment }"></textarea>
+            <td class="AddRating"><button class="hiddenButton" method = "get" onclick="form.action='addRatingSubmission';"  name="modelID" value="${model.id}">Add a New Rating</button></td>
+           </div>
+         -->
 	</form>
-	
+	<form action = "${pageContext.servletContext.contextPath}/addRatingSubmission" method="get">
+	<br>
+		<div class="materialList" style="border: 2px solid gray">
+			<h3>Add a new Rating!</h3>
+			<br>
+            <td class="AddRating"><button class="hiddenButton" method = "get" onclick="form.action='addRatingSubmission';"  name="modelID" value="${model.id}">Add a New Rating</button></td>
+           </div>
+		
+	</form>
+	<!--<a href="${pageContext.servletContext.contextPath}/_view/ratingSubmission.jsp" > Go to add rating via href</a>-->
 </body>
 </html>

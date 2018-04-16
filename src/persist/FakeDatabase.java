@@ -133,10 +133,6 @@ public class FakeDatabase implements IDatabase {
 		return list;
 	}
 		
-	@Override
-	public List<Profile> findProfileByDatabaseTitle(String title) {
-		return null;
-	}
 		
 	@Override
 	public int insertModelIntoPhysicalModelTable(int profileId, String title, String decription, String thumbnail,
