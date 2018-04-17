@@ -46,6 +46,8 @@ public class DerbyDatabase implements IDatabase {
 	public<ResultType> ResultType doExecuteTransaction(Transaction<ResultType> txn) throws SQLException {
 		Connection conn = connect();
 			
+		System.out.println("In doExecuteTransaction trying to connect");
+		
 		try {
 			int numAttempts = 0;
 			boolean success = false;
@@ -75,10 +77,13 @@ public class DerbyDatabase implements IDatabase {
 			return result;
 		} finally {
 			DBUtil.closeQuietly(conn);
+			
+			System.out.println("doExecuteTransaction was successful");
 		}
 	}
 
 	private Connection connect() throws SQLException {
+		
 		Connection conn = DriverManager.getConnection("jdbc:derby:C:/Users/katek/git/CS320_TeamProject/database.db;create=true");		
 		
 		// Set autocommit() to false to allow the execution of
@@ -458,10 +463,17 @@ public class DerbyDatabase implements IDatabase {
 				ResultSet resultSet = null;
 				
 				try {
+					if(conn == null) {
+						System.out.println("conn is null");
+					}
+					
+					try {
 					stmt = conn.prepareStatement(
-							"select * from materials " +
-					        "where material_model_id = ?"
-					);
+							"select * from materials where material_model_id = ?"
+					);}
+					catch(SQLException e) {
+						System.out.println("persistence exception");
+					}
 					
 					stmt.setInt(1, modelId);
 					
@@ -593,16 +605,22 @@ public class DerbyDatabase implements IDatabase {
 				ResultSet resultSet = null;
 				
 				try {
+					System.out.println("About to prepare the statement");
+					
 					stmt = conn.prepareStatement(
 							"select * from models " +
-							" where models.title = ?"
+							" where title = ?"
 					);
 				
+					System.out.println("prepared the statement");
+					
 					stmt.setString(1, title);
 					
 					List<PhysicalModel> result = new ArrayList<PhysicalModel>();
 				
 					resultSet = stmt.executeQuery();
+					
+					System.out.println("executed the query");
 				
 					// for testing that a result was returned
 					Boolean found = false;
@@ -613,6 +631,8 @@ public class DerbyDatabase implements IDatabase {
 						PhysicalModel model = new PhysicalModel();
 						loadModel(model, resultSet, 1);
 					
+						System.out.println("in while loop");
+						
 						result.add(model);
 					}
 				
