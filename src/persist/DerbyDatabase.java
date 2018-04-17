@@ -450,39 +450,325 @@ public class DerbyDatabase implements IDatabase {
 	
 	//Kate's methods
 	@Override
-	public List<Material> findMaterialsByModelId(int modelId) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Material> findMaterialsByModelId(final int modelId) {
+		return executeTransaction(new Transaction<List<Material>>() {
+			@Override
+			public List<Material> execute(Connection conn) throws SQLException {
+				PreparedStatement stmt = null;
+				ResultSet resultSet = null;
+				
+				try {
+					stmt = conn.prepareStatement(
+							"select * from materials " +
+					        "where material_model_id = ?"
+					);
+					
+					stmt.setInt(1, modelId);
+					
+					List<Material> result = new ArrayList<Material>();
+					
+					resultSet = stmt.executeQuery();
+					
+					// for testing that a result was returned
+					Boolean found = false;
+					
+					while (resultSet.next()) {
+						found = true;
+						
+						Material material = new Material();
+						loadMaterial(material, resultSet, 1);
+						
+						result.add(material);
+					}
+					
+					// check if any materials were found
+					if (!found) {
+						System.out.println("No materials were found in the database");
+					}
+					
+					return result;
+				} finally {
+					DBUtil.closeQuietly(resultSet);
+					DBUtil.closeQuietly(stmt);
+				}
+			}
+		});
 	}
 	
 	@Override
-	public List<Keyword> findKeywordsByModelId(int modelId) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Keyword> findKeywordsByModelId(final int modelId) {
+		return executeTransaction(new Transaction<List<Keyword>>() {
+			@Override
+			public List<Keyword> execute(Connection conn) throws SQLException {
+				PreparedStatement stmt = null;
+				ResultSet resultSet = null;
+				
+				try {
+					stmt = conn.prepareStatement(
+							"select * from keywords " +
+							" where keyword_model_id = ?"
+					);
+					
+					stmt.setInt(1, modelId);
+					
+					List<Keyword> result = new ArrayList<Keyword>();
+					
+					resultSet = stmt.executeQuery();
+					
+					// for testing that a result was returned
+					Boolean found = false;
+					
+					while (resultSet.next()) {
+						found = true;
+						
+						Keyword keyword = new Keyword();
+						loadKeyword(keyword, resultSet, 1);
+						
+						result.add(keyword);
+					}
+					
+					// check if any keywords were found
+					if (!found) {
+						System.out.println("No keywords were found in the database");
+					}
+					
+					return result;
+				} finally {
+					DBUtil.closeQuietly(resultSet);
+					DBUtil.closeQuietly(stmt);
+				}
+			}
+		});
 	}
 	
 	@Override 
 	public List<Profile> getAllProfiles(){
-		return null;
+		return executeTransaction(new Transaction<List<Profile>>() {
+			@Override
+			public List<Profile> execute(Connection conn) throws SQLException {
+				PreparedStatement stmt = null;
+				ResultSet resultSet = null;
+				
+				try {
+					stmt = conn.prepareStatement(
+							"select * from profiles " +
+							" order by lastname asc, firstname asc"
+					);
+					
+					List<Profile> result = new ArrayList<Profile>();
+					
+					resultSet = stmt.executeQuery();
+					
+					// for testing that a result was returned
+					Boolean found = false;
+					
+					while (resultSet.next()) {
+						found = true;
+						
+						Profile profile = new Profile();
+						loadProfile(profile, resultSet, 1);
+						
+						result.add(profile);
+					}
+					
+					// check if any profiles were found
+					if (!found) {
+						System.out.println("No profiles were found in the database");
+					}
+					
+					return result;
+				} finally {
+					DBUtil.closeQuietly(resultSet);
+					DBUtil.closeQuietly(stmt);
+				}
+			}
+		});
 	}
 	
-	public int insertModelIntoPhysicalModelTable(String title, String decription, String thumbnail,
-			String engPrinciple, String citation, Category category, String procedure) { return 0; }
-	
-	public List<PhysicalModel> findModelsByTitle(String title) { return null; }
+	public List<PhysicalModel> findModelsByTitle(final String title) { 
+		return executeTransaction(new Transaction<List<PhysicalModel>>() {
+			@Override
+			public List<PhysicalModel> execute(Connection conn) throws SQLException {
+				PreparedStatement stmt = null;
+				ResultSet resultSet = null;
+				
+				try {
+					stmt = conn.prepareStatement(
+							"select * from models " +
+							" where models.title = ?"
+					);
+				
+					stmt.setString(1, title);
+					
+					List<PhysicalModel> result = new ArrayList<PhysicalModel>();
+				
+					resultSet = stmt.executeQuery();
+				
+					// for testing that a result was returned
+					Boolean found = false;
+				
+					while (resultSet.next()) {
+						found = true;
+					
+						PhysicalModel model = new PhysicalModel();
+						loadModel(model, resultSet, 1);
+					
+						result.add(model);
+					}
+				
+					// check if any models were found
+					if (!found) {
+						System.out.println("No models were found in the database");
+					}
+				
+					return result;
+				} finally {
+					DBUtil.closeQuietly(resultSet);
+					DBUtil.closeQuietly(stmt);
+				}
+			}
+		});
+	}
 	
 
 	@Override
-	public List<PhysicalModel> findModelsByCategory(String category) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<PhysicalModel> findModelsByCategory(final String category) {
+		return executeTransaction(new Transaction<List<PhysicalModel>>() {
+			@Override
+			public List<PhysicalModel> execute(Connection conn) throws SQLException {
+				PreparedStatement stmt = null;
+				ResultSet resultSet = null;
+				
+				try {
+					stmt = conn.prepareStatement(
+							"select * from models " +
+							" where models.category = ?"
+					);
+				
+					stmt.setString(1, category);
+					
+					List<PhysicalModel> result = new ArrayList<PhysicalModel>();
+				
+					resultSet = stmt.executeQuery();
+				
+					// for testing that a result was returned
+					Boolean found = false;
+				
+					while (resultSet.next()) {
+						found = true;
+					
+						PhysicalModel model = new PhysicalModel();
+						loadModel(model, resultSet, 1);
+					
+						result.add(model);
+					}
+				
+					// check if any models were found
+					if (!found) {
+						System.out.println("No models were found in the database");
+					}
+				
+					return result;
+				} finally {
+					DBUtil.closeQuietly(resultSet);
+					DBUtil.closeQuietly(stmt);
+				}
+			}
+		});
 	}
 	
 	@Override
-	public int insertModelIntoPhysicalModelTable(int profileId, String title, String decription, String thumbnail,
-			String engPrinciple, String citation, Category category, String procedure) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int insertModelIntoPhysicalModelTable(final int profileId, final String title, final String description, final String thumbnail,
+			final String engPrinciple, final String citation, final Category category, final String procedure) {
+		return executeTransaction (new Transaction <Integer>() {
+			@Override
+			public Integer execute(Connection conn)throws SQLException {
+				PreparedStatement stmt1 = null;
+				PreparedStatement stmt2 = null;
+				PreparedStatement stmt3 = null;
+				ResultSet resultSet1 = null;
+				ResultSet resultSet2 = null;
+				ResultSet resultSet3 = null;
+				
+				int modelId = -1;
+				
+				try {
+					//test if the profileId is in the profiles table
+					stmt1 = conn.prepareStatement(
+							"select * from profiles" +
+							" where profile_id = ?"
+					);
+					
+					stmt1.setInt(1, profileId);
+					
+					//execute query
+					resultSet1 = stmt1.executeQuery();
+					
+					//check if profileId is found
+					if(!resultSet1.next()) {
+						System.out.println("The current profile does not exist.");
+					}
+					else {
+					
+						//insert model into database
+						stmt2 = conn.prepareStatement(
+								"insert into models(profile_id, title, description, thumbnail, engPrinciple, citation, category, steps)" +
+							    " values(?, ?, ?, ?, ?, ?, ?, ?)"
+								);
+					
+						stmt2.setInt(1, profileId);
+						stmt2.setString(2, title);
+						stmt2.setString(3, description);
+						stmt2.setString(4, thumbnail);
+						stmt2.setString(5, engPrinciple);
+						stmt2.setString(6, citation);
+						stmt2.setString(7, category.toString());
+						stmt2.setString(8, procedure);
+					
+						//execute query
+						resultSet2 = stmt2.executeQuery();
+						
+						//model is inserted into table
+						System.out.println("New model <" + title + "> inserted into models table");		
+						
+						//find modelId of the new model
+						stmt3 = conn.prepareStatement(
+								"select model_id from models " +
+								"  where profile_id = ? and title = ? and description = ?"
+										
+						);
+						
+						stmt3.setInt(1, profileId);
+						stmt3.setString(2, title);
+						stmt3.setString(3, description);
+
+						// execute the query
+						resultSet3 = stmt3.executeQuery();
+						
+						// get the result - there had better be one
+						if (resultSet3.next())
+						{
+							modelId = resultSet3.getInt(1);
+							System.out.println("New model <" + title + "> ID: " + modelId);						
+						}
+						else	// really should throw an exception here - the new book should have been inserted, but we didn't find it
+						{
+							System.out.println("New model <" + title + "> not found in models table (ID: " + modelId);
+						}
+					}
+				}				
+				finally {
+					DBUtil.closeQuietly(stmt1);
+					DBUtil.closeQuietly(stmt2);
+					DBUtil.closeQuietly(stmt3);
+					DBUtil.closeQuietly(resultSet1);
+					DBUtil.closeQuietly(resultSet2);
+					DBUtil.closeQuietly(resultSet3);
+				}
+				
+				return modelId;
+			}
+		});
 	}
 	
 	//end of Kate methods
