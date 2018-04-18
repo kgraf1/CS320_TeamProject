@@ -84,7 +84,7 @@ public class DerbyDatabase implements IDatabase {
 
 	private Connection connect() throws SQLException {
 		
-		Connection conn = DriverManager.getConnection("jdbc:derby:C:/Users/katek/git/CS320_TeamProject/database.db;create=true");		
+		Connection conn = DriverManager.getConnection("jdbc:derby:C:/Users/Jason/git/CS320_TeamProject/database.db;create=true");		
 		
 		// Set autocommit() to false to allow the execution of
 		// multiple queries/statements as part of the same transaction.
@@ -418,36 +418,499 @@ public class DerbyDatabase implements IDatabase {
 
 	//Jason's methods 
 
-	@Override
-	public List<Rating> findRatingsByModelId(int modelId) {
-		// TODO Auto-generated method stub
-		return null;
+	
+	public int insertApplicationIntoApplicationTable(final int modelId, final String beforeClass, final String beforeImage,
+			final String duringClass, final String duringImage) { 
+		return executeTransaction (new Transaction <Integer>() {
+			@Override
+			public Integer execute(Connection conn)throws SQLException {
+				PreparedStatement stmt = null;
+				PreparedStatement stmt2 = null;
+				ResultSet resultSet = null;
+				int applicationId = -1;
+				try {
+				stmt = conn.prepareStatement(
+					"insert into applications(application_model_id, beforeClass, beforeImage, duringClass, duringImage) "+
+					"values(?,?,?,?,?)"
+				);
+				stmt.setInt(1, modelId);
+				stmt.setString(2, beforeClass);
+				stmt.setString(3, beforeImage);
+				stmt.setString(4, duringClass);
+				stmt.setString(5, duringImage);
+				
+				stmt.executeUpdate();
+				
+				stmt2 = conn.prepareStatement(
+				"select applications.application_id "+
+				"from applications "+
+				"where applications.beforeClass = ? "+
+				"and applications.beforeImage = ? "+
+				"and applications.duringClass = ?  "+
+				"and applications.duringImage = ?"
+					);
+				
+				stmt2.setString(1, beforeClass);
+				stmt2.setString(2, beforeImage);
+				stmt2.setString(3, duringClass);
+				stmt2.setString(4, duringImage);
+				
+				//executeQuery 
+				resultSet = stmt2.executeQuery();
+				
+				//get the result
+				if(resultSet.next()) {
+					applicationId = resultSet.getInt(1);
+					System.out.println("New application <" + applicationId + "> attatched to model ID:" + modelId);
+				}
+				else {
+					System.out.print("New application <" + applicationId +"> not found in created in applications table");
+				}
+				
+				
+				}
+				finally {
+					DBUtil.closeQuietly(stmt);
+					DBUtil.closeQuietly(stmt2);
+					DBUtil.closeQuietly(resultSet);
+				}
+				return applicationId;
+			}
+			
+		});
+			
 	}
 	
-	public int insertApplicationIntoApplicationTable(int modelId, String beforeClass, String beforeImage,
-			String duringClass, String duringImage) { return 0; }
-	
-	public int insertKeywordIntoKeywordTable(int modelId, String word) { return 0; }
-	
-	public int insertMaterialIntoMaterialTable(int modelId, String name, String quantity, String cost, String buildTime, String description) { return 0;}
-	
-	
-	public Profile findProfileByProfileId(int profileId) { return null; }
-	
-	@Override
-	public PhysicalModel findModelByModelId(int modelId) {
-		// TODO Auto-generated method stub
-		return null;
+	public int insertKeywordIntoKeywordTable(final int modelId,final String word) { 
+		return executeTransaction (new Transaction <Integer>() {
+			@Override
+			public Integer execute(Connection conn)throws SQLException {
+				PreparedStatement stmt1 = null;
+				PreparedStatement stmt2 = null;
+				PreparedStatement stmt3 = null;
+				ResultSet resultSet1 = null;
+				ResultSet resultSet2 = null;
+				ResultSet resultSet3 = null;
+				
+				int keywordId = -1;
+				
+				try {
+					//test if the profileId is in the profiles table
+					
+					
+						//insert model into database
+						stmt2 = conn.prepareStatement(
+								"insert into keywords(keyword_model_id, word)" +
+							    " values(?, ?)"
+								);
+					
+						stmt2.setInt(1, modelId);
+						stmt2.setString(2, word);
+						
+					
+						//execute query
+						stmt2.executeUpdate();
+						
+						//model is inserted into table
+						System.out.println("New keyword <" + word + "> inserted into keywords table");		
+						
+						//find modelId of the new model
+						stmt3 = conn.prepareStatement(
+								"select keyword_id "+
+								"from keywords " +
+								"  where keyword_model_id = ? and word = ? "
+										
+						);
+						
+						stmt3.setInt(1, modelId);
+						stmt3.setString(2, word);
+
+						// execute the query
+						resultSet3 = stmt3.executeQuery();
+						
+						// get the result - there had better be one
+						if (resultSet3.next())
+						{
+							keywordId = resultSet3.getInt(1);
+							System.out.println("New word <" + word + "> ID: " + keywordId);						
+						}
+						else	// really should throw an exception here - the new book should have been inserted, but we didn't find it
+						{
+							System.out.println("New word <" + word + "> not found in models table with model id (ID: " + modelId);
+						}
+						
+					
+				}				
+				finally {
+					DBUtil.closeQuietly(stmt1);
+					DBUtil.closeQuietly(stmt2);
+					DBUtil.closeQuietly(stmt3);
+					DBUtil.closeQuietly(resultSet1);
+					DBUtil.closeQuietly(resultSet2);
+					DBUtil.closeQuietly(resultSet3);
+				}
+				
+				return keywordId;
+			}
+		});
 	}
 	
-	public List<PhysicalModel> findModelsByProfileId(int profileId) { return null; }
+	public int insertMaterialIntoMaterialTable(final int modelId, final String name, final String quantity,final String cost,final String buildTime, final String description) { 
+		return executeTransaction (new Transaction <Integer>() {
+			@Override
+			public Integer execute(Connection conn)throws SQLException {
+				PreparedStatement stmt1 = null;
+				PreparedStatement stmt2 = null;
+				PreparedStatement stmt3 = null;
+				ResultSet resultSet1 = null;
+				ResultSet resultSet2 = null;
+				ResultSet resultSet3 = null;
+				
+				int materialId = -1;
+				
+				try {
+					//test if the profileId is in the profiles table
+					
+					
+						//insert model into database
+						stmt2 = conn.prepareStatement(
+								"insert into materials(material_model_id, quantity, name, description)" +
+							    " values(?, ?, ?, ?)"
+								);
+					
+						stmt2.setInt(1, modelId);
+						stmt2.setString(2, quantity);
+						stmt2.setString(3, name);
+						stmt2.setString(4, description);
+						
+					
+						//execute query
+						stmt2.executeUpdate();
+						
+						//model is inserted into table
+						System.out.println("New material <" + name + "> inserted into materials table");		
+						
+						//find modelId of the new model
+						stmt3 = conn.prepareStatement(
+								"select material_id "+
+								"from materials " +
+								"  where material_model_id = ? and name = ? "
+										
+						);
+						
+						stmt3.setInt(1, modelId);
+						stmt3.setString(2, name);
+
+						// execute the query
+						resultSet3 = stmt3.executeQuery();
+						
+						// get the result - there had better be one
+						if (resultSet3.next())
+						{
+							materialId = resultSet3.getInt(1);
+							System.out.println("New Material <" + name + "> ID: " + materialId);						
+						}
+						else	// really should throw an exception here - the new book should have been inserted, but we didn't find it
+						{
+							System.out.println("Error: New Material <" + name + "> not found in materials table with model id (ID: " + modelId);
+						}
+						
+					
+				}				
+				finally {
+					DBUtil.closeQuietly(stmt1);
+					DBUtil.closeQuietly(stmt2);
+					DBUtil.closeQuietly(stmt3);
+					DBUtil.closeQuietly(resultSet1);
+					DBUtil.closeQuietly(resultSet2);
+					DBUtil.closeQuietly(resultSet3);
+				}
+				
+				return materialId;
+			}
+		});
+		
+	}
 	
-	public List<PhysicalModel> findModelsByMaterialName(String materialName) { return null; }
+	@Override
+	public List<Rating> findRatingsByModelId(final int modelId) {
+		return executeTransaction(new Transaction<List<Rating>>() {
+			@Override
+			public List<Rating> execute(Connection conn) throws SQLException {
+				PreparedStatement stmt = null;
+				ResultSet resultSet = null;
+
+				// try to retrieve Authors and Books based on Author's last name, passed into query
+				try {
+					stmt = conn.prepareStatement(
+							"select ratings.*" +
+							"  from  ratings " +
+							"  where ratings.rating_model_id = ? " 
+					);
+					stmt.setInt(1, modelId);
+					
+					// establish the list of (Author, Book) Pairs to receive the result
+					List<Rating> result = new ArrayList<Rating>();
+					
+					// execute the query, get the results, and assemble them in an ArrayLsit
+					resultSet = stmt.executeQuery();
+					
+					while(resultSet.next()) {
+						Rating rating = new Rating();
+						System.out.println("rating with modelId "+ modelId +" found!");
+						rating.setId(resultSet.getInt(1));
+						rating.setModelId(resultSet.getInt(2));
+						rating.setRate(resultSet.getInt(3));
+						rating.setComment(resultSet.getString(4));
+						
+						result.add(rating);
+					}
+					
+					return result;
+				} finally {
+					DBUtil.closeQuietly(resultSet);
+					DBUtil.closeQuietly(stmt);
+				}
+			}
+		});
+	}
 	
-	public List<PhysicalModel> findModelsByCategory(Category category) { return null; }
+	public Profile findProfileByProfileId(final int profileId) { 
+		return executeTransaction(new Transaction<Profile>() {
+			@Override
+			public Profile execute(Connection conn) throws SQLException {
+				PreparedStatement stmt = null;
+				ResultSet resultSet = null;
+
+				// try to retrieve Authors and Books based on Author's last name, passed into query
+				try {
+					stmt = conn.prepareStatement(
+							"select profiles.*" +
+							"  from  profiles " +
+							"  where profiles.profile_id = ? " 
+					);
+					stmt.setInt(1, profileId);
+					
+					// establish the list of (Author, Book) Pairs to receive the result
+					Profile result = new Profile();
+					
+					// execute the query, get the results, and assemble them in an ArrayLsit
+					resultSet = stmt.executeQuery();
+					
+					if(resultSet.next()) {
+						System.out.println("Profile with id "+ profileId +" found!");
+						result.setId(resultSet.getInt(1));
+						result.setUsername(resultSet.getString(2));
+						result.setPassword(resultSet.getString(3));
+						result.setFirstName(resultSet.getString(4));
+						result.setLastName(resultSet.getString(5));
+						result.setEmail(resultSet.getString(6));
+					}
+					else {
+						System.out.println("No profile with id "+ profileId +" found");
+					}
+					
+					return result;
+				} finally {
+					DBUtil.closeQuietly(resultSet);
+					DBUtil.closeQuietly(stmt);
+				}
+			}
+		});
+		
+	}
 	
-	public List<PhysicalModel> findModelsByKeyword(String keyword) { return null; }
+	@Override
+	public PhysicalModel findModelByModelId(final int modelId) {
+		// TODO Auto-generated method stub
+		return executeTransaction(new Transaction<PhysicalModel>() {
+			@Override
+			public PhysicalModel execute(Connection conn) throws SQLException {
+				PreparedStatement stmt = null;
+				ResultSet resultSet = null;
+
+				// try to retrieve Authors and Books based on Author's last name, passed into query
+				try {
+					stmt = conn.prepareStatement(
+							"select models.*" +
+							"  from  models " +
+							"  where models.model_id = ? " 
+					);
+					stmt.setInt(1, modelId);
+					
+					// establish the list of (Author, Book) Pairs to receive the result
+					PhysicalModel result = new PhysicalModel();
+					
+					// execute the query, get the results, and assemble them in an ArrayLsit
+					resultSet = stmt.executeQuery();
+					
+					if(resultSet.next()) {
+						System.out.println("model with id "+ modelId +" found!");
+						result.setId(resultSet.getInt(1));
+						result.setProfileId(resultSet.getInt(2));
+						result.setTitle(resultSet.getString(3));
+						result.setDescription(resultSet.getString(4));
+						result.setThumbnail(resultSet.getString(5));
+						result.setEngPrinciple(resultSet.getString(6));
+						result.setCitation(resultSet.getString(7));
+						result.setCategory(Category.valueOf(resultSet.getString(8)));
+						
+						result.setProcedure(resultSet.getString(9));
+					}
+					else {
+						System.out.println("No model with id "+ modelId +" found");
+					}
+					
+					return result;
+				} finally {
+					DBUtil.closeQuietly(resultSet);
+					DBUtil.closeQuietly(stmt);
+				}
+			}
+		});
+		
+	}
 	
+	public List<PhysicalModel> findModelsByProfileId(final int profileId) { 
+		return executeTransaction(new Transaction<List<PhysicalModel>>() {
+			@Override
+			public List<PhysicalModel> execute(Connection conn) throws SQLException {
+				PreparedStatement stmt = null;
+				ResultSet resultSet = null;
+
+				// try to retrieve Authors and Books based on Author's last name, passed into query
+				try {
+					stmt = conn.prepareStatement(
+							"select models.*" +
+							"  from  models " +
+							"  where models.profile_id = ? " 
+					);
+					stmt.setInt(1, profileId);
+					
+					// establish the list of (Author, Book) Pairs to receive the result
+					List<PhysicalModel> result = new ArrayList<PhysicalModel>();
+					
+					// execute the query, get the results, and assemble them in an ArrayLsit
+					resultSet = stmt.executeQuery();
+					
+					while(resultSet.next()) {
+						PhysicalModel model = new PhysicalModel();
+						System.out.println("model with profileid "+ profileId +" found!");
+						model.setId(resultSet.getInt(1));
+						model.setProfileId(resultSet.getInt(2));
+						model.setTitle(resultSet.getString(3));
+						model.setDescription(resultSet.getString(4));
+						model.setThumbnail(resultSet.getString(5));
+						model.setEngPrinciple(resultSet.getString(6));
+						model.setCitation(resultSet.getString(7));
+						model.setCategory(Category.valueOf(resultSet.getString(8)));
+						model.setProcedure(resultSet.getString(9));
+						result.add(model);
+					}
+					
+					return result;
+				} finally {
+					DBUtil.closeQuietly(resultSet);
+					DBUtil.closeQuietly(stmt);
+				}
+			}
+		});
+	}
+	
+	public List<PhysicalModel> findModelsByMaterialName(final String materialName) { 
+		return executeTransaction(new Transaction<List<PhysicalModel>>() {
+			@Override
+			public List<PhysicalModel> execute(Connection conn) throws SQLException {
+				PreparedStatement stmt = null;
+				ResultSet resultSet = null;
+
+				// try to retrieve Authors and Books based on Author's last name, passed into query
+				try {
+					stmt = conn.prepareStatement(
+							"select models.* " +
+							"  from  models, materials " +
+							"  where models.model_id = materials.material_model_id " +
+							" and materials.name = ? "
+					);
+					stmt.setString(1, materialName);
+					
+					// establish the list of (Author, Book) Pairs to receive the result
+					List<PhysicalModel> result = new ArrayList<PhysicalModel>();
+					
+					// execute the query, get the results, and assemble them in an ArrayLsit
+					resultSet = stmt.executeQuery();
+					
+					while(resultSet.next()) {
+						PhysicalModel model = new PhysicalModel();
+						System.out.println("model with material:  "+ materialName +" found!");
+						model.setId(resultSet.getInt(1));
+						model.setProfileId(resultSet.getInt(2));
+						model.setTitle(resultSet.getString(3));
+						model.setDescription(resultSet.getString(4));
+						model.setThumbnail(resultSet.getString(5));
+						model.setEngPrinciple(resultSet.getString(6));
+						model.setCitation(resultSet.getString(7));
+						model.setCategory(Category.valueOf(resultSet.getString(8)));
+						model.setProcedure(resultSet.getString(9));
+						result.add(model);
+					}
+					
+					return result;
+				} finally {
+					DBUtil.closeQuietly(resultSet);
+					DBUtil.closeQuietly(stmt);
+				}
+			}
+		});
+	}
+	
+	
+	public List<PhysicalModel> findModelsByKeyword(final String keyword) { 
+		return executeTransaction(new Transaction<List<PhysicalModel>>() {
+			@Override
+			public List<PhysicalModel> execute(Connection conn) throws SQLException {
+				PreparedStatement stmt = null;
+				ResultSet resultSet = null;
+
+				// try to retrieve Authors and Books based on Author's last name, passed into query
+				try {
+					stmt = conn.prepareStatement(
+							"select models.* " +
+							"  from  models, keywords" +
+							"  where models.model_id = keywords.keyword_model_id " +
+							"and keywords.word = ? "
+					);
+					stmt.setString(1, keyword);
+					
+					// establish the list of (Author, Book) Pairs to receive the result
+					List<PhysicalModel> result = new ArrayList<PhysicalModel>();
+					
+					// execute the query, get the results, and assemble them in an ArrayLsit
+					resultSet = stmt.executeQuery();
+					
+					while(resultSet.next()) {
+						PhysicalModel model = new PhysicalModel();
+						System.out.println("model with keyword "+ keyword +" found!");
+						model.setId(resultSet.getInt(1));
+						model.setProfileId(resultSet.getInt(2));
+						model.setTitle(resultSet.getString(3));
+						model.setDescription(resultSet.getString(4));
+						model.setThumbnail(resultSet.getString(5));
+						model.setEngPrinciple(resultSet.getString(6));
+						model.setCitation(resultSet.getString(7));
+						model.setCategory(Category.valueOf(resultSet.getString(8)));
+						model.setProcedure(resultSet.getString(9));
+						result.add(model);
+					}
+					
+					return result;
+				} finally {
+					DBUtil.closeQuietly(resultSet);
+					DBUtil.closeQuietly(stmt);
+				}
+			}
+		});
+	}
 	//end of Jason's methods
 	
 
