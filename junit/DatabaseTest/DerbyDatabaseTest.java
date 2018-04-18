@@ -398,7 +398,7 @@ public class DerbyDatabaseTest {
 		
 		
 		@Test
-		public void testInsertRatingIntoRatingsTabl () {
+		public void testInsertRatingIntoRatingsTable () {
 			int modelId = 1;
 			int rate = 3;
 			String comment = "This was acceptable";
