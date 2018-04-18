@@ -2,12 +2,9 @@ package DatabaseTest;
 
 import static org.junit.Assert.*;
 
-import java.util.ArrayList;
 import java.util.List;
-
 import org.junit.Before;
 import org.junit.Test;
-
 
 
 import persist.DatabaseProvider;
@@ -134,84 +131,7 @@ public class DerbyDatabaseTest {
 			assertTrue(models.get(0).getTitle().equals("How bout those stationary thingys"));
 		}
 	}
-	/*
-	@Test
-	public void testModelByKeywords () {
-		String keyword="Keyword1";
-		models = db.findModelsByKeyword(keyword);
-		if(models.isEmpty()) {
-			fail("No Models with that keyword");
-		}
-		else {
-			assertTrue(models.size()==1);
-			assertTrue(models.get(0).getTitle().equals("How bout those spinny thingys"));
-		}
-		
-		
-		keyword="Keyword2";
-		models = db.findModelsByKeyword(keyword);
-		if(models.isEmpty()) {
-			fail("No Models with that keyword");
-		}
-		else {
-			assertTrue(models.size()==1);
-			assertTrue(models.get(0).getTitle().equals("How bout those stationary thingys"));
-		}
-			
-		keyword="Keyword11";
-		models = db.findModelsByKeyword(keyword);
-		if(models.isEmpty()) {
-			fail("No Models with that keyword");
-		}
-		else {
-			assertTrue(models.size()==1);
-			assertTrue(models.get(0).getTitle().equals("How bout those spinny thingys"));
-		}
-	}
-		
-		@Test
-		public void findModelsByMaterialName() {
-			String materialName = "Hammer";
-			models=db.findModelsByMaterialName(materialName);
-			if(models.isEmpty()) {
-				fail("No Models with that keyword");
-			}
-			else {
-				assertTrue(models.size()==1);
-				assertTrue(models.get(0).getTitle().equals("How bout those spinny thingys"));
-			}
-			
-			materialName = "Ruler";
-			models = db.findModelsByMaterialName(materialName);
-			if(models.isEmpty()) {
-				fail("No Models with that keyword");
-			}
-			else {
-				assertTrue(models.size()==1);
-				assertTrue(models.get(0).getTitle().equals("How bout those spinny thingys"));
-			}
-			
-			materialName="Rolls of Tape";
-			models = db.findModelsByMaterialName(materialName);
-			if(models.isEmpty()) {
-				fail("No Models with that keyword");
-			}
-			else {
-				assertTrue(models.size()==1);
-				assertTrue(models.get(0).getTitle().equals("How bout those spinny thingys"));
-			}
-			
-			materialName="Bar of Soap";
-			models = db.findModelsByMaterialName(materialName);
-			if(models.isEmpty()) {
-				fail("No Models with that keyword");
-			}
-			else {
-				assertTrue(models.size()==1);
-				assertTrue(models.get(0).getTitle().equals("How bout those stationary thingys"));
-			}
-		}
-		*/
+	
 		
 		@Test
 		public void testFindMaterialsByModelId() {
