@@ -70,6 +70,7 @@ public class InitialData {
 				model.setEngPrinciple(i.next());
 				model.setCitation(i.next());
 				model.setCategory(Category.valueOf(i.next().toUpperCase()));
+				System.out.println("Category: " + model.getCategory());
 				model.setProcedure(i.next());
 				
 				models.add(model);

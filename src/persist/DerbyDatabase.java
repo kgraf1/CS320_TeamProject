@@ -85,7 +85,7 @@ public class DerbyDatabase implements IDatabase {
 	private Connection connect() throws SQLException {
 		
 
-		Connection conn = DriverManager.getConnection("jdbc:derby:C:/Users/ktgraf/git/CS320_TeamProject/database.db;create=true");		
+		Connection conn = DriverManager.getConnection("jdbc:derby:C:/Users/katek/git/CS320_TeamProject/database.db;create=true");		
 		
 		// Set autocommit() to false to allow the execution of
 		// multiple queries/statements as part of the same transaction.
@@ -341,6 +341,7 @@ public class DerbyDatabase implements IDatabase {
 						insertModel.setString(5, model.getEngPrinciple());
 						insertModel.setString(6, model.getCitation());
 						insertModel.setString(7, model.getCategory().toString());
+						System.out.println("Category in loadInitialData: " + model.getCategory().toString());
 						insertModel.setString(8, model.getProcedure());
 						insertModel.addBatch();
 					}		
@@ -1121,34 +1122,7 @@ public class DerbyDatabase implements IDatabase {
 			@Override
 			public List<PhysicalModel> execute(Connection conn) throws SQLException {
 				PreparedStatement stmt = null;
-				ResultSet resultSet = null;
-				String searchCategory = null;
-				
-				if(category.equals("Construction")) {
-					searchCategory = "CONSTRUCTION";
-				}
-				else if(category.equals("Thermodynamics")) {
-					searchCategory = "THERMODYNAMICS";
-				}
-				else if(category.equals("Dynamics")) {
-					searchCategory="DYNAMICS";
-				}
-				else if(category.equals("Fluids")) {
-					searchCategory="FLUIDS";
-				}
-				else if(category.equals("Material Science")) {
-					searchCategory="MATERIALSCIENCE";
-				}
-				else if(category.equals("Mechanics")) {
-					searchCategory="MECHANICS";
-				}
-				else if(category.equals("Statics")) {
-					searchCategory="STATICS";
-				}
-				else {
-					searchCategory = category;
-				}
-				
+				ResultSet resultSet = null;	
 				
 				try {
 					stmt = conn.prepareStatement(
@@ -1156,7 +1130,7 @@ public class DerbyDatabase implements IDatabase {
 							" where models.category = ?"
 					);
 				
-					stmt.setString(1, searchCategory);
+					stmt.setString(1, category.toUpperCase());
 					
 					List<PhysicalModel> result = new ArrayList<PhysicalModel>();
 				
