@@ -84,7 +84,7 @@ public class DerbyDatabase implements IDatabase {
 
 	private Connection connect() throws SQLException {
 		
-		Connection conn = DriverManager.getConnection("jdbc:derby:C:/Users/katek/git/CS320_TeamProject/database.db;create=true");		
+		Connection conn = DriverManager.getConnection("jdbc:derby:C:/Users/ktgraf/git/CS320_TeamProject/database.db;create=true");		
 		
 		// Set autocommit() to false to allow the execution of
 		// multiple queries/statements as part of the same transaction.
@@ -658,6 +658,33 @@ public class DerbyDatabase implements IDatabase {
 			public List<PhysicalModel> execute(Connection conn) throws SQLException {
 				PreparedStatement stmt = null;
 				ResultSet resultSet = null;
+				String searchCategory = null;
+				
+				if(category.equals("Construction")) {
+					searchCategory = "CONSTRUCTION";
+				}
+				else if(category.equals("Thermodynamics")) {
+					searchCategory = "THERMODYNAMICS";
+				}
+				else if(category.equals("Dynamics")) {
+					searchCategory="DYNAMICS";
+				}
+				else if(category.equals("Fluids")) {
+					searchCategory="FLUIDS";
+				}
+				else if(category.equals("Material Science")) {
+					searchCategory="MATERIALSCIENCE";
+				}
+				else if(category.equals("Mechanics")) {
+					searchCategory="MECHANICS";
+				}
+				else if(category.equals("Statics")) {
+					searchCategory="STATICS";
+				}
+				else {
+					searchCategory = category;
+				}
+				
 				
 				try {
 					stmt = conn.prepareStatement(
@@ -665,7 +692,7 @@ public class DerbyDatabase implements IDatabase {
 							" where models.category = ?"
 					);
 				
-					stmt.setString(1, category);
+					stmt.setString(1, searchCategory);
 					
 					List<PhysicalModel> result = new ArrayList<PhysicalModel>();
 				
@@ -746,7 +773,7 @@ public class DerbyDatabase implements IDatabase {
 						stmt2.setString(8, procedure);
 					
 						//execute query
-						resultSet2 = stmt2.executeQuery();
+						stmt2.executeUpdate();
 						
 						//model is inserted into table
 						System.out.println("New model <" + title + "> inserted into models table");		
@@ -809,18 +836,21 @@ public class DerbyDatabase implements IDatabase {
 				//try to retrieve profile by modelId
 				try {
 					stmt = conn.prepareStatement(
-							"select profiles.*" + 
-							"from profiles, models" +
-							"where models.id = ?" +
-							"and profiles.id = models.profile_id" 
+							" select profiles.* " + 
+							" from profiles, models " +
+							" where models.model_id = ? " +
+							" and profiles.profile_id = models.profile_id " 
 					);
 					stmt.setInt(1, modelId);
 					
 					//execute the query, get the result
 					resultSet = stmt.executeQuery();
-					Profile profile = new Profile();
-					loadProfile(profile, resultSet, 1);
+					Profile profile = null;
 					
+					while(resultSet.next()) {
+						profile = new Profile();
+						loadProfile(profile, resultSet, 1);
+					}
 					return profile;
 				}
 				finally{
@@ -840,20 +870,23 @@ public class DerbyDatabase implements IDatabase {
 				PreparedStatement stmt = null;
 				ResultSet resultSet = null;
 				
-				//try to retrieve profile by modelId
+				//try to retrieve application by modelId
 				try {
 					stmt = conn.prepareStatement(
-							"select applications.*" + 
-							"from applications, models" +
-							"where models.id = ?" +
-							"and applications.model_id = models.id" 
+							"select * from applications " + 
+							" where application_model_id = ? " 
 					);
 					stmt.setInt(1, modelId);
 					
 					//execute the query, get the result
 					resultSet = stmt.executeQuery();
-					Application application = new Application();
+					Application application = null;
+					
+					while(resultSet.next()) {
+					application = new Application();
 					loadApplication(application, resultSet, 1);
+					
+					}
 					
 					return application;
 				}
@@ -881,7 +914,7 @@ public class DerbyDatabase implements IDatabase {
 					//insert new rating into rating table
 					//prepare SQL insert statement to add new rating to rating table
 					stmt1 = conn.prepareStatement(
-							"insert into rating (model_id, rate, comment) " +
+							"insert into ratings (rating_model_id, rate, comment) " +
 									" values(?, ?, ?) "
 					);
 					stmt1.setInt(1, modelId);
@@ -897,9 +930,9 @@ public class DerbyDatabase implements IDatabase {
 					//prepare SQl statement to retrieve rating_id for new Rating
 					stmt2 = conn.prepareStatement(
 							"select rating_id from ratings" +
-									"where rating = ? and comment = ?"
+									" where rating_model_id= ? and comment = ?"
 					);
-					stmt2.setInt(1, rate);
+					stmt2.setInt(1, modelId);
 					stmt2.setString(2, comment);
 					
 					//executeQuery 
@@ -934,7 +967,6 @@ public class DerbyDatabase implements IDatabase {
 				PreparedStatement stmt1 = null;
 				PreparedStatement stmt2 = null;
 				PreparedStatement stmt3 = null;
-				PreparedStatement stmt4 = null;
 				ResultSet resultSet1 = null;
 				ResultSet resultSet2 = null;
 							
@@ -946,7 +978,7 @@ public class DerbyDatabase implements IDatabase {
 					//try to retrieve profile_id from DB
 					stmt1 = conn.prepareStatement(
 							"select profile_id from profiles" +
-							"where username=? and password=?"
+							" where username=? and password=?"
 					);
 					stmt1.setString(1, username);
 					stmt1.setString(2, password);
@@ -966,14 +998,14 @@ public class DerbyDatabase implements IDatabase {
 						//insert new profile into profile table
 						//prepare SQL insert statement to add new rating to rating table
 						stmt2 = conn.prepareStatement(
-								"insert into profiles (firstName, lastName, username, email, password) " +
-										" values(?, ?, ?, ?, ?, ?) "
+								"insert into profiles (username, password, firstName, lastName, email) " +
+										" values(?, ?, ?, ?, ?) "
 						);
-						stmt2.setString(1, firstName);
-						stmt2.setString(2, lastName);
-						stmt2.setString(3, username);
-						stmt2.setString(4,  email);
-						stmt2.setString(5, password);
+						stmt2.setString(1, username);
+						stmt2.setString(2, password);
+						stmt2.setString(3, firstName);
+						stmt2.setString(4,  lastName);
+						stmt2.setString(5, email);
 					
 						//execute the update
 						stmt2.executeUpdate();
@@ -985,7 +1017,7 @@ public class DerbyDatabase implements IDatabase {
 					//try to retrieve profile_id for new profile
 					stmt3 = conn.prepareStatement(
 							"select profile_id from profiles" +
-							"where username = ? and password = ?"
+							" where username = ? and password = ?"
 					);
 					stmt3.setString(1, username);
 					stmt3.setString(2, password);
@@ -1020,42 +1052,49 @@ public class DerbyDatabase implements IDatabase {
 		return executeTransaction (new Transaction<List<PhysicalModel>>() {
 			@Override
 			public List<PhysicalModel> execute(Connection conn) throws SQLException {
-				PreparedStatement stmt = null;
-				ResultSet resultSet = null;
+				PreparedStatement stmt1 = null;
+				PreparedStatement stmt2 = null;
+				ResultSet resultSet1 = null;
+				ResultSet resultSet2 = null;
 				
 				try {
-					stmt = conn.prepareStatement(
-							"select models.*" + 
-							"from models, profiles" +
-							"where profiles.firstName LIKE %?% and profiles.lastName LIKE %?%" +
-							"and profiles.id = models.profile_id"
+					stmt1 = conn.prepareStatement(
+							"select models.* " +
+									" from models, profiles " +
+										" where profiles.profile_id = models.profile_id " +
+											" and profiles.firstName = ? or profiles.lastName = ?"
 					);
 					
-					stmt.setString(1, name);
-					stmt.setString(2, name);
+					stmt1.setString(1, name);
+					stmt1.setString(2, name);
 					
-					List<PhysicalModel> result = new ArrayList<PhysicalModel>();
-					
-					resultSet = stmt.executeQuery();
+					resultSet1 = stmt1.executeQuery();
 							
 					//for testing that a result was returned
-					Boolean found = false;
+					List<PhysicalModel> result = new ArrayList<PhysicalModel>();
 					
-					while (resultSet.next()) {
-						found = true;
-						
+					while (resultSet1.next()) {
 						PhysicalModel model = new PhysicalModel();
-						loadModel (model, resultSet, 1);
-						
+						loadModel(model, resultSet1, 1);
 						result.add(model);
 					}
 					
+					for(int i=0; i<result.size(); i++) {
+						if(i == (result.size()-1)) {
+							System.out.println("All Clean");
+						}
+						else if(result.get(i).getTitle().equals(result.get(i+1).getTitle())){
+							result.remove(i);
+						}
+					}
 					
 					return result;
 				}
 				finally {
-					DBUtil.closeQuietly(resultSet);
-					DBUtil.closeQuietly(stmt);
+					DBUtil.closeQuietly(resultSet1);
+					DBUtil.closeQuietly(resultSet2);
+					DBUtil.closeQuietly(stmt1);
+					DBUtil.closeQuietly(stmt2);
 				}
 			}
 		});
@@ -1072,9 +1111,9 @@ public class DerbyDatabase implements IDatabase {
 				
 				try {
 					stmt = conn.prepareStatement(
-						"select profiles.*"
-						+ "from profiles"
-						+ "where profiles.username = ?"
+						"select profiles.* "
+						+ " from profiles "
+						+ " where profiles.username = ?"
 					);
 					stmt.setString(1, username);
 					
