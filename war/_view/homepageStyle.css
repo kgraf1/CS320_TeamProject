@@ -31,17 +31,17 @@ h2{
 }
 #categories{/* id for the <aside> that contains all the catagories*/
 	font-size:30px; color:black; height:40px;
-	border: 4px solid skyblue; border-style: hidden hidden solid hidden;
+	border: 4px solid grey; border-style: hidden hidden solid hidden;
 }
 #categoriesDiv{/* Div for the categories section */
-	border: 4px solid skyblue;width: 40%;float: right; height: 600px;
+	border: 4px solid grey;width: 40%;float: right; height: 600px;
 }
 #welcomeDiv{/* Div for the welcome section */
-	border: 4px solid skyblue; width: 640px;  border-style: solid solid solid solid;
+	border: 4px solid grey; width: 640px;  border-style: solid solid solid solid;
 	
 }
 #popularDiv{/* Div for the popular section */
-	border: 4px solid skyblue; width: 640px; 
+	border: 4px solid grey; width: 640px; 
 }
 #paraCenter{/*aligns the paragraph in the welcome section to the center */
 	text-align: center;
