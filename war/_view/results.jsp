@@ -16,7 +16,7 @@
 	<div class="topnav">
   		<div class = "title"> Engineering Models </div>
   
-  		<a class="active" href="${pageContext.servletContext.contextPath}/_view/homepage.jsp">Home</a>
+  		<a href="${pageContext.servletContext.contextPath}/_view/homepage.jsp">Home</a>
   
   		<a href="${pageContext.servletContext.contextPath}/profilePage">Profile</a>
   		
