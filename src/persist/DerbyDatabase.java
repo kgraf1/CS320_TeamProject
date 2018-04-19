@@ -1516,13 +1516,25 @@ public class DerbyDatabase implements IDatabase {
 						result.add(model);
 					}
 					
+					System.out.println("Result list before loop: ");
+					for(PhysicalModel model : result) {
+						System.out.println(model.getTitle());
+					}
+					
 					for(int i=0; i<result.size(); i++) {
 						if(i == (result.size()-1)) {
 							System.out.println("All Clean");
 						}
 						else if(result.get(i).getTitle().equals(result.get(i+1).getTitle())){
 							result.remove(i);
+							i--;
 						}
+					}
+					
+					System.out.println("Reulst list after loop: ");
+					
+					for(PhysicalModel model : result) {
+						System.out.println(model.getTitle());
 					}
 					
 					return result;
