@@ -6,19 +6,25 @@ import java.io.IOException;
 import java.util.ArrayList;
 import persist.DatabaseProvider;
 import persist.FakeDatabase;
+import persist.DerbyDatabase;
 import persist.IDatabase;
 import persist.InitialData;
 
 public class LoginController {
 
-	private Profile profile = null;
 	private IDatabase db = null;
 	private List<Profile> profiles =null;
 	
 	public LoginController(Profile profile) {
-		this.profile = profile;
-		db=DatabaseProvider.getInstance();
-		System.out.println("got Instance");
+
+		// creating DB instance here
+		DatabaseProvider.setInstance(new DerbyDatabase());
+		db = DatabaseProvider.getInstance();
+				
+		/*
+		 * Uncomment below for Fake Database use
+		 */
+		//db = DatabaseProvider.getInstance();
 	}
 	
 	public boolean checkUserName(String username) {

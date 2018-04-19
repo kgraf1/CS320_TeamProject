@@ -18,8 +18,14 @@ public class ModelsByTitleController {
 	private IDatabase db = null;
 	
 	public ModelsByTitleController () {
-		// retrieving DB instance here
-		db = DatabaseProvider.getInstance();		
+		// creating DB instance here
+		DatabaseProvider.setInstance(new DerbyDatabase());
+		db = DatabaseProvider.getInstance();
+				
+		/*
+		 * Uncomment below for Fake Database use
+		 */
+		//db = DatabaseProvider.getInstance();		
 	}
 	
 	

@@ -3,6 +3,7 @@ package controllers;
 import model.Category;
 import persist.IDatabase;
 import persist.DatabaseProvider;
+import persist.DerbyDatabase;
 import persist.FakeDatabase;
 
 
@@ -11,9 +12,14 @@ public class AddModelSubmissionController {
 	private IDatabase db = null;
 
 	public AddModelSubmissionController() {
-		
 		// creating DB instance here
-		db = DatabaseProvider.getInstance();		
+		DatabaseProvider.setInstance(new DerbyDatabase());
+		db = DatabaseProvider.getInstance();
+				
+		/*
+		 * Uncomment below for Fake Database use
+		 */
+		//db = DatabaseProvider.getInstance();	
 	}
 
 	public int create(String username, String title, String description, String thumbnail, String engPrinciple, String citation,
