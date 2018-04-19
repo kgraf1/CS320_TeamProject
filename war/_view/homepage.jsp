@@ -62,7 +62,6 @@
 			<form action="${pageContext.servletContext.contextPath}/ModelsByCategory" method="post">
 				<input style="font-size:30px;" class="hiddenButton" type="submit" name="getStatics" value="Statics"/>
 			</form>
-			
 	</aside>
 </div>
 
