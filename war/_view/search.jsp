@@ -24,11 +24,11 @@
 	<div class="topnav">
   		<div class = "title"> Engineering Models </div>
   
-  		<a class="active" href="${pageContext.servletContext.contextPath}/_view/homepage.jsp">Home</a>
+  		<a href="${pageContext.servletContext.contextPath}/_view/homepage.jsp">Home</a>
   
   		<a href="${pageContext.servletContext.contextPath}/_view/profilepage.jsp">Profile</a>
   		
-  		<a href="${pageContext.servletContext.contextPath}/_view/search.jsp">Search Models</a>
+  		<a class="active" href="${pageContext.servletContext.contextPath}/_view/search.jsp">Search Models</a>
   		
 	</div>
 	
