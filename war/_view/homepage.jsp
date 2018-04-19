@@ -70,8 +70,13 @@
 
 <div id = "welcomeDiv">
 	<section>
-		Welcome!
-		<p id = "paraCenter"> This is where our site description would be!</p>
+		<p id = "paraCenter"> Welcome to Engineering Models! Here you can find models for your engineering 
+		class! Search for models by Category, Keyword, their Materials, or by who made it! You can even 
+		give the model a rating and leave a comment! 
+		<br>
+		To add your own, just go to your profile page above to fill out the form and submit!
+		
+		</p>
 	</section>
 </div>
 
