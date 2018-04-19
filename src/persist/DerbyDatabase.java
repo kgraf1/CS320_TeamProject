@@ -341,7 +341,6 @@ public class DerbyDatabase implements IDatabase {
 						insertModel.setString(5, model.getEngPrinciple());
 						insertModel.setString(6, model.getCitation());
 						insertModel.setString(7, model.getCategory().toString());
-						System.out.println("Category in loadInitialData: " + model.getCategory().toString());
 						insertModel.setString(8, model.getProcedure());
 						insertModel.addBatch();
 					}		
