@@ -75,8 +75,6 @@
 		give the model a rating and leave a comment! 
 		<br>
 		To add your own, just go to your profile page above to fill out the form and submit!
-		
-		</p>
 	</section>
 </div>
 
