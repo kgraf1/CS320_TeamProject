@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import persist.DatabaseProvider;
+import persist.DerbyDatabase;
 import persist.FakeDatabase;
 import persist.IDatabase;
 
@@ -12,9 +13,14 @@ public class AddKeywordsController {
 	private IDatabase db = null;
 
 	public AddKeywordsController() {
-		
 		// creating DB instance here
-		db = DatabaseProvider.getInstance();		
+		DatabaseProvider.setInstance(new DerbyDatabase());
+		db = DatabaseProvider.getInstance();
+				
+		/*
+		 * Uncomment below for Fake Database use
+		 */
+		//db = DatabaseProvider.getInstance();		
 	}
 
 	public boolean create(int modelId, List<String> keywords) {

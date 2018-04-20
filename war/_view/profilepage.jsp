@@ -20,7 +20,7 @@
     <div class="topnav">
         <div class="title"> Engineering Models </div>
 		<a href="${pageContext.servletContext.contextPath}/_view/homepage.jsp">Home</a>
-        <a class="active" href="${pageContext.servletContext.contextPath}/_view/profilepage.jsp" method="post">Profile</a>
+        <a class="active" href="${pageContext.servletContext.contextPath}/profilePage" method="post">Profile</a>
         <a href="${pageContext.servletContext.contextPath}/_view/search.jsp">Search Models</a>
 	</div>
     
@@ -56,17 +56,26 @@
             <!-- Middle Column -->
             <div class="col middle">
 
+				<c:if test="${empty models}">
+			    	<div class="container card" style="margin:16px!important; width:757px">
+			    		<br>
+                    	<h4 style="text-align:center;"> You do not have any models. </h4><br>
+			    	</div>
+			    </c:if>
+			    
+			  
 				<c:forEach items="${models}" var="model">
-			        <div class="container card" style="margin:16px!important; width:757px">
-                    	<br>
-                    	<h4 style="text-align:center;"> ${model.title} </h4><br>
-                    	<hr class="clear">
-                    	<p style="font-weight:bold;">Model Description:</p> <p> ${model.description} </p>
-                    	<div style="margin:0 -16px;padding:0 8px;">
-                    	</div>
-                    	<button class="button" onclick="form.action='DisplayModel';" style:"width:150px;" name="modelID" value="${model.id}">See more!</button>
-                	</div>
-			    </c:forEach>
+		        	<div class="container card" style="margin:16px!important; width:757px">
+                		<br>
+                		<h4 style="text-align:center;"> ${model.title} </h4><br>
+                		<hr class="clear">
+                		<p style="font-weight:bold;">Model Description:</p> <p> ${model.description} </p>
+                		<div style="margin:0 -16px;padding:0 8px;">
+                		</div>
+                		<button class="button" onclick="form.action='DisplayModel';" style:"width:150px;" name="modelID" value="${model.id}">See more!</button>
+            		</div>
+		    	</c:forEach>
+			   
 			</div>
 				
             <!-- End Middle Column -->

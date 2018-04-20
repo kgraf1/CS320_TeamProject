@@ -18,7 +18,7 @@
   
   		<a href="${pageContext.servletContext.contextPath}/_view/homepage.jsp">Home</a>
   
-  		<a href="${pageContext.servletContext.contextPath}/_view/profilepage.jsp">Profile</a>
+  		<a href="${pageContext.servletContext.contextPath}/profilePage">Profile</a>
   		
 	</div>
 

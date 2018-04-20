@@ -1,6 +1,7 @@
 package controllers;
 
 import persist.DatabaseProvider;
+import persist.DerbyDatabase;
 import persist.FakeDatabase;
 import persist.IDatabase;
 
@@ -12,9 +13,14 @@ public class AddMaterialsController {
 	private IDatabase db = null;
 
 	public AddMaterialsController() {
-		
 		// creating DB instance here
-		db = DatabaseProvider.getInstance();		
+		DatabaseProvider.setInstance(new DerbyDatabase());
+		db = DatabaseProvider.getInstance();
+				
+		/*
+		 * Uncomment below for Fake Database use
+		 */
+		//db = DatabaseProvider.getInstance();		
 	}
 
 	public boolean create(int modelId, List<List<String>> materials) {
