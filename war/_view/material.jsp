@@ -24,48 +24,42 @@
 
 		<a href="${pageContext.servletContext.contextPath}/_view/search.jsp">Search Models</a>
   		
+  		
 	</div>
-	
-
-	
 	
 	<form action="${pageContext.servletContext.contextPath}/DisplayModel" method="post">
 	<div>
 		<h1>${model.title}</h1>
 		</div>
 		<div><center>Written By: <button class="hiddenButton" onclick="form.action='ModelsByProfileName';" name="searchInput" value="${profile.firstName} ${profile.lastName}">${profile.firstName} ${profile.lastName}</button></center></div><br>
-
-			<div class="tab">
-			<button class="active" onclick="form.action='DisplayModel';" name="overviewModelID" value="${model.id}">Overview</button>
+	
+	
+		<div class="tab">
+			<button onclick="form.action='DisplayModel';" name="overviewModelID" value="${model.id}">Overview</button>
 			<button onclick="form.action='DisplayModel';" name="engPrincipleModelID" value="${model.id}">Engineering Principle</button>
 			<button onclick="form.action='DisplayModel';" name="procedureModelID" value="${model.id}">Procedure</button>
 			<button onclick="form.action='DisplayModel';" name="applicationModelID" value="${model.id}">Application</button>
-			<button onclick="form.action='DisplayModel';" name="materialsModelID" value="${model.id}">Materials</button>		
+			<button class="active" onclick="form.action='DisplayModel';" name="materialsModelID" value="${model.id}">Materials</button>		
 			<button onclick="form.action='DisplayModel';" name="ratingsModelID" value="${model.id}">Ratings</button>
-			</div>
-
-	
+		</div>
 	
 	
 		<div style="float:right; width:69%;">
-			<div style="border:2px solid gray">
-				<h3>Description:</h3>
-					<div style="padding-left:20px; padding-right:20px;">${model.description}</div><br>
-			</div>
-			<br>
 			<div style="border: 2px solid gray">
-				<h3>Category:</h3>
-					<div style="padding-left:20px; padding-right:20px;"><button class="hiddenButton" onclick="form.action='ModelsByCategory';" name="searchInput" value="${model.category}">${model.category}</button></div><br>
+				<h3>Materials:</h3>
+					<c:forEach items="${materials}" var="material">
+						<div style="font:bold; padding-left:20px; padding-right:20px;"><button class="hiddenButton" onclick="form.action='ModelsByMaterial';" name="searchInput" value="${material.name}">${material.name}</button></div><br>
+						<div style="padding-left:40px; padding-right:20px;">Quantity: ${material.quantity}</div><br>
+						<div style="padding-left:40px; padding-right:20px;">Description: ${material.description}</div><br>
+						<div style="padding-left:40px; padding-right:20px;">Build Time: ${material.buildTime}</div><br>
+						<div style="padding-left:40px; padding-right:20px;">Cost: ${material.cost}</div><br>
+					</c:forEach>
 			</div>
-			<br>
-			<div style="border: 2px solid gray">
-				<h3>Keywords:</h3>
-				<c:forEach items="${keywords}" var="keyword">
-					<div style="padding-left:20px; padding-right:20px;"><button class="hiddenButton" onclick="form.action='ModelsByKeyword';" name="searchInput" value="${keyword.word}">${keyword.word}</button></div><br>
-				</c:forEach>
-			</div>
-			<br>
 		</div>
-		
+		<br>
+
+
+	</form>
+	
 </body>
 </html>

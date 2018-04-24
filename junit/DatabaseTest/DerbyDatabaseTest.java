@@ -306,7 +306,7 @@ public class DerbyDatabaseTest {
 	public void testGetAllProfiles() {
 		List<Profile> profiles = db.getAllProfiles();
 		
-		assertTrue(profiles.size() == 3);
+		assertTrue(profiles.size() >= 3);
 	}
 	
 	@Test

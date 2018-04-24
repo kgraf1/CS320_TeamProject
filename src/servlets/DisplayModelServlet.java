@@ -44,10 +44,46 @@ public class DisplayModelServlet extends HttpServlet{
 		Application application = null;
 		List <Rating> ratings=null;
 		double average;
-		int id = Integer.parseInt(req.getParameter("modelID"));
+		int id=0;
+		Boolean overview = false;
+		Boolean engPrinciple = false;
+		Boolean procedure = false;
+		Boolean app = false;
+		Boolean material = false;
+		Boolean rating = false;
+		
+		
+		if(req.getParameter("modelID")!=null) {
+			id = Integer.parseInt(req.getParameter("modelID"));
+		}
+		else if(req.getParameter("overviewModelID")!=null) {
+			id = Integer.parseInt(req.getParameter("overviewModelID"));
+			overview = true;
+		}
+		else if (req.getParameter("engPrincipleModelID")!=null) {
+			id = Integer.parseInt(req.getParameter("engPrincipleModelID"));
+			engPrinciple = true;
+		}
+		else if (req.getParameter("procedureModelID")!=null) {
+			id = Integer.parseInt(req.getParameter("procedureModelID"));
+			procedure = true;
+		}
+		else if (req.getParameter("applicationModelID")!=null) {
+			id = Integer.parseInt(req.getParameter("applicationModelID"));
+			app = true;
+		}
+		else if (req.getParameter("materialsModelID")!=null) {
+			id = Integer.parseInt(req.getParameter("materialsModelID"));
+			material = true;
+		}
+		else if (req.getParameter("ratingsModelID")!=null) {
+			id = Integer.parseInt(req.getParameter("ratingsModelID"));
+			rating = true;
+		}
 		
 		
 		
+	
 		db = DatabaseProvider.getInstance();
 		model = db.findModelByModelId(id);
 		profile = db.findProfileByModelId(id);
@@ -68,6 +104,26 @@ public class DisplayModelServlet extends HttpServlet{
 		
 		req.setAttribute("modelId",id);
 		
+		if(overview == true) {
+			req.getRequestDispatcher("/_view/overview.jsp").forward(req, resp);
+		}
+		else if(engPrinciple == true) {
+			req.getRequestDispatcher("/_view/engprinciple.jsp").forward(req, resp);
+		}
+		else if(procedure == true) {
+			req.getRequestDispatcher("_view/procedure.jsp").forward(req, resp);
+		}
+		else if(app == true) {
+			req.getRequestDispatcher("/_view/application.jsp").forward(req, resp);
+		}
+		else if(material == true) {
+			req.getRequestDispatcher("/_view/material.jsp").forward(req, resp);
+		}
+		else if(rating == true) {
+			req.getRequestDispatcher("/_view/rating.jsp").forward(req, resp);
+		}
+		else {
 		req.getRequestDispatcher("/_view/model.jsp").forward(req, resp);
+		}
 	}
 }
