@@ -44,7 +44,7 @@ private IDatabase db = null;
 				results.add(models.get(i));
 			}
 		}
-		
+		req.setAttribute("result", results.size());
 		/* Now we check if the number of results is too high
 		 * If it is we trim them down. 
 		 * Increment the cut off untill we are down to only 3 models
@@ -76,7 +76,7 @@ private IDatabase db = null;
 		else {
 			model = models.get(0);
 		}
-		req.setAttribute("result", models.size());
+		req.setAttribute("resulttrim", models.size());
 		req.setAttribute("errorMessage", errorMessage);
 		req.setAttribute("model", model);
 		req.setAttribute("models", models);

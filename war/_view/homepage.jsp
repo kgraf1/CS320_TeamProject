@@ -88,6 +88,7 @@
 		<section>
 			<h4>Most Popular Models:</h4>
 			<div style="padding-left:20px; padding-right:20px;">there are ${result} models with an average above 2.5</div><br>
+			<div style="padding-left:20px; padding-right:20px;">there are ${resulttrim} models after trimming</div><br>
 		<table style="margin-top:30px;">
 			<c:forEach items="${models}" var="model">
 				<c:if test="${models}==null">
