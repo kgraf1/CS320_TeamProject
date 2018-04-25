@@ -48,9 +48,15 @@
 
             <label for="description">Description</label>
             <textarea id="description" name="description" placeholder="Description of your model..." style="height:200px" value="${description}"></textarea>
+            
+            <label for="thumbnail">Thumbnail</label>
+            <textarea id="thumbnail" name="thumbnail" placeholder="Thumbnail of your model..." style="height:200px" value="{thumbnail}"></textarea>
 
             <label for="ePrinciple">Engineering Principle</label>
             <textarea id="ePrinciple" name="ePrinciple" placeholder="Principle of your model..." style="height:200px" value="{engPrinciple}"></textarea>
+            
+            <label for="procedure">Procedure</label>
+            <textarea id="procedure" name="procedure" placeholder="Procedure to build your model..." style="height:200px" value="{procedure}"></textarea>
 
 			<label for="keywords" style="margin-left: 100px;">Keywords</label>
 			
@@ -150,6 +156,9 @@
             <textarea id="application" name="duringClass" placeholder="During class..." style="height:200px" value="${duringClass}"></textarea>
             <textarea id="application" name="duringImage" placeholder="During image..." style="height:200px" value="${duringImage}"></textarea>
 
+			<label for="citation">Citations</label>
+            <textarea id="citation" name="citation" placeholder="Citation(s) of your model..." style="height:200px" value="{citation}"></textarea>
+            
            <input type="Submit" name="submitmodel" value="Create Physical Model">
          </form>
     </div>
