@@ -34,7 +34,7 @@ private IDatabase db = null;
 		RatingsByModelIdController rcontroller = new RatingsByModelIdController();
 		models = rcontroller.getAllPhysicalModels();
 		PhysicalModel model = null;
-		
+		req.setAttribute("number", models.size());
 		for(int i = 0; i<models.size();i++) {
 			/*check for models that have an average rating above a 2.5
 			 * if so add to results
@@ -89,6 +89,8 @@ private IDatabase db = null;
 				throws ServletException, IOException{
 		
 		System.out.println("\n	SearchServlet: doPost");
+		
+		
 		
 		req.getRequestDispatcher("/_view/homepage.jsp").forward(req, resp);
 	}
