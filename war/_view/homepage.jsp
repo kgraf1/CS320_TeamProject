@@ -4,6 +4,10 @@
 
 <head>
 	<link rel="stylesheet" type="text/css" href="${pageContext.servletContext.contextPath}/_view/homepageStyle.css">
+
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+	
 </head>
 
 <body>
@@ -84,6 +88,21 @@
 		<section>
 			<h4>Most Popular Models:</h4>
 			<div style="padding-left:20px; padding-right:20px;">there are ${result} models with an average above 2.5</div><br>
+		<table style="margin-top:30px;">
+			<c:forEach items="${models}" var="model">
+				<c:if test="${models}==null">
+					There are no models for this category.
+				</c:if>
+				
+				<tr class="modelRow">
+					<tr>
+						<td class="modelTitle" ><button class="hiddenButton" onclick="form.action='DisplayModel';" name="modelID" value="${model.id}">${model.title}</button></td>				
+					</tr>
+					<tr>
+						<td class="modelDescription">${model.description}</td>
+					</tr>
+			</c:forEach>
+		</table>
 		</section>
 	</div>
 </div>

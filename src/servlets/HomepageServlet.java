@@ -33,6 +33,7 @@ private IDatabase db = null;
 		String errorMessage = null;
 		RatingsByModelIdController rcontroller = new RatingsByModelIdController();
 		models = rcontroller.getAllPhysicalModels();
+		PhysicalModel model = null;
 		
 		for(int i = 0; i<models.size();i++) {
 			/*check for models that have an average rating above a 2.5
@@ -43,10 +44,16 @@ private IDatabase db = null;
 				results.add(models.get(i));
 			}
 		}
-		
-		req.setAttribute("result", results.size());
-		
-		
+		models = results;
+		if(results == null) {
+			
+		}
+		else {
+			model = models.get(0);
+		}
+		req.setAttribute("result", models.size());
+		req.setAttribute("model", model);
+		req.setAttribute("models", models);
 		
 		req.getRequestDispatcher("/_view/homepage.jsp").forward(req, resp);
 	}
