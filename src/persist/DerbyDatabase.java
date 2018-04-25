@@ -1061,6 +1061,49 @@ public class DerbyDatabase implements IDatabase {
 		});
 	}
 	
+	public List<PhysicalModel> getAllModels(){
+		return executeTransaction(new Transaction<List<PhysicalModel>>() {
+			@Override
+			public List<PhysicalModel> execute(Connection conn) throws SQLException {
+				PreparedStatement stmt = null;
+				ResultSet resultSet = null;
+				
+				try {
+					stmt = conn.prepareStatement(
+							"select * from models " 
+							
+					);
+					
+					List<PhysicalModel> result = new ArrayList<PhysicalModel>();
+					
+					resultSet = stmt.executeQuery();
+					
+					// for testing that a result was returned
+					Boolean found = false;
+					
+					while (resultSet.next()) {
+						found = true;
+						
+						PhysicalModel model = new PhysicalModel();
+						loadModel(model, resultSet, 1);
+						
+						result.add(model);
+					}
+					
+					// check if any profiles were found
+					if (!found) {
+						System.out.println("No profiles were found in the database");
+					}
+					
+					return result;
+				} finally {
+					DBUtil.closeQuietly(resultSet);
+					DBUtil.closeQuietly(stmt);
+				}
+			}
+		});
+	}
+	
 	public List<PhysicalModel> findModelsByTitle(final String title) { 
 		return executeTransaction(new Transaction<List<PhysicalModel>>() {
 			@Override

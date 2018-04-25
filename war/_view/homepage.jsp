@@ -83,6 +83,7 @@
 	<div id = "popularDiv">	
 		<section>
 			<h4>Most Popular Models:</h4>
+			<div style="padding-left:20px; padding-right:20px;">there are ${result} models with an average above 2.5</div><br>
 		</section>
 	</div>
 </div>
