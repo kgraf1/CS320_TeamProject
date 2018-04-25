@@ -22,7 +22,7 @@ import persist.IDatabase;
 public class HomepageServlet extends HttpServlet{
 private static final long serialVersionUID = 1L;
 private IDatabase db = null;
-	
+	final int MAX_MODELS = 3;
 	@Override 
 	protected void doGet (HttpServletRequest req, HttpServletResponse resp)
 				throws ServletException, IOException{
@@ -44,14 +44,40 @@ private IDatabase db = null;
 				results.add(models.get(i));
 			}
 		}
+		
+		/* Now we check if the number of results is too high
+		 * If it is we trim them down. 
+		 * Increment the cut off untill we are down to only 3 models
+		 */
 		models = results;
+		double cutoff = 2.5;
+		while(results.size()>MAX_MODELS) {
+			cutoff +=.25;
+			for(int i =0;i<results.size();i++) {
+				if(rcontroller.getAverageByModelId(models.get(i).getId()) < cutoff) {
+					results.remove(i);
+					i--;
+				}
+			}
+			
+		}
+		//check if results has something. If not just use models
 		if(results == null) {
 			
+		}
+		else {
+			models = results;
+		}
+		
+		
+		if(results == null) {
+			errorMessage = "No Models found for some reason";	
 		}
 		else {
 			model = models.get(0);
 		}
 		req.setAttribute("result", models.size());
+		req.setAttribute("errorMessage", errorMessage);
 		req.setAttribute("model", model);
 		req.setAttribute("models", models);
 		
