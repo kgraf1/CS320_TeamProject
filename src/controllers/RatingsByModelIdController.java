@@ -71,4 +71,7 @@ public class RatingsByModelIdController {
 			return false;
 		}
 	}
+	public List<PhysicalModel> getAllPhysicalModels(){
+		return db.getAllModels();
+	}
 }

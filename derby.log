@@ -1,11 +1,11 @@
 ----------------------------------------------------------------
-Wed Apr 18 20:11:36 EDT 2018:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instance a816c00e-0162-db3e-015e-00000e23ad48 
-on database directory C:\Users\katek\git\CS320_TeamProject\database.db with class loader sun.misc.Launcher$AppClassLoader@36baf30c 
-Loaded from file:/C:/Users/katek/CS320%20workspace/CS320_Derby/lib/derby.jar
+Wed Apr 25 11:25:55 EDT 2018:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instance a816c00e-0162-fd69-3ca5-000006e6d980 
+on database directory C:\Users\Jason\git\CS320_TeamProject\database.db with class loader sun.misc.Launcher$AppClassLoader@6d06d69c 
+Loaded from file:/C:/Users/Jason/eclipse-workspace/CS320_Derby/lib/derby.jar
 java.vendor=Oracle Corporation
-java.runtime.version=1.8.0_151-b12
-user.dir=C:\Users\katek\git\CS320_TeamProject
+java.runtime.version=1.8.0_152-b16
+user.dir=C:\Users\Jason\git\CS320_TeamProject
 os.name=Windows 10
 os.arch=amd64
 os.version=10.0

@@ -85,7 +85,7 @@ public class DerbyDatabase implements IDatabase {
 	private Connection connect() throws SQLException {
 		
 
-		Connection conn = DriverManager.getConnection("jdbc:derby:C:/Users/ktgraf/git/CS320_TeamProject/database.db;create=true");		
+		Connection conn = DriverManager.getConnection("jdbc:derby:C:/Users/Jason/git/CS320_TeamProject/database.db;create=true");		
 		
 		// Set autocommit() to false to allow the execution of
 		// multiple queries/statements as part of the same transaction.
@@ -1045,6 +1045,49 @@ public class DerbyDatabase implements IDatabase {
 						loadProfile(profile, resultSet, 1);
 						
 						result.add(profile);
+					}
+					
+					// check if any profiles were found
+					if (!found) {
+						System.out.println("No profiles were found in the database");
+					}
+					
+					return result;
+				} finally {
+					DBUtil.closeQuietly(resultSet);
+					DBUtil.closeQuietly(stmt);
+				}
+			}
+		});
+	}
+	
+	public List<PhysicalModel> getAllModels(){
+		return executeTransaction(new Transaction<List<PhysicalModel>>() {
+			@Override
+			public List<PhysicalModel> execute(Connection conn) throws SQLException {
+				PreparedStatement stmt = null;
+				ResultSet resultSet = null;
+				
+				try {
+					stmt = conn.prepareStatement(
+							"select * from models " 
+							
+					);
+					
+					List<PhysicalModel> result = new ArrayList<PhysicalModel>();
+					
+					resultSet = stmt.executeQuery();
+					
+					// for testing that a result was returned
+					Boolean found = false;
+					
+					while (resultSet.next()) {
+						found = true;
+						
+						PhysicalModel model = new PhysicalModel();
+						loadModel(model, resultSet, 1);
+						
+						result.add(model);
 					}
 					
 					// check if any profiles were found

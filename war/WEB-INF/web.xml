@@ -54,6 +54,10 @@
   	<servlet-name>AddRatingSubmissionServlet</servlet-name>
   	<servlet-class>servlets.AddRatingSubmissionServlet</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>HomepageServlet</servlet-name>
+  	<servlet-class>servlets.HomepageServlet</servlet-class>
+  </servlet>
   
   <!-- Servlet mappings -->
   <servlet-mapping>
@@ -99,5 +103,9 @@
   <servlet-mapping>
   	<servlet-name>AddRatingSubmissionServlet</servlet-name>
   	<url-pattern>/addRatingSubmission</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>HomepageServlet</servlet-name>
+  	<url-pattern>/homepage</url-pattern>
   </servlet-mapping>
 </web-app>
