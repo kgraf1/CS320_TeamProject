@@ -45,6 +45,7 @@ private IDatabase db = null;
 			}
 		}
 		req.setAttribute("result", results.size());
+		
 		/* Now we check if the number of results is too high
 		 * If it is we trim them down. 
 		 * Increment the cut off untill we are down to only 3 models
@@ -52,12 +53,13 @@ private IDatabase db = null;
 		models = results;
 		double cutoff = 2.5;
 		while(results.size()>MAX_MODELS) {
-			cutoff +=.25;
+			cutoff +=.10;
 			for(int i =0;i<results.size();i++) {
 				if(rcontroller.getAverageByModelId(models.get(i).getId()) < cutoff) {
 					results.remove(i);
 					i--;
 				}
+				
 			}
 			
 		}
