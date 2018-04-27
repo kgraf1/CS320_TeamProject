@@ -831,8 +831,9 @@ public class DerbyDatabase implements IDatabase {
 							"select models.* " +
 							"  from  models, materials " +
 							"  where models.model_id = materials.material_model_id " +
-							" and materials.name LIKE '%" + materialName + "%'"
+							" and materials.name = ? "
 					);
+					stmt.setString(1, materialName);
 					
 					// establish the list of (Author, Book) Pairs to receive the result
 					List<PhysicalModel> result = new ArrayList<PhysicalModel>();
@@ -905,9 +906,9 @@ public class DerbyDatabase implements IDatabase {
 							"select models.* " +
 							"  from  models, keywords" +
 							"  where models.model_id = keywords.keyword_model_id " +
-							"and keywords.word like '%" + keyword + "%'"
+							"and keywords.word = ? "
 					);
-					
+					stmt.setString(1, keyword);
 					
 					// establish the list of (Author, Book) Pairs to receive the result
 					List<PhysicalModel> result = new ArrayList<PhysicalModel>();
@@ -1167,11 +1168,12 @@ public class DerbyDatabase implements IDatabase {
 					
 					stmt = conn.prepareStatement(
 							"select * from models " +
-							" where title like '%" + title + "%'"
+							" where title = ?"
 					);
 				
 					System.out.println("prepared the statement");
 					
+					stmt.setString(1, title);
 					
 					List<PhysicalModel> result = new ArrayList<PhysicalModel>();
 				
@@ -1620,10 +1622,11 @@ public class DerbyDatabase implements IDatabase {
 							"select models.* " +
 									" from models, profiles " +
 										" where profiles.profile_id = models.profile_id " +
-											" and profiles.firstName like '%" + name +"%' or profiles.lastName like '%" + name + "%'"
+											" and profiles.firstName = ? or profiles.lastName = ?"
 					);
 					
-
+					stmt1.setString(1, name);
+					stmt1.setString(2, name);
 					
 					resultSet1 = stmt1.executeQuery();
 							

@@ -54,6 +54,7 @@ public ArrayList<PhysicalModel> getModelByMaterialName (String material){
 				
 			}
 		}
+
 		
 		for(int i=0; i<models.size()-1; i++) {
 			if(models.get(i).getId()==models.get(i+1).getId()) {
@@ -61,6 +62,7 @@ public ArrayList<PhysicalModel> getModelByMaterialName (String material){
 			}
 		}
 		
+
 		return models;
 	}
 	
