@@ -19,7 +19,7 @@
     <!-- Top Navigation -->
     <div class="topnav">
         <div class="title"> Engineering Models </div>
-		<a href="${pageContext.servletContext.contextPath}/_view/homepage.jsp">Home</a>
+		<a href="${pageContext.servletContext.contextPath}/homepage">Home</a>
         <a class="active" href="${pageContext.servletContext.contextPath}/profilePage" method="post">Profile</a>
         <a href="${pageContext.servletContext.contextPath}/_view/search.jsp">Search Models</a>
 	</div>

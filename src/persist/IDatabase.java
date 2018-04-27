@@ -34,6 +34,7 @@ public interface IDatabase {
 	public int insertProfileIntoProfileTable(String firstName, String lastName, String username, String email, String password);
 	public int insertRatingIntoRatingTable(int modelId, int rate, String comment);
 	public List<Profile> getAllProfiles();
+	public List<PhysicalModel> getAllModels();
 	
 	
 	//getting other model information 

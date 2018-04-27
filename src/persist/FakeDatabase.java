@@ -347,4 +347,8 @@ public class FakeDatabase implements IDatabase {
 		
 		return -1;
 	}
+	@Override
+	public List<PhysicalModel> getAllModels(){
+		return physicalModels;
+	}
 }
