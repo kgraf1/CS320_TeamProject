@@ -30,11 +30,11 @@ public class ModelsByMaterialController {
 	
 public ArrayList<PhysicalModel> getModelByMaterialName (String material){
 		
-		String [] split = material.split(" ");
+		//String [] split = material.split(" ");
 		ArrayList <PhysicalModel> models = new ArrayList<PhysicalModel> ();
 		
-		for(int i=0; i<split.length; i++) {
-			material=split[i];
+		//for(int i=0; i<split.length; i++) {
+			//material=split[i];
 			List <PhysicalModel> modelList = db.findModelsByMaterialName(material);
 			System.out.println("ModelsByMaterial is looking for: "+material); 
 			if(modelList.isEmpty()) {
@@ -51,7 +51,7 @@ public ArrayList<PhysicalModel> getModelByMaterialName (String material){
 					}
 				}
 			}
-		}
+		//}
 		return models;
 	}
 	
