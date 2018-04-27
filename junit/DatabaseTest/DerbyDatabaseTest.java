@@ -310,6 +310,18 @@ public class DerbyDatabaseTest {
 	}
 	
 	@Test
+	public void testGetAllPhysicalModels() {
+		List<PhysicalModel> models = db.getAllModels();
+		
+		for(int i=0; i<models.size(); i++) {
+			System.out.println(models.get(i).getTitle());
+			System.out.println(models.get(i).getId());
+		}
+		
+		assertTrue(models.size()>=1);
+	}
+	
+	@Test
 	public void testModelsByTitle () {
 		String title ="How bout those spinny thingys";
 		models=db.findModelsByTitle(title);
@@ -493,6 +505,12 @@ public class DerbyDatabaseTest {
 			String keyword = "Keyword1";
 			ArrayList<PhysicalModel> models = new ArrayList<PhysicalModel>();
 			models.addAll(db.findModelsByKeyword(keyword));
+			
+			
+			for(int i=0; i<models.size(); i++) {
+				System.out.println(models.get(i).getTitle());
+				System.out.println(models.get(i).getId());
+			}
 			
 			assertTrue(models.get(0).getTitle().equals("How bout those spinny thingys"));
 			

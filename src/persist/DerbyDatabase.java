@@ -85,7 +85,7 @@ public class DerbyDatabase implements IDatabase {
 	private Connection connect() throws SQLException {
 		
 
-		Connection conn = DriverManager.getConnection("jdbc:derby:C:/Users/Jason/git/CS320_TeamProject/database.db;create=true");		
+		Connection conn = DriverManager.getConnection("jdbc:derby:C:/Users/ktgraf/git/CS320_TeamProject/database.db;create=true");		
 		
 		// Set autocommit() to false to allow the execution of
 		// multiple queries/statements as part of the same transaction.
@@ -855,6 +855,33 @@ public class DerbyDatabase implements IDatabase {
 						result.add(model);
 					}
 					
+					
+
+					System.out.println("Result list before loop: ");
+					for(PhysicalModel model : result) {
+						System.out.println(model.getTitle());
+					}
+					
+					for(int i=0; i<result.size(); i++) {
+						if(i == (result.size()-1)) {
+							System.out.println("All Clean");
+						}
+						else if(result.get(i).getId() == result.get(i+1).getId()) {
+							result.remove(i);
+							i--;
+						}
+						//else if(result.get(i).getTitle().equals(result.get(i+1).getTitle())){
+						//	result.remove(i);
+						//	i--;
+						//}
+					}
+					
+					System.out.println("Result list after loop: ");
+					
+					for(PhysicalModel model : result) {
+						System.out.println(model.getTitle());
+					}
+					
 					return result;
 				} finally {
 					DBUtil.closeQuietly(resultSet);
@@ -901,7 +928,32 @@ public class DerbyDatabase implements IDatabase {
 						model.setCategory(Category.valueOf(resultSet.getString(8)));
 						model.setProcedure(resultSet.getString(9));
 						result.add(model);
-					}
+						}
+						
+
+						System.out.println("Result list before loop: ");
+						for(PhysicalModel models : result) {
+							System.out.println(models.getTitle());
+						}
+						
+						for(int i=0; i<result.size(); i++) {
+							if(i == (result.size()-1)) {
+								System.out.println("All Clean");
+							}else if(result.get(i).getId() == result.get(i+1).getId()) {
+								result.remove(i);
+								i--;
+							}
+							//else if(result.get(i).getTitle().equals(result.get(i+1).getTitle())){
+							//	result.remove(i);
+							//	i--;
+							//}
+						}
+						
+						System.out.println("Result list after loop: ");
+						
+						for(PhysicalModel models : result) {
+							System.out.println(models.getTitle());
+						}
 					
 					return result;
 				} finally {
@@ -1141,6 +1193,34 @@ public class DerbyDatabase implements IDatabase {
 						result.add(model);
 					}
 				
+
+					System.out.println("Result list before loop: ");
+					for(PhysicalModel model : result) {
+						System.out.println(model.getTitle());
+					}
+					
+					for(int i=0; i<result.size(); i++) {
+						if(i == (result.size()-1)) {
+							System.out.println("All Clean");
+						}
+						else if(result.get(i).getId() == result.get(i+1).getId()) {
+							result.remove(i);
+							i--;
+						}
+						//else if(result.get(i).getTitle().equals(result.get(i+1).getTitle())){
+						//	result.remove(i);
+						//	i--;
+						//}
+					}
+					
+					System.out.println("Result list after loop: ");
+					
+					for(PhysicalModel model : result) {
+						System.out.println(model.getTitle());
+					}
+					
+					
+					
 					// check if any models were found
 					if (!found) {
 						System.out.println("No models were found in the database");
@@ -1565,13 +1645,17 @@ public class DerbyDatabase implements IDatabase {
 						if(i == (result.size()-1)) {
 							System.out.println("All Clean");
 						}
-						else if(result.get(i).getTitle().equals(result.get(i+1).getTitle())){
+						else if(result.get(i).getId() == result.get(i+1).getId()) {
 							result.remove(i);
 							i--;
 						}
+						//else if(result.get(i).getTitle().equals(result.get(i+1).getTitle())){
+						//	result.remove(i);
+						//	i--;
+						//}
 					}
 					
-					System.out.println("Reulst list after loop: ");
+					System.out.println("Result list after loop: ");
 					
 					for(PhysicalModel model : result) {
 						System.out.println(model.getTitle());

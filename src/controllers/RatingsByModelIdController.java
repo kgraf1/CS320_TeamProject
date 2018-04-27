@@ -72,6 +72,14 @@ public class RatingsByModelIdController {
 		}
 	}
 	public List<PhysicalModel> getAllPhysicalModels(){
-		return db.getAllModels();
+		List<PhysicalModel> models = new ArrayList<PhysicalModel>();
+		models = db.getAllModels();
+		for(int i=0; i<models.size(); i++) {
+			System.out.println(models.get(i).getTitle());
+			System.out.println(models.get(i).getId());
+		}
+		return models;
+		//return db.getAllModels();
 	}
+	
 }

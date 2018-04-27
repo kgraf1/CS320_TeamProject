@@ -58,6 +58,10 @@
   	<servlet-name>HomepageServlet</servlet-name>
   	<servlet-class>servlets.HomepageServlet</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>ModelsByProfileIdServlet</servlet-name>
+  	<servlet-class>servlets.ModelsByProfileIdServlet</servlet-class>
+  </servlet>
   
   <!-- Servlet mappings -->
   <servlet-mapping>
@@ -108,4 +112,9 @@
   	<servlet-name>HomepageServlet</servlet-name>
   	<url-pattern>/homepage</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ModelsByProfileIdServlet</servlet-name>
+  	<url-pattern>/ModelsByProfileId</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

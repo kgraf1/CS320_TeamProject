@@ -30,13 +30,13 @@ public class ModelsByMaterialController {
 	
 public ArrayList<PhysicalModel> getModelByMaterialName (String material){
 		
-		//String [] split = material.split(" ");
+		String [] split = material.split(" ");
 		ArrayList <PhysicalModel> models = new ArrayList<PhysicalModel> ();
 		
-		//for(int i=0; i<split.length; i++) {
-			//material=split[i];
+		for(int i=0; i<split.length; i++) {
+			material=split[i];
 			List <PhysicalModel> modelList = db.findModelsByMaterialName(material);
-			System.out.println("ModelsByMaterial is looking for: "+material); 
+			System.out.println("ModelsByMaterial is looking for: " +material); 
 			if(modelList.isEmpty()) {
 				models=null;
 			}
@@ -50,8 +50,17 @@ public ArrayList<PhysicalModel> getModelByMaterialName (String material){
 						System.out.println(model.getTitle()+" is already in the array");
 					}
 				}
+				
+				
 			}
-		//}
+		}
+		
+		for(int i=0; i<models.size()-1; i++) {
+			if(models.get(i).getId()==models.get(i+1).getId()) {
+				models.remove(i);
+			}
+		}
+		
 		return models;
 	}
 	

@@ -33,7 +33,7 @@
 	<div>
 		<h1>${model.title}</h1>
 		</div>
-		<div><center>Written By: <button class="hiddenButton" onclick="form.action='ModelsByProfileName';" name="searchInput" value="${profile.firstName} ${profile.lastName}">${profile.firstName} ${profile.lastName}</button></center></div><br>
+		<div><center>Written By: <button class="hiddenButton" onclick="form.action='ModelsByProfileId';" name="searchInput" value="${profile.id}">${profile.firstName} ${profile.lastName}</button></center></div><br>
 
 			<div class="tab">
 			<button class="active" onclick="form.action='DisplayModel';" name="overviewModelID" value="${model.id}">Overview</button>

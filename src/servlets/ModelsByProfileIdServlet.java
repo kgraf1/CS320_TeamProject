@@ -1,3 +1,4 @@
+
 package servlets;
 
 import java.io.IOException;
@@ -9,18 +10,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.PhysicalModel;
-import controllers.ModelsByProfileNameController;
+import controllers.ModelsByProfileIdController;
 
 
-public class ModelsByProfileNameServlet extends HttpServlet{
+public class ModelsByProfileIdServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	
-	private ModelsByProfileNameController controller = new ModelsByProfileNameController();
+	private ModelsByProfileIdController controller = new ModelsByProfileIdController();
 	
 	@Override
 	protected void doGet (HttpServletRequest req, HttpServletResponse resp) 
 				throws ServletException, IOException{
-		System.out.println("\n ModelsByProfileNameServlet: doGet");
+		System.out.println("\n ModelsByProfileIdServlet: doGet");
 		
 		req.getRequestDispatcher("/_view/search.jsp").forward(req,  resp);
 			
@@ -29,21 +30,20 @@ public class ModelsByProfileNameServlet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 				throws ServletException, IOException {
-		System.out.println("\n ModelsByProfileNameServlet: doPost");
+		System.out.println("\n ModelsByProfileIdServlet: doPost");
 		
 		ArrayList<PhysicalModel> models = null;
 		String errorMessage = null;
 		String searchInput = null;
 		PhysicalModel model = null;
 		
-		controller = new ModelsByProfileNameController();
+		controller = new ModelsByProfileIdController();
 		
-		//decode from parameters and dispatch to controller
-		searchInput = req.getParameter("searchInput");
-		System.out.println("searchInput");
+		//decode from parameters and dispatch to controller	
+		Integer profileId = Integer.parseInt(req.getParameter("searchInput"));
 		
 		//get list of models returned from query
-		models = controller.getModelByProfileFirstOrLastName(searchInput);
+		models = controller.getModelsByProfileId(profileId);
 		
 		//any models found?
 		if(models == null) {
