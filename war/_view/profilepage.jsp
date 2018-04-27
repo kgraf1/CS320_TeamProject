@@ -33,11 +33,13 @@
         <div class="row">
             <!-- Left Column -->
             <div class="col left">
+            	<br>
                 <!-- Profile -->
                 <div class="card">
-                    <div class="container" style="display:inline-block;width:auto;text-align:center!important;">
+                    <div class="container" style="padding:20px;display:inline-block;width:285px;text-align:center!important;">
                         <h4>My Profile</h4>
                         <hr>
+                		<p><img src="_view/profilepicture.jpg" style="width:100px;border-radius:50px;"></p>
                         <p>${profile.firstName} ${profile.lastName}</p>
                         <p>${profile.email}</p>
                     </div>
@@ -46,7 +48,7 @@
 
                 <div class="card">
                     <div class="container">
-                    	<input type="Submit" class="button" style="width:300px;margin-top:15px;" name="SubmitModel" value="Submit Model">
+                    	<input type="Submit" class="button" style="width:240px;margin-top:15px;" name="SubmitModel" value="Submit Model">
                     </div>
                 </div>
 
@@ -79,47 +81,9 @@
 			</div>
 				
             <!-- End Middle Column -->
-
-            <!-- Right Column -->
-            <div class="col right">
-                <div class="card" style="text-align:center;">
-                    <div class="container" style="display:inline-block;width:auto;text-align:center!important;">
-                        <p>Upcoming Events:</p>
-                        <p><strong>Holiday</strong></p>
-                        <p>Friday 15:00</p>
-                        <p><button class="button" style="color:#000!important;background-color:#dfe5e8!important;width:100%;">Info</button></p>
-                    </div>
-                </div>
-                <br>
-
-                <div class="card" style="text-align:center;">
-                    <div class="container" style="display:inline-block;width:auto;text-align:center!important;">
-                        <p>Friend Request</p>
-                        <span>Jane Doe</span>
-                        <div class="row" style="opacity:0.60;">
-                            <div style="float:left;width:49.99999%">
-                                <button class="button" style="color:#000!important;background-color:#dfe5e8!important;width:90px;" title="Accept">Accept</button>
-                            </div>
-                            <div style="float:left;width:49.99999%;">
-                                <button class="button" style="color:#000!important;background-color:#dfe5e8!important;width:90px;" title="Decline">Decline</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <br>
-
-                <div class="card" style="padding-top:16px!important;padding-bottom:16px!important;text-align:center;">
-                    <p>ADS</p>
-                </div>
-                <br>
-
-                <div class="card" style="padding-top:32px!important;padding-bottom:32px!important;text-align:center;">
-                    <p><i class="fa fa-bug w3-xxlarge"></i></p>
-                </div>
-
-                <!-- End Right Column -->
+            
             </div>
-
+            
             <!-- End Grid -->
         </div>
 
