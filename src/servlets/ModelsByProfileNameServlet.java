@@ -40,7 +40,7 @@ public class ModelsByProfileNameServlet extends HttpServlet{
 		
 		//decode from parameters and dispatch to controller
 		searchInput = req.getParameter("searchInput");
-		System.out.println("searchInput");
+		System.out.println("searchInput: " + searchInput);
 		
 		//get list of models returned from query
 		models = controller.getModelByProfileFirstOrLastName(searchInput);

@@ -31,6 +31,10 @@ public class ModelsByProfileNameController {
 	public ArrayList<PhysicalModel> getModelByProfileFirstOrLastName (String name){
 		
 		String [] split = name.split(" ");
+		
+		for(int i = 0; i < split.length; i++) {
+			System.out.println(split[i]);
+		}
 		ArrayList <PhysicalModel> models = new ArrayList<PhysicalModel>();
 		
 		System.out.println("***************** In Controller ***********");

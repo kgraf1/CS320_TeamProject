@@ -45,8 +45,6 @@ public class DerbyDatabase implements IDatabase {
 	// SQL transaction function which retries the transaction MAX_ATTEMPTS times before failing
 	public<ResultType> ResultType doExecuteTransaction(Transaction<ResultType> txn) throws SQLException {
 		Connection conn = connect();
-			
-		System.out.println("In doExecuteTransaction trying to connect");
 		
 		try {
 			int numAttempts = 0;
@@ -77,15 +75,13 @@ public class DerbyDatabase implements IDatabase {
 			return result;
 		} finally {
 			DBUtil.closeQuietly(conn);
-			
-			System.out.println("doExecuteTransaction was successful");
 		}
 	}
 
 	private Connection connect() throws SQLException {
 		
 
-		Connection conn = DriverManager.getConnection("jdbc:derby:C:/Users/ktgraf/git/CS320_TeamProject/database.db;create=true");		
+		Connection conn = DriverManager.getConnection("jdbc:derby:C:/Users/katek/git/CS320_TeamProject/database.db;create=true");		
 		
 		// Set autocommit() to false to allow the execution of
 		// multiple queries/statements as part of the same transaction.
@@ -1613,16 +1609,14 @@ public class DerbyDatabase implements IDatabase {
 			@Override
 			public List<PhysicalModel> execute(Connection conn) throws SQLException {
 				PreparedStatement stmt1 = null;
-				PreparedStatement stmt2 = null;
 				ResultSet resultSet1 = null;
-				ResultSet resultSet2 = null;
 				
 				try {
 					stmt1 = conn.prepareStatement(
 							"select models.* " +
 									" from models, profiles " +
 										" where profiles.profile_id = models.profile_id " +
-											" and profiles.firstName = ? or profiles.lastName = ?"
+											" and (profiles.firstName = ? or profiles.lastName = ?)"
 					);
 					
 					stmt1.setString(1, name);
@@ -1668,9 +1662,7 @@ public class DerbyDatabase implements IDatabase {
 				}
 				finally {
 					DBUtil.closeQuietly(resultSet1);
-					DBUtil.closeQuietly(resultSet2);
 					DBUtil.closeQuietly(stmt1);
-					DBUtil.closeQuietly(stmt2);
 				}
 			}
 		});
