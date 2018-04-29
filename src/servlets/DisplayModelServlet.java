@@ -2,6 +2,7 @@ package servlets;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -52,37 +53,57 @@ public class DisplayModelServlet extends HttpServlet{
 		Boolean material = false;
 		Boolean rating = false;
 		
+		Enumeration<String> names =  req.getAttributeNames();
+		System.out.println("checking global attribute names...");
+		while(names.hasMoreElements()) {
+			System.out.println("Attribute names has: "+names.nextElement());
+		}
+		//checking to see if modelId was passedcorrectly from another servlett
+		if(req.getAttribute("modelId")!= null) {
+			id = (Integer)req.getAttribute("modelId");
+			System.out.println("Attribute modelId found! id to it");
+		}
+		else {
+			System.out.println("Attribute modelId is null");
+		}
 		
 		if(req.getParameter("modelID")!=null) {
 			id = Integer.parseInt(req.getParameter("modelID"));
+			System.out.println("modelID != null");
 		}
 		else if(req.getParameter("overviewModelID")!=null) {
 			id = Integer.parseInt(req.getParameter("overviewModelID"));
 			overview = true;
+			System.out.println("overviewmodelID != null");
 		}
 		else if (req.getParameter("engPrincipleModelID")!=null) {
 			id = Integer.parseInt(req.getParameter("engPrincipleModelID"));
 			engPrinciple = true;
+			System.out.println("engPrinciplemodelID != null");
 		}
 		else if (req.getParameter("procedureModelID")!=null) {
 			id = Integer.parseInt(req.getParameter("procedureModelID"));
 			procedure = true;
+			System.out.println("proceduremodelID != null");
 		}
 		else if (req.getParameter("applicationModelID")!=null) {
 			id = Integer.parseInt(req.getParameter("applicationModelID"));
 			app = true;
+			System.out.println("applicationmodelID != null");
 		}
 		else if (req.getParameter("materialsModelID")!=null) {
 			id = Integer.parseInt(req.getParameter("materialsModelID"));
 			material = true;
+			System.out.println("materialsmodelID != null");
 		}
 		else if (req.getParameter("ratingsModelID")!=null) {
 			id = Integer.parseInt(req.getParameter("ratingsModelID"));
 			rating = true;
+			System.out.println("ratingsmodelID != null");
 		}
 		
 		
-		
+		System.out.println("The id received from parameters is : "+id);
 	
 		db = DatabaseProvider.getInstance();
 		model = db.findModelByModelId(id);

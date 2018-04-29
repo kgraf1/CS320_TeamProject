@@ -28,7 +28,7 @@ public class AddRatingSubmissionServlet extends HttpServlet{
 		System.out.println("AddRatingSubmission Servlet: doGet");	
 		int id = Integer.parseInt(req.getParameter("modelID"));
 		savedId = id;
-		req.setAttribute("modelId",id);
+		req.setAttribute("modelID",id);
 		// call JSP to generate empty form
 		req.getRequestDispatcher("/_view/ratingSubmission.jsp").forward(req, resp);
 	}
@@ -40,24 +40,31 @@ public class AddRatingSubmissionServlet extends HttpServlet{
 		
 		
 		int id = savedId;
+		
 		int newRating = Integer.parseInt((String)req.getParameter("newrate"));
 		String newComment =(String)req.getParameter("newcomment");
 		
+		
+		
 		RatingsByModelIdController controller = new RatingsByModelIdController();
-		if(id<=-1) {
-			System.out.println("Model id was not imported properly, setting to 1");
-			id = 1;
-		}
+		//if(id<=-1 ) {
+		//	System.out.println("Model id was not imported properly, setting to 1");
+		//	id = 1;
+		//}
 				
 		boolean success = controller.addRatingByModelId(id, newRating, newComment);
 		if(success){
-			System.out.println("Servlett: Adding rating for model Id# "+id+" was successfull");
+			System.out.println("AddRatingSubmissionServlett: Adding rating for model Id# "+id+" was successfull");
 		}
 		else {
 			System.out.println("Adding the new rating for model Id #"+id+" was not successfull");
 		}
-	
-		req.getRequestDispatcher("./_view/successRating.jsp").forward(req, resp);
+		req.setAttribute("modelId", id);
+		req.setAttribute("modelID", id);
+		req.setAttribute("overviewModelID", id);
+		//req.getRequestDispatcher("/_view/model.jsp").forward(req, resp);
+		req.getRequestDispatcher("DisplayModel").forward(req, resp);
+		
 	}
 
 }

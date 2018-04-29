@@ -12,7 +12,7 @@
 	<div class="topnav">
   		<div class = "title"> Engineering Models </div>
   
-  		<a href="${pageContext.servletContext.contextPath}/_view/homepage.jsp">Home</a>
+  		<a href="${pageContext.servletContext.contextPath}/homepage">Home</a>
   
   		<a href="${pageContext.servletContext.contextPath}/profilePage">Profile</a>
 
@@ -21,7 +21,7 @@
 	</div>
 	
 	 <form action="${pageContext.servletContext.contextPath}/addRatingSubmission" method="post">
-	 	<p>The model this rating will be added to is ${modelId}</p>
+	 	<p>The model this rating will be added to is ${modelID}</p>
 		<br>
 		<div class="materialList" style="border: 2px solid gray">
 			<h3>Add a new Rating!</h3>

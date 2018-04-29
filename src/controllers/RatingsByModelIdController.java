@@ -60,7 +60,7 @@ public class RatingsByModelIdController {
 		return average;
 	}
 	public boolean addRatingByModelId(int modelId, int rate, String comment) {
-		System.out.println("Attempting to insert a new Rating");
+		System.out.println("Attempting to insert a new Rating for modelId: "+modelId);
 		int rateId =db.insertRatingIntoRatingTable(modelId, rate, comment);
 		if(rateId !=-1) {
 			System.out.println("Rating for model #"+modelId+" added successfully");
