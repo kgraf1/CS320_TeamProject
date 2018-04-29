@@ -34,7 +34,7 @@ private IDatabase db = null;
 		RatingsByModelIdController rcontroller = new RatingsByModelIdController();
 		models = rcontroller.getAllPhysicalModels();
 		PhysicalModel model = null;
-		req.setAttribute("number", models.size());
+		//req.setAttribute("number", models.size());
 		for(int i = 0; i<models.size();i++) {
 			/*check for models that have an average rating above a 2.5
 			 * if so add to results
@@ -44,7 +44,7 @@ private IDatabase db = null;
 				results.add(models.get(i));
 			}
 		}
-		req.setAttribute("result", results.size());
+		//req.setAttribute("result", results.size());
 		
 		/* Now we check if the number of results is too high
 		 * If it is we trim them down. 
@@ -78,7 +78,7 @@ private IDatabase db = null;
 		else {
 			model = models.get(0);
 		}
-		req.setAttribute("resulttrim", models.size());
+		//req.setAttribute("resulttrim", models.size());
 		req.setAttribute("errorMessage", errorMessage);
 		req.setAttribute("model", model);
 		req.setAttribute("models", models);
