@@ -60,7 +60,7 @@ public class LoginServlet extends HttpServlet {
 				validLogin = true;
 				errorMessage = null;
 				req.getSession().setAttribute("username", username);
-				resp.sendRedirect(req.getContextPath() + "/_view/homepage.jsp");
+				resp.sendRedirect(req.getContextPath() + "/homepage");
 			}
 			else {
 				errorMessage="Invalid Login, please try again";
