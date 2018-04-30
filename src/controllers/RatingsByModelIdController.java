@@ -2,6 +2,7 @@ package controllers;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.math.BigDecimal;
 
 import model.PhysicalModel;
 import model.Rating;
@@ -52,9 +53,12 @@ public class RatingsByModelIdController {
 			double total =0;
 			
 			for( Rating rating:ratingList) {
+				
 				total += rating.getRate();
 			}
 			average = total/ratingList.size();
+			double scale = Math.pow(10, 2);
+			average = Math.round(average * scale)/scale;
 			System.out.println("Model id# "+modelId+" has an average rating of: "+average);
 		}
 		return average;
