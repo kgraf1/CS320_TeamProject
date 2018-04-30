@@ -50,13 +50,13 @@
             <textarea id="description" name="description" placeholder="Description of your model..." style="height:200px" value="${description}"></textarea>
             
             <label for="thumbnail">Thumbnail</label>
-            <textarea id="thumbnail" name="thumbnail" placeholder="Thumbnail of your model..." style="height:200px" value="{thumbnail}"></textarea>
+            <textarea id="thumbnail" name="thumbnail" placeholder="Thumbnail of your model..." style="height:200px" value="${thumbnail}"></textarea>
 
             <label for="ePrinciple">Engineering Principle</label>
-            <textarea id="ePrinciple" name="ePrinciple" placeholder="Principle of your model..." style="height:200px" value="{engPrinciple}"></textarea>
+            <textarea id="engPrinciple" name="engPrinciple" placeholder="Principle of your model..." style="height:200px" value="${engPrinciple}"></textarea>
             
             <label for="procedure">Procedure</label>
-            <textarea id="procedure" name="procedure" placeholder="Procedure to build your model..." style="height:200px" value="{procedure}"></textarea>
+            <textarea id="procedure" name="procedure" placeholder="Procedure to build your model..." style="height:200px" value="${procedure}"></textarea>
 
 			<label for="keywords" style="margin-left: 100px;">Keywords</label>
 			
