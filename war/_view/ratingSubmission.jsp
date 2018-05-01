@@ -21,7 +21,7 @@
 	</div>
 	
 	 <form action="${pageContext.servletContext.contextPath}/addRatingSubmission" method="post">
-	 	<p>The model this rating will be added to is ${modelID}</p>
+	 	
 		<br>
 		<div class="materialList" style="border: 2px solid gray">
 			<h3>Add a new Rating!</h3>

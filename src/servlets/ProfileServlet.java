@@ -50,6 +50,9 @@ public class ProfileServlet extends HttpServlet {
 		
 		if(req.getParameter("SubmitModel") != null) {
 			resp.sendRedirect(req.getContextPath() + "/addModelSubmission");
+		}
+		if(req.getParameter("logout") != null) {
+			resp.sendRedirect(req.getContextPath() + "/login");
 		}	
 	}
 }
