@@ -120,6 +120,8 @@ public class DerbyDatabase implements IDatabase {
 		material.setQuantity(resultSet.getString(index++));
 		material.setName(resultSet.getString(index++));
 		material.setDescription(resultSet.getString(index++));
+		material.setCost(resultSet.getString(index++));
+		material.setBuildTime(resultSet.getString(index++));
 	}
 	
 	//retrieves Rating information from query result set
@@ -217,7 +219,9 @@ public class DerbyDatabase implements IDatabase {
 							"	material_model_id integer constraint material_model_id references models," +
 							"	quantity float," +
 							"   name varchar(50)," +
-							"   description varchar(100)" + 
+							"   description varchar(100)," + 
+							"   cost varchar(50)," +
+							"   buildTime varchar(50)" +
 							")"
 					);
 					stmt3.executeUpdate();					
@@ -571,14 +575,16 @@ public class DerbyDatabase implements IDatabase {
 					
 						//insert model into database
 						stmt2 = conn.prepareStatement(
-								"insert into materials(material_model_id, quantity, name, description)" +
-							    " values(?, ?, ?, ?)"
+								"insert into materials(material_model_id, quantity, name, description, cost, buildTime)" +
+							    " values(?, ?, ?, ?, ?, ?)"
 								);
 					
 						stmt2.setInt(1, modelId);
 						stmt2.setString(2, quantity);
 						stmt2.setString(3, name);
 						stmt2.setString(4, description);
+						stmt2.setString(5, cost);
+						stmt2.setString(6, buildTime);
 						
 					
 						//execute query

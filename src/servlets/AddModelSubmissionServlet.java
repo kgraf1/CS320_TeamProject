@@ -144,6 +144,10 @@ public class AddModelSubmissionServlet extends HttpServlet {
 			materials.add(material9);
 			materials.add(material10);
 			
+			
+			
+			
+			
 			//get keywords
 			List<String> keywords = new ArrayList<> ();
 			keywords.add(req.getParameter("keyword1"));
