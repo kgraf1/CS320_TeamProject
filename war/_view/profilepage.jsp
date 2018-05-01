@@ -42,6 +42,7 @@
                 		<p><img src="_view/profilepicture.jpg" style="width:100px;border-radius:50px;"></p>
                         <p>${profile.firstName} ${profile.lastName}</p>
                         <p>${profile.email}</p>
+                        
                         <td><input type="submit" name="logout" value="Log Out"/></td>
                     </div>
                 </div>
