@@ -26,6 +26,7 @@
 	</div>
     
     <!-- Page Container --> 
+    <h1>Profile Options:</h1>
     
 </body>
 </html>

@@ -54,5 +54,8 @@ public class ProfileServlet extends HttpServlet {
 		if(req.getParameter("logout") != null) {
 			resp.sendRedirect(req.getContextPath() + "/login");
 		}	
+		if(req.getParameter("options") != null) {
+			resp.sendRedirect(req.getContextPath() + "/ProfileOptions");
+		}	
 	}
 }

@@ -43,7 +43,8 @@
                         <p>${profile.firstName} ${profile.lastName}</p>
                         <p>${profile.email}</p>
                         
-                        <td><input type="submit" name="logout" value="Log Out"/></td>
+                        <td><input type="submit" class="button" name="logout" value="Log Out"/></td>
+                        <td><input type="submit" class="button" name="options" value="Options"/></td>
                     </div>
                 </div>
                 <br>
