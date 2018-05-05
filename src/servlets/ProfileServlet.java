@@ -57,7 +57,7 @@ public class ProfileServlet extends HttpServlet {
 			resp.sendRedirect(req.getContextPath() + "/login");
 		}	
 		if(req.getParameter("options") != null) {
-			resp.sendRedirect(req.getContextPath() + "/ProfileOptions");
+			req.getRequestDispatcher("/_view/profileoptions.jsp").forward(req, resp);
 		}	
 	}
 }

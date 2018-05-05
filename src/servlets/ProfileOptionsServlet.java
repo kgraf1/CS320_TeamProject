@@ -44,15 +44,19 @@ public class ProfileOptionsServlet extends HttpServlet {
 		ProfileOptionsController controller = new ProfileOptionsController();
 		
 		profileId = 0;
+		String newusername = req.getParameter("newusername");
+		String newpassword = req.getParameter("newpassword");
+		System.out.println("New username is: '"+newusername+"'");
+		System.out.println("New password is: '"+newpassword+"'");
 		
-		if(req.getParameter("newusername") != null) {
+		if(!newusername.equals(null) && !newusername.equals("") ) {
 			System.out.println("Changing Username!");
-			controller.changeUsername(profileId, req.getParameter("newusername"));
+			controller.changeUsername(profileId, newusername);
 			
 		}	
-		if(req.getParameter("newpassword") != null) {
+		if(!newpassword.equals(null) && !newpassword.equals("")) {
 			System.out.println("Changing Password!");
-			controller.changePassword(profileId, req.getParameter("newpassword"));
+			controller.changePassword(profileId, newpassword);
 			
 		}	
 		req.getRequestDispatcher("/_view/profilepage.jsp").forward(req, resp);
