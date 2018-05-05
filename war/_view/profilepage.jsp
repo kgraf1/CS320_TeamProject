@@ -45,6 +45,8 @@
                         
                         <td><input type="submit" class="button" name="logout" value="Log Out"/></td>
                         <td><input type="submit" class="button" name="options" value="Options"/></td>
+                        <!-- <button  class="hiddenButton" onclick="form.action='ProfileOptions';" name="profileId" value="${profileId}"> Options</button><br>
+                    	-->
                     </div>
                 </div>
                 <br>

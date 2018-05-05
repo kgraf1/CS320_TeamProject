@@ -47,8 +47,8 @@ public class ProfileServlet extends HttpServlet {
 				throws ServletException, IOException{
 		
 		System.out.println("\n	ProfileServlet: doPost");
+		//req.setAttribute("profileId", profileId);
 		
-		req.setAttribute("profileId", profileId);
 		
 		if(req.getParameter("SubmitModel") != null) {
 			resp.sendRedirect(req.getContextPath() + "/addModelSubmission");
@@ -57,7 +57,10 @@ public class ProfileServlet extends HttpServlet {
 			resp.sendRedirect(req.getContextPath() + "/login");
 		}	
 		if(req.getParameter("options") != null) {
-			req.getRequestDispatcher("/_view/profileoptions.jsp").forward(req, resp);
+			req.setAttribute("profileId", profileId);
+			resp.sendRedirect(req.getContextPath() + "/ProfileOptions");
+			//req.getRequestDispatcher("/_view/profileoptions.jsp").forward(req, resp);
+			//req.getRequestDispatcher("ProfileOptions").forward(req, resp);
 		}	
 	}
 }
