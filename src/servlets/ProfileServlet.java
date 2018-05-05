@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class ProfileServlet extends HttpServlet {
-
+	int profileId;
 	private static final long serialVersionUID = 1L;
 	
 	@Override 
@@ -28,7 +28,7 @@ public class ProfileServlet extends HttpServlet {
 		ProfileController controller = new ProfileController();
 		
 		String username = (String)req.getSession().getAttribute("username");
-		int profileId = controller.getProfileIdByUsername(username);
+		profileId = controller.getProfileIdByUsername(username);
 		
 		models = controller.getModels(profileId);
 		Profile profile = controller.getProfile(profileId);
@@ -47,6 +47,8 @@ public class ProfileServlet extends HttpServlet {
 				throws ServletException, IOException{
 		
 		System.out.println("\n	ProfileServlet: doPost");
+		
+		req.setAttribute("profileId", profileId);
 		
 		if(req.getParameter("SubmitModel") != null) {
 			resp.sendRedirect(req.getContextPath() + "/addModelSubmission");

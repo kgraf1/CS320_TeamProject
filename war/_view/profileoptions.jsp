@@ -26,7 +26,25 @@
 	</div>
     
     <!-- Page Container --> 
-    <h1>Profile Options:</h1>
+    <h1>Profile Options</h1>
+    
+    <form action="${pageContext.servletContext.contextPath}/ProfileOptions" method="post">
+    <div style="border:2px solid gray">
+				<h3>Change Username:</h3>
+				<textarea id="newusername" name="newusername" placeholder="New Username" style="height:100px;width:250px;" value="${newusername}"></textarea>
+				
+	</div>
+	<br>
+	<div style="border:2px solid gray">
+				<h3>Change Password:</h3>
+				<textarea id="newpassword" name="newpassword" placeholder="New Password" style="height:100px;width:250px;" value="${newpassword}"></textarea>
+				
+	</div>
+	<br>
+	<div style="border:2px solid gray">
+		<input type="Submit" class="button" name="submitchanges" value="Submit Changes"/>
+	</div>
+    </form>
     
 </body>
 </html>
