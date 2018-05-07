@@ -81,7 +81,7 @@ public class DerbyDatabase implements IDatabase {
 	private Connection connect() throws SQLException {
 		
 
-		Connection conn = DriverManager.getConnection("jdbc:derby:C:/Users/ktgraf/git/CS320_TeamProject/database.db;create=true");		
+		Connection conn = DriverManager.getConnection("jdbc:derby:C:/Users/Jason/git/CS320_TeamProject/database.db;create=true");		
 		
 		// Set autocommit() to false to allow the execution of
 		// multiple queries/statements as part of the same transaction.
@@ -189,7 +189,7 @@ public class DerbyDatabase implements IDatabase {
 							"   firstName varchar(50)," +
 							"   lastName varchar(50)," + 
 							"   email varchar(50)," +
-							"	profileImage varchar (50)" +
+							"	profileImage varchar (1000)" +
 							")"
 					);
 					stmt1.executeUpdate();
@@ -1619,6 +1619,8 @@ public class DerbyDatabase implements IDatabase {
 					);
 					stmt1.setInt(1, profileId);
 					
+					System.out.println("Finished first query");
+					
 					//execute the query
 					resultSet1 = stmt1.executeQuery();
 							
@@ -1629,14 +1631,18 @@ public class DerbyDatabase implements IDatabase {
 						System.out.println("There is no profile with this id");
 					}
 					else {
+						
 						stmt2 = conn.prepareStatement(
 						"update profiles "+
-							" set profileImage = '?' " +
+							" set profileImage = '" + profileImage+ "' " +
 								" where profile_id = ? "
 						);	
-						stmt2.setString(1, profileImage);
-						stmt2.setInt(2, profileId);
+						//stmt2.setString(1, profileImage);
+						stmt2.setInt(1, profileId);
 						stmt2.executeUpdate();
+						
+						System.out.println("finished second query");
+						
 						
 						stmt3 = conn.prepareStatement(
 							"select * from profiles " +
@@ -1645,10 +1651,19 @@ public class DerbyDatabase implements IDatabase {
 						
 						stmt3.setInt(1, profileId);
 						resultSet2 = stmt3.executeQuery();
+						
+						System.out.println("finished third query");
 	
 						while(resultSet2.next()) {
+							
+							
+							
 							profile = new Profile ();
 							loadProfile(profile, resultSet2, 1);
+							
+							System.out.println(profile.getId());
+							System.out.println(profile.getProfileImage());
+							
 							return profile;
 						}
 					}

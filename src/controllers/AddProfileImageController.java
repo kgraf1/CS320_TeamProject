@@ -26,15 +26,15 @@ public class AddProfileImageController {
 		profile = db.addProfileImage(profileId, profileImage);
 		
 		// check if the insertion succeeded
-		if (profile == null)
+		if (profile != null)
 		{
-			System.out.println("New profile image (ID: " +  profileId + ") successfully added to Application table.");
+			System.out.println("New profile image (ID: " +  profileId + ") successfully added to profiles table.");
 			
 			return true;
 		}
 		else
 		{			
-			System.out.println("Failed to insert new profile image (ID: " + profileId + ") into Application table: id = -1");
+			System.out.println("Failed to insert new profile image (ID: " + profileId + ") into profiles table: id = -1");
 			
 			return false;
 		}

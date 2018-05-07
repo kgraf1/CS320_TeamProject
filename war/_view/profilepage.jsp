@@ -24,6 +24,10 @@
     
     <!-- Page Container -->   	
    	
+   
+ 						
+ 	
+   	
     <form action="${pageContext.servletContext.contextPath}/profilePage" method="post">
  
     <div class="container content" style="max-width:1400px;margin-top:80px">
@@ -40,18 +44,21 @@
                 		<p><img src="${profile.profileImage}" style="width:100px;border-radius:50px;"></p>
                         <p>${profile.firstName} ${profile.lastName}</p>
                         <p>${profile.email}</p>
- 						<button class="hiddenButton" value="${profile.id}" name="profileId" onclick="document.forms[0].action = '${pageContext.servletContext.contextPath}/_view/profileImage.jsp';">Add New Profile Picture</button>
- 
- 						<br>    
+          
+						<button class="hiddenButton" value="${profile.id}" name="profileId" onclick="form.action='redirect';">Add New Profile Picture</button> 						<br>    
                         <div style="padding-top:20px;" ><input type="submit" name="logout" value="Log Out"/></div>
+                        
                     </div>
+                   
                 </div>
+                
                 <br>
 
                 <div class="card">
                     <div class="container">
                     	<input type="Submit" class="button" style="width:220px;margin-top:15px;" name="SubmitModel" value="Submit Model">
                     </div>
+                    
                 </div>
 				
                 <!-- End Left Column -->

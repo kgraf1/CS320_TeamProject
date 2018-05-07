@@ -23,10 +23,11 @@
 	</div>
 	
 	<div style="padding-top:100px; ">
-	<form action="${pageContext.servletContext.contextPath}/addProfileImage" method="post">
+	<form action="${pageContext.servletContext.contextPath}/addProfileImage" method="get">
 		<div class="card" style="width:50%; margin:auto;">
 		<div class="container" style="padding:20px;width:500px;text-align:center!important; margin:auto;" >
 			<h3>Add a new Profile Picture</h3>
+			<input type="hidden" name="profileId" value="${profileId}">
 			<input type="text" name="profileImage" placeholder="Enter Image Address Here...">
 			<input type="submit" name="submitImage">
 		</div>

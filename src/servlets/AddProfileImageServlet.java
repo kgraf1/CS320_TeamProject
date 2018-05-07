@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 import java.util.ArrayList;
-
+import java.util.Enumeration;
 
 import controllers.AddProfileImageController;
 import model.Category;
@@ -22,17 +22,35 @@ public class AddProfileImageServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		
+		Enumeration<String> names =  req.getAttributeNames();
+		System.out.println("checking global attribute names...");
+		while(names.hasMoreElements()) {
+			System.out.println("Attribute names has: "+names.nextElement());
+		}
+		
 		profileId = Integer.parseInt(req.getParameter("profileId"));
 		System.out.println(profileId);
 
 		System.out.println("AddProfileImage Servlet: doGet");
-		req.getRequestDispatcher("/_view/profileImage.jsp").forward(req, resp);
+		doPost(req, resp);
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		System.out.println("AddProfileImage Servlet: doPost");
-	
+		
+		//Enumeration<String> names =  req.getAttributeNames();
+		//System.out.println("checking global attribute names...");
+		//while(names.hasMoreElements()) {
+			//System.out.println("Attribute names has: "+names.nextElement());
+		//}
+		
+		//profileId = Integer.parseInt(req.getParameter("profileId"));
+		//System.out.println(profileId);
+		
+		//int id = (int)req.getAttribute("profileId");
+		
+		
 		String profileImage =req.getParameter("profileImage");
 			
 		AddProfileImageController controller = new AddProfileImageController();
@@ -40,10 +58,10 @@ public class AddProfileImageServlet extends HttpServlet{
 				
 		boolean success = controller.create(profileId, profileImage);
 		if(success){
-			System.out.println("AddProfileImageServlet: Adding image for profile Id# "+profileId+" was successful");
+			System.out.println("AddProfileImageServlet: Adding image for profile Id# "+ profileId +" was successful");
 		}
 		else {
-			System.out.println("Adding the new image for profile Id #"+profileId+" was not successful");
+			System.out.println("Adding the new image for profile Id #"+ profileId +" was not successful");
 		}
 		req.setAttribute("profileId", profileId);
 		req.getRequestDispatcher("profilePage").forward(req, resp);

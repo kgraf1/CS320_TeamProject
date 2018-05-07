@@ -66,6 +66,10 @@
   	<servlet-name>AddProfileImageServlet</servlet-name>
   	<servlet-class>servlets.AddProfileImageServlet</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>redirectToAddImageServlet</servlet-name>
+  	<servlet-class>servlets.redirectToAddImageServlet</servlet-class>
+  </servlet>
   
   <!-- Servlet mappings -->
   <servlet-mapping>
@@ -123,6 +127,10 @@
   <servlet-mapping>
   	<servlet-name>AddProfileImageServlet</servlet-name>
   	<url-pattern>/addProfileImage</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>redirectToAddImageServlet</servlet-name>
+  	<url-pattern>/redirect</url-pattern>
   </servlet-mapping>
   
 </web-app>
