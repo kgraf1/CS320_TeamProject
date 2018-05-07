@@ -8,13 +8,11 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 
-
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/_view/profilepage.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/_view/homepageStyle.css">
 <!-- import the homepage css for navigation bar-->
-<style>
-   
-</style>
+
+
 <body>
     <!-- Top Navigation -->
     <div class="topnav">
@@ -36,21 +34,23 @@
             	<br>
                 <!-- Profile -->
                 <div class="card">
-                    <div class="container" style="padding:20px;display:inline-block;width:285px;text-align:center!important;">
+                    <div class="container" style="padding:20px;display:inline-block;width:250px;text-align:center!important;">
                         <h4>My Profile</h4>
                         <hr>
-                		<p><img src="_view/profilepicture.jpg" style="width:100px;border-radius:50px;"></p>
+                		<p><img src="${profile.profileImage}" style="width:100px;border-radius:50px;"></p>
                         <p>${profile.firstName} ${profile.lastName}</p>
                         <p>${profile.email}</p>
-                        
-                        <td><input type="submit" name="logout" value="Log Out"/></td>
+ 						<button class="hiddenButton" value="${profile.id}" name="profileId" onclick="document.forms[0].action = '${pageContext.servletContext.contextPath}/_view/profileImage.jsp';">Add New Profile Picture</button>
+ 
+ 						<br>    
+                        <div style="padding-top:20px;" ><input type="submit" name="logout" value="Log Out"/></div>
                     </div>
                 </div>
                 <br>
 
                 <div class="card">
                     <div class="container">
-                    	<input type="Submit" class="button" style="width:240px;margin-top:15px;" name="SubmitModel" value="Submit Model">
+                    	<input type="Submit" class="button" style="width:220px;margin-top:15px;" name="SubmitModel" value="Submit Model">
                     </div>
                 </div>
 				
@@ -61,7 +61,7 @@
             <div class="col middle">
 
 				<c:if test="${empty models}">
-			    	<div class="container card" style="margin:16px!important; width:757px">
+			    	<div class="container card" style="margin:16px!important; width:720px">
 			    		<br>
                     	<h4 style="text-align:center;"> You do not have any models. </h4><br>
 			    	</div>
@@ -69,14 +69,14 @@
 			    
 			  
 				<c:forEach items="${models}" var="model">
-		        	<div class="container card" style="margin:16px!important; width:757px">
+		        	<div class="container card" style="margin:16px!important; width:720px">
                 		<br>
                 		<h4 style="text-align:center;"> ${model.title} </h4><br>
                 		<hr class="clear">
                 		<p style="font-weight:bold;">Model Description:</p> <p> ${model.description} </p>
                 		<div style="margin:0 -16px;padding:0 8px;">
                 		</div>
-                		<button class="button" onclick="form.action='DisplayModel';" style:"width:150px;" name="modelID" value="${model.id}">See more!</button>
+                		<button class="button" onclick="form.action='DisplayModel';" style:"width:140px;" name="modelID" value="${model.id}">See more!</button>
             		</div>
 		    	</c:forEach>
 			   

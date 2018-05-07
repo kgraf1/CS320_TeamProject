@@ -111,6 +111,7 @@ public class DerbyDatabase implements IDatabase {
 		profile.setFirstName(resultSet.getString(index++));
 		profile.setLastName(resultSet.getString(index++));
 		profile.setEmail(resultSet.getString(index++));
+		profile.setProfileImage(resultSet.getString(index++));
 	}
 	
 	//retrieves Material information from query result set
@@ -187,7 +188,8 @@ public class DerbyDatabase implements IDatabase {
 							"	password varchar(15)," +
 							"   firstName varchar(50)," +
 							"   lastName varchar(50)," + 
-							"   email varchar(50)" +
+							"   email varchar(50)," +
+							"	profileImage varchar (50)" +
 							")"
 					);
 					stmt1.executeUpdate();
@@ -316,13 +318,14 @@ public class DerbyDatabase implements IDatabase {
 
 				try {
 					// must completely populate Profile table before the models table
-					insertProfile = conn.prepareStatement("insert into profiles (username, password, firstName, lastName, email) values (?, ?, ?, ?, ?)");
+					insertProfile = conn.prepareStatement("insert into profiles (username, password, firstName, lastName, email, profileImage) values (?, ?, ?, ?, ?, ?)");
 					for (Profile profile : profileList) {
 						insertProfile.setString(1, profile.getUsername());
 						insertProfile.setString(2, profile.getPassword());
 						insertProfile.setString(3, profile.getFirstName());
 						insertProfile.setString(4, profile.getLastName());
 						insertProfile.setString(5, profile.getEmail());
+						insertProfile.setString(6, profile.getProfileImage());
 						insertProfile.addBatch();
 					}
 		
@@ -708,6 +711,7 @@ public class DerbyDatabase implements IDatabase {
 						result.setFirstName(resultSet.getString(4));
 						result.setLastName(resultSet.getString(5));
 						result.setEmail(resultSet.getString(6));
+						result.setProfileImage(resultSet.getString(7));
 					}
 					else {
 						System.out.println("No profile with id "+ profileId +" found");
@@ -873,10 +877,6 @@ public class DerbyDatabase implements IDatabase {
 							result.remove(i);
 							i--;
 						}
-						//else if(result.get(i).getTitle().equals(result.get(i+1).getTitle())){
-						//	result.remove(i);
-						//	i--;
-						//}
 					}
 					
 					System.out.println("Result list after loop: ");
@@ -946,10 +946,6 @@ public class DerbyDatabase implements IDatabase {
 								result.remove(i);
 								i--;
 							}
-							//else if(result.get(i).getTitle().equals(result.get(i+1).getTitle())){
-							//	result.remove(i);
-							//	i--;
-							//}
 						}
 						
 						System.out.println("Result list after loop: ");
@@ -1211,10 +1207,6 @@ public class DerbyDatabase implements IDatabase {
 							result.remove(i);
 							i--;
 						}
-						//else if(result.get(i).getTitle().equals(result.get(i+1).getTitle())){
-						//	result.remove(i);
-						//	i--;
-						//}
 					}
 					
 					System.out.println("Result list after loop: ");
@@ -1522,7 +1514,7 @@ public class DerbyDatabase implements IDatabase {
 
 	@Override
 	public int insertProfileIntoProfileTable(final String firstName, final String lastName, final String username, final String email,
-			final String password) {
+			final String password, final String profileImage) {
 		return executeTransaction (new Transaction <Integer>() {
 			@Override
 			public Integer execute(Connection conn)throws SQLException {
@@ -1560,14 +1552,15 @@ public class DerbyDatabase implements IDatabase {
 						//insert new profile into profile table
 						//prepare SQL insert statement to add new rating to rating table
 						stmt2 = conn.prepareStatement(
-								"insert into profiles (username, password, firstName, lastName, email) " +
-										" values(?, ?, ?, ?, ?) "
+								"insert into profiles (username, password, firstName, lastName, email, profileImage) " +
+										" values(?, ?, ?, ?, ?, ?) "
 						);
 						stmt2.setString(1, username);
 						stmt2.setString(2, password);
 						stmt2.setString(3, firstName);
 						stmt2.setString(4,  lastName);
 						stmt2.setString(5, email);
+						stmt2.setString(6, profileImage);
 					
 						//execute the update
 						stmt2.executeUpdate();
@@ -1608,6 +1601,67 @@ public class DerbyDatabase implements IDatabase {
 		});
 	}
 	
+	@Override
+	public Profile addProfileImage (final int profileId, final String profileImage) {
+		return executeTransaction (new Transaction <Profile> () {
+			@Override
+			public Profile execute (Connection conn) throws SQLException {
+				PreparedStatement stmt1 = null;
+				PreparedStatement stmt2 = null;
+				PreparedStatement stmt3 = null;
+				ResultSet resultSet1 = null;
+				ResultSet resultSet2 = null;
+				
+				try {
+					stmt1 = conn.prepareStatement(
+							"select * from profiles " +
+							" where profile_id = ?"
+					);
+					stmt1.setInt(1, profileId);
+					
+					//execute the query
+					resultSet1 = stmt1.executeQuery();
+							
+					Profile profile = null;
+					
+					//return the result
+					if(!resultSet1.next()) {
+						System.out.println("There is no profile with this id");
+					}
+					else {
+						stmt2 = conn.prepareStatement(
+						"update profiles "+
+							" set profileImage = '?' " +
+								" where profile_id = ? "
+						);	
+						stmt2.setString(1, profileImage);
+						stmt2.setInt(2, profileId);
+						stmt2.executeUpdate();
+						
+						stmt3 = conn.prepareStatement(
+							"select * from profiles " +
+								" where profile_id= ?"
+						);
+						
+						stmt3.setInt(1, profileId);
+						resultSet2 = stmt3.executeQuery();
+	
+						while(resultSet2.next()) {
+							profile = new Profile ();
+							loadProfile(profile, resultSet2, 1);
+							return profile;
+						}
+					}
+					
+					return profile;
+				}
+				finally {
+					DBUtil.closeQuietly(resultSet1);
+					DBUtil.closeQuietly(stmt1);
+				}
+			}
+		});
+	}
 	
 	@Override
 	public List<PhysicalModel> findModelsByProfileFirstOrLastName(final String name) {
@@ -1711,6 +1765,6 @@ public class DerbyDatabase implements IDatabase {
 		});
 	}	
 	//end of Kaitlyn's methods
-
+	
 	
 }

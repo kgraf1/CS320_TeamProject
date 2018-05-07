@@ -31,11 +31,11 @@ public interface IDatabase {
 	public int insertKeywordIntoKeywordTable(int modelId, String word);
 	public int insertApplicationIntoApplicationTable(int modelId, String beforeClass, String beforeImage,
 			String duringClass, String duringImage);
-	public int insertProfileIntoProfileTable(String firstName, String lastName, String username, String email, String password);
+	public int insertProfileIntoProfileTable(String firstName, String lastName, String username, String email, String password, String profileImage);
 	public int insertRatingIntoRatingTable(int modelId, int rate, String comment);
 	public List<Profile> getAllProfiles();
 	public List<PhysicalModel> getAllModels();
-	
+	public Profile addProfileImage (int profileId, String profileImage);
 	
 	//getting other model information 
 	public List<Keyword> findKeywordsByModelId(int modelId);

@@ -67,10 +67,6 @@ public class DerbyDatabaseTest {
 			fail("No models were found by that user");
 		}
 		else {
-			System.out.println(models.size());
-			System.out.println(models.get(0).getTitle());
-			System.out.println(models.get(1).getTitle());
-			System.out.println(models.get(2).getTitle());
 			
 			assertTrue(models.size() >=1);
 			assertTrue(models.get(0).getTitle().equals("How bout those spinny thingys"));
@@ -365,8 +361,9 @@ public class DerbyDatabaseTest {
 		String username = "testUser";
 		String password = "testingNow";
 		String email = "email@gmail.com";
+		String profileImage = "www.image.com";
 		
-		int profile_id = db.insertProfileIntoProfileTable(firstName, lastName, username, email, password);
+		int profile_id = db.insertProfileIntoProfileTable(firstName, lastName, username, email, password, profileImage);
 		
 		System.out.println(profile_id);
 		

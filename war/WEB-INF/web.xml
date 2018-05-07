@@ -62,6 +62,10 @@
   	<servlet-name>ModelsByProfileIdServlet</servlet-name>
   	<servlet-class>servlets.ModelsByProfileIdServlet</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>AddProfileImageServlet</servlet-name>
+  	<servlet-class>servlets.AddProfileImageServlet</servlet-class>
+  </servlet>
   
   <!-- Servlet mappings -->
   <servlet-mapping>
@@ -115,6 +119,10 @@
   <servlet-mapping>
   	<servlet-name>ModelsByProfileIdServlet</servlet-name>
   	<url-pattern>/ModelsByProfileId</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>AddProfileImageServlet</servlet-name>
+  	<url-pattern>/addProfileImage</url-pattern>
   </servlet-mapping>
   
 </web-app>

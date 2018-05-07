@@ -57,7 +57,9 @@ public class LoginController {
 		System.out.println("Attempting to insert into database");
 		
 		//insert profile into DB
-		id = db.insertProfileIntoProfileTable(firstName, lastName, username, email, password);
+		String profileImage = "_view/profilepicture.jpg";
+		
+		id = db.insertProfileIntoProfileTable(firstName, lastName, username, email, password, profileImage);
 		//check if insertion succeeded 
 		if(id!=-1) {
 			System.out.println("New profile (ID: " + id + ") successfully added to Profile table.");

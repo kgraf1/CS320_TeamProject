@@ -23,7 +23,7 @@ public class ProfileTest {
 	public void testProfile() {
 		List<Integer> modelList = new ArrayList<Integer> ();
 		profile = new Profile(3, "username", "password", "firstName", "lastName",
-				"email");
+				"email", "_view/profilepicture.jpg");
 		
 		assertTrue(profile.getId() == 3);
 		assertTrue(profile.getUsername().compareTo("username") == 0);
