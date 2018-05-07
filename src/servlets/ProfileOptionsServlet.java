@@ -69,6 +69,6 @@ public class ProfileOptionsServlet extends HttpServlet {
 			controller.changePassword(profileId, newpassword);
 			
 		}	
-		req.getRequestDispatcher("/_view/profilepage.jsp").forward(req, resp);
+		resp.sendRedirect(req.getContextPath() + "/profilePage");
 	}
 }

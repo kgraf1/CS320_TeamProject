@@ -347,8 +347,47 @@ public class FakeDatabase implements IDatabase {
 		
 		return -1;
 	}
+	
 	@Override
 	public List<PhysicalModel> getAllModels(){
 		return physicalModels;
+	}
+	
+	@Override
+	public int changePassword(int profileId, String newPassword) {
+		
+		Profile theProfile = null;
+		
+		for(Profile curProfile : profiles) {
+			if(curProfile.getId() == profileId) {
+				theProfile = curProfile;
+				break;
+			}
+		}
+		
+		if(theProfile != null) {
+			theProfile.setPassword(newPassword);
+			return 0;
+		}
+		return 1;
+	}
+	
+	@Override
+	public int changeUsername(int profileId, String newUsername) {
+		
+		Profile theProfile = null;
+		
+		for(Profile curProfile : profiles) {
+			if(curProfile.getId() == profileId) {
+				theProfile = curProfile;
+				break;
+			}
+		}
+		
+		if(theProfile != null) {
+			theProfile.setUsername(newUsername);
+			return 0;
+		}
+		return 1;
 	}
 }

@@ -81,7 +81,7 @@ public class DerbyDatabase implements IDatabase {
 	private Connection connect() throws SQLException {
 		
 
-		Connection conn = DriverManager.getConnection("jdbc:derby:C:/Users/ktgraf/git/CS320_TeamProject/database.db;create=true");		
+		Connection conn = DriverManager.getConnection("jdbc:derby:C:/Users/katek/git/CS320_TeamProject/database.db;create=true");		
 		
 		// Set autocommit() to false to allow the execution of
 		// multiple queries/statements as part of the same transaction.
@@ -1712,5 +1712,99 @@ public class DerbyDatabase implements IDatabase {
 	}	
 	//end of Kaitlyn's methods
 
+	@Override
+	public int changePassword(final int profileId, final String newPassword) {
+		return executeTransaction (new Transaction <Integer> () {
+			@Override
+			public Integer execute(Connection conn) throws SQLException {
+				PreparedStatement stmt = null;
+				PreparedStatement stmt2 = null;
+				ResultSet resultSet = null;
+				ResultSet resultSet2 = null;
+				
+				try {
+					//update the password
+					stmt = conn.prepareStatement(
+						"update profiles "
+						+ " set password = ? " 
+						+ " where profile_id = ?"
+					);
+					stmt.setString(1, newPassword);
+					stmt.setInt(2, profileId);
+					
+					int success = stmt.executeUpdate();
+					
+					if (success != -1) {
+						System.out.println("Password changed successfully.");
+						return 0;
+					}
+					else {
+						System.out.println("Password did not change successfully.");
+					}
+					
+					return 1;
+				}
+				finally {
+					DBUtil.closeQuietly(stmt);
+					DBUtil.closeQuietly(stmt2);
+					DBUtil.closeQuietly(resultSet);
+					DBUtil.closeQuietly(resultSet2);
+				}
+			}
+		});
+	}	
 	
+	@Override
+	public int changeUsername(final int profileId, final String newUsername) {
+		return executeTransaction (new Transaction <Integer> () {
+			@Override
+			public Integer execute(Connection conn) throws SQLException {
+				PreparedStatement stmt = null;
+				PreparedStatement stmt2 = null;
+				ResultSet resultSet = null;
+				ResultSet resultSet2 = null;
+				
+				try {
+					//update the username
+					stmt = conn.prepareStatement(
+						"update profiles "
+						+ " set username = ? "
+						+ " where profile_id = ?"
+					);
+					stmt.setString(1, newUsername);
+					stmt.setInt(2, profileId);
+					
+					resultSet = stmt.executeQuery();
+					
+					//check to make sure username updated
+					stmt2 = conn.prepareStatement(
+						"select profile.username" 
+						+ "	from profiles " 
+						+ " where profile_id = ?"
+					);
+					stmt2.setInt(1, profileId);
+					
+					resultSet2 = stmt.executeQuery();
+					
+					if (resultSet2.next()) {
+						if(resultSet2.getString(1).compareTo(newUsername) == 0) {
+							System.out.println("Profile id: " + profileId + "changed username to " + newUsername);
+							return 0;
+						}
+					}
+					else {
+						System.out.println("Username did not change successfully.");
+					}
+					
+					return 1;
+				}
+				finally {
+					DBUtil.closeQuietly(stmt);
+					DBUtil.closeQuietly(stmt2);
+					DBUtil.closeQuietly(resultSet);
+					DBUtil.closeQuietly(resultSet2);
+				}
+			}
+		});
+	}
 }

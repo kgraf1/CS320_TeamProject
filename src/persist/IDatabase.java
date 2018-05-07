@@ -36,11 +36,14 @@ public interface IDatabase {
 	public List<Profile> getAllProfiles();
 	public List<PhysicalModel> getAllModels();
 	
-	
 	//getting other model information 
 	public List<Keyword> findKeywordsByModelId(int modelId);
 	public List<Material> findMaterialsByModelId(int modelId);
 	public Application findApplicationByModelId(int modelId);
 	public List<Rating> findRatingsByModelId(int modelId);
 	public Profile findProfileByModelId(int modelId);
+	
+	//profile options
+	public int changePassword(int profileId, String newPassword);
+	public int changeUsername(int profileId, String newUsername);
 }

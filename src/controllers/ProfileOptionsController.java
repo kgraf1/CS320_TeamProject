@@ -26,19 +26,25 @@ private IDatabase db = null;
 	
 	public boolean changePassword(int profileId, String newPassword) {
 		
-		//return db.changePassword(profileId, newPassword);
-		System.out.println("db.changePassword has not been implemented yet. Returning False");
-		return false;
+		int result = db.changePassword(profileId, newPassword);	
 		
+		if(result == 0) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 
 	public boolean changeUsername(int profileId, String newUsername) {
 		
-		//return db.changeUsername(profileId, newUsername);
-		System.out.println("db.changeUsername has not been implemented yet. Returning False");
-		return false;
+		int result = db.changeUsername(profileId, newUsername);	
 		
+		if(result == 0) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
-	
-	//any other methods
 }
