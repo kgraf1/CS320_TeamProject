@@ -43,4 +43,8 @@ public interface IDatabase {
 	public Application findApplicationByModelId(int modelId);
 	public List<Rating> findRatingsByModelId(int modelId);
 	public Profile findProfileByModelId(int modelId);
+	
+	//profile options
+	public int changePassword(int profileId, String newPassword);
+	public int changeUsername(int profileId, String newUsername);
 }
