@@ -66,6 +66,14 @@
   	<servlet-name>ProfileOptionsServlet</servlet-name>
   	<servlet-class>servlets.ProfileOptionsServlet</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>AddProfileImageServlet</servlet-name>
+  	<servlet-class>servlets.AddProfileImageServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>redirectToAddImageServlet</servlet-name>
+  	<servlet-class>servlets.redirectToAddImageServlet</servlet-class>
+  </servlet>
   
   <!-- Servlet mappings -->
   <servlet-mapping>

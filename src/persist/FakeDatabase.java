@@ -205,14 +205,14 @@ public class FakeDatabase implements IDatabase {
 	}
 	
 	@Override
-	public int insertProfileIntoProfileTable (String firstName, String lastName, String username, String email, String password) {
+	public int insertProfileIntoProfileTable (String firstName, String lastName, String username, String email, String password, String profileImage) {
 		int id = 1;
 		
 		if(profiles.size()>0) {
 			id = profiles.get(profiles.size()-1).getId() + 1;
 		}
 		
-		Profile profile = new Profile(id, username, password, firstName, lastName, email);
+		Profile profile = new Profile(id, username, password, firstName, lastName, email, profileImage);
 		profiles.add(profile);
 		
 		return profile.getId();
@@ -351,6 +351,12 @@ public class FakeDatabase implements IDatabase {
 	@Override
 	public List<PhysicalModel> getAllModels(){
 		return physicalModels;
+	}
+	
+	@Override
+	public Profile addProfileImage(int profileId, String profileImage) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	@Override

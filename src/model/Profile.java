@@ -9,6 +9,7 @@ public class Profile {
 	private String email;
 	private String firstName;
 	private String lastName;
+	private String profileImage;
 	private boolean loggedIn;  //check with team if this is okay
 	
 	public Profile () {
@@ -17,7 +18,7 @@ public class Profile {
 	
 	
 	public Profile(int id, String username, String password, String firstName,
-			String lastName, String email) {
+			String lastName, String email, String profileImage) {
 		
 		this.id = id;
 		this.username = username;
@@ -25,6 +26,7 @@ public class Profile {
 		this.email = email;
 		this.firstName = firstName;
 		this.lastName = lastName;
+		this.profileImage = profileImage;
 		loggedIn = false;
 	}
 	
@@ -45,6 +47,9 @@ public class Profile {
 	
 	public String getLastName() { return lastName; }
 	public void setLastName(String lastName) { this.lastName = lastName; }
+	
+	public String getProfileImage() { return profileImage; }
+	public void setProfileImage (String profileImage ) { this.profileImage = profileImage;}
 
 	
 	public void logIn() { loggedIn = true; }
