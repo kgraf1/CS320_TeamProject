@@ -1718,9 +1718,7 @@ public class DerbyDatabase implements IDatabase {
 			@Override
 			public Integer execute(Connection conn) throws SQLException {
 				PreparedStatement stmt = null;
-				PreparedStatement stmt2 = null;
 				ResultSet resultSet = null;
-				ResultSet resultSet2 = null;
 				
 				try {
 					//update the password
@@ -1733,9 +1731,9 @@ public class DerbyDatabase implements IDatabase {
 					stmt.setInt(2, profileId);
 					
 					int success = stmt.executeUpdate();
-					
+				
 					if (success != -1) {
-						System.out.println("Password changed successfully.");
+						System.out.println("Password changed successfully. Exit code: " + success);
 						return 0;
 					}
 					else {
@@ -1746,9 +1744,7 @@ public class DerbyDatabase implements IDatabase {
 				}
 				finally {
 					DBUtil.closeQuietly(stmt);
-					DBUtil.closeQuietly(stmt2);
 					DBUtil.closeQuietly(resultSet);
-					DBUtil.closeQuietly(resultSet2);
 				}
 			}
 		});
@@ -1760,37 +1756,23 @@ public class DerbyDatabase implements IDatabase {
 			@Override
 			public Integer execute(Connection conn) throws SQLException {
 				PreparedStatement stmt = null;
-				PreparedStatement stmt2 = null;
 				ResultSet resultSet = null;
-				ResultSet resultSet2 = null;
 				
 				try {
-					//update the username
+					//update the password
 					stmt = conn.prepareStatement(
 						"update profiles "
-						+ " set username = ? "
+						+ " set username = ? " 
 						+ " where profile_id = ?"
 					);
 					stmt.setString(1, newUsername);
 					stmt.setInt(2, profileId);
 					
-					resultSet = stmt.executeQuery();
-					
-					//check to make sure username updated
-					stmt2 = conn.prepareStatement(
-						"select profile.username" 
-						+ "	from profiles " 
-						+ " where profile_id = ?"
-					);
-					stmt2.setInt(1, profileId);
-					
-					resultSet2 = stmt.executeQuery();
-					
-					if (resultSet2.next()) {
-						if(resultSet2.getString(1).compareTo(newUsername) == 0) {
-							System.out.println("Profile id: " + profileId + "changed username to " + newUsername);
-							return 0;
-						}
+					int success = stmt.executeUpdate();
+				
+					if (success != -1) {
+						System.out.println("Username changed successfully. Exit code: " + success);
+						return 0;
 					}
 					else {
 						System.out.println("Username did not change successfully.");
@@ -1800,9 +1782,7 @@ public class DerbyDatabase implements IDatabase {
 				}
 				finally {
 					DBUtil.closeQuietly(stmt);
-					DBUtil.closeQuietly(stmt2);
 					DBUtil.closeQuietly(resultSet);
-					DBUtil.closeQuietly(resultSet2);
 				}
 			}
 		});

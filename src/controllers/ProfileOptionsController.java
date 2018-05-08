@@ -24,11 +24,14 @@ private IDatabase db = null;
 		//db = DatabaseProvider.getInstance();
 	}
 	
-	public boolean changePassword(int profileId, String newPassword) {
+	public boolean changePassword(String username, String newPassword) {
+		
+		int profileId = db.findProfileIdByUsername(username);
 		
 		int result = db.changePassword(profileId, newPassword);	
 		
 		if(result == 0) {
+			System.out.println("After query, new password is: " + db.findProfileByProfileId(profileId).getPassword());
 			return true;
 		}
 		else {
@@ -36,7 +39,9 @@ private IDatabase db = null;
 		}
 	}
 
-	public boolean changeUsername(int profileId, String newUsername) {
+	public boolean changeUsername(String username, String newUsername) {
+		
+		int profileId = db.findProfileIdByUsername(username);
 		
 		int result = db.changeUsername(profileId, newUsername);	
 		

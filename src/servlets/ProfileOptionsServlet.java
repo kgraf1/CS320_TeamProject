@@ -47,26 +47,19 @@ public class ProfileOptionsServlet extends HttpServlet {
 		}
 
 		
-		
-		profileId = (Integer) req.getSession().getAttribute("profileId");
-		if(profileId == null) {
-			System.out.println("profileId is null. Setting to pre set id of 0");
-			profileId = 0;
-		}
+		String username = (String)req.getSession().getAttribute("username");
+	
 		String newusername = req.getParameter("newusername");
 		String newpassword = req.getParameter("newpassword");
-		System.out.println("Profile id the changes are going to is: "+profileId);
-		System.out.println("New username is: '"+newusername+"'");
-		System.out.println("New password is: '"+newpassword+"'");
 		
 		if(!newusername.equals(null) && !newusername.equals("") ) {
 			System.out.println("Changing Username!");
-			controller.changeUsername(profileId, newusername);
+			controller.changeUsername(username, newusername);
 			
 		}	
 		if(!newpassword.equals(null) && !newpassword.equals("")) {
 			System.out.println("Changing Password!");
-			controller.changePassword(profileId, newpassword);
+			controller.changePassword(username, newpassword);
 			
 		}	
 		resp.sendRedirect(req.getContextPath() + "/profilePage");
