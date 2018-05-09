@@ -55,6 +55,15 @@ public ArrayList<PhysicalModel> getModelByKeywords (String keyword){
 			}
 		}
 		
+		//**DO NOT REMOVE, THIS IS WHAT GETS RID OF DUPLICATE RESULTS//
+				for (int i = 0; i < models.size(); i++) {
+				     for (int j = i + 1 ; j < models.size(); j++) {
+				          if (models.get(i).getId() == models.get(j).getId()) {
+				                   models.remove(j);
+				          }
+				     }
+				 }
+		
 		
 		return models;
 	}

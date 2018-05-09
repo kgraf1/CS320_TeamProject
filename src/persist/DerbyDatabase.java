@@ -81,11 +81,9 @@ public class DerbyDatabase implements IDatabase {
 	private Connection connect() throws SQLException {
 		
 
-<<<<<<< HEAD
+
 		Connection conn = DriverManager.getConnection("jdbc:derby:C:/Users/ktgraf/git/CS320_TeamProject/database.db;create=true");		
-=======
-		Connection conn = DriverManager.getConnection("jdbc:derby:C:/Users/katek/git/CS320_TeamProject/database.db;create=true");		
->>>>>>> branch 'master' of https://github.com/kgraf1/CS320_TeamProject.git
+
 		
 		// Set autocommit() to false to allow the execution of
 		// multiple queries/statements as part of the same transaction.
@@ -840,9 +838,9 @@ public class DerbyDatabase implements IDatabase {
 							"select models.* " +
 							"  from  models, materials " +
 							"  where models.model_id = materials.material_model_id " +
-							" and materials.name = ? "
+							" and materials.name LIKE '%" + materialName + "%'"
 					);
-					stmt.setString(1, materialName);
+					//stmt.setString(1, materialName);
 					
 					// establish the list of (Author, Book) Pairs to receive the result
 					List<PhysicalModel> result = new ArrayList<PhysicalModel>();
@@ -911,9 +909,9 @@ public class DerbyDatabase implements IDatabase {
 							"select models.* " +
 							"  from  models, keywords" +
 							"  where models.model_id = keywords.keyword_model_id " +
-							"and keywords.word = ? "
+							"and keywords.word LIKE '%" + keyword + "%'"
 					);
-					stmt.setString(1, keyword);
+					
 					
 					// establish the list of (Author, Book) Pairs to receive the result
 					List<PhysicalModel> result = new ArrayList<PhysicalModel>();
