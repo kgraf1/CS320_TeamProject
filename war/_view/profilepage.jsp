@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 
+
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/_view/profilepage.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/_view/homepageStyle.css">
 <!-- import the homepage css for navigation bar-->
@@ -48,17 +49,18 @@
 						<button class="hiddenButton" value="${profile.id}" name="profileId" onclick="form.action='redirect';">Add New Profile Picture</button> 						<br>    
                         <div style="padding-top:20px;" ><input type="submit" name="logout" value="Log Out"/></div>
                         
+                        <td><input type="submit" class="button" name="logout" value="Log Out"/></td>
+                        <td><input type="submit" class="button" name="options" value="Options"/></td>
+                        <!-- <button  class="hiddenButton" onclick="form.action='ProfileOptions';" name="profileId" value="${profileId}"> Options</button><br>
+                    	-->
                     </div>
-                   
                 </div>
-                
                 <br>
 
                 <div class="card">
                     <div class="container">
                     	<input type="Submit" class="button" style="width:220px;margin-top:15px;" name="SubmitModel" value="Submit Model">
                     </div>
-                    
                 </div>
 				
                 <!-- End Left Column -->
