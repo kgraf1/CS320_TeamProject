@@ -51,7 +51,7 @@
 			<br>
 			<div style="border: 2px solid gray">
 				<h3>Thumbnail:</h3>
-					<div style="padding-left:20px; padding-right:20px;"><img src="${model.thumbnail}" alt="thumbnail"></div><br>
+					<div style="padding-left:20px; padding-right:20px;"><img src="${model.thumbnail}" ></div><br>
 			</div>
 			<br>
 			<div style="border: 2px solid gray">

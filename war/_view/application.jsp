@@ -50,11 +50,11 @@
 					<h4 style="padding-left:20px; padding-right:20px;">Before Class:</h4>
 						<div style="padding-left:40px; padding-right:20px;">${application.beforeClass}</div><br>
 					<h4 style="padding-left:20px; padding-right:20px;">Before Image:</h4>	
-						<div style="padding-left:40px; padding-right:20px;"><img src="${application.beforeImage}" alt="sticks"></div><br>
+						<div style="padding-left:40px; padding-right:20px;"><img src="${application.beforeImage}" ></div><br>
 					<h4 style="padding-left:20px; padding-right:20px;">During Class:</h4>	
 						<div style="padding-left:40px; padding-right:20px;">${application.duringClass}</div><br>
 					<h4 style="padding-left:20px; padding-right:20px;">During Image:</h4>	
-						<div style="padding-left:40px; padding-right:20px;"><img src="${application.duringImage}" alt="sticksglued"></div><br>
+						<div style="padding-left:40px; padding-right:20px;"><img src="${application.duringImage}"></div><br>
 			</div>
 		</div>
 		<br>

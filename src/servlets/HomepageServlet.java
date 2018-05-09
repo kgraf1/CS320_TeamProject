@@ -35,6 +35,10 @@ private IDatabase db = null;
 		models = rcontroller.getAllPhysicalModels();
 		PhysicalModel model = null;
 		//req.setAttribute("number", models.size());
+		if(models.size() ==0) {
+			
+		}
+		else {
 		for(int i = 0; i<models.size();i++) {
 			/*check for models that have an average rating above a 2.5
 			 * if so add to results
@@ -82,7 +86,7 @@ private IDatabase db = null;
 		req.setAttribute("errorMessage", errorMessage);
 		req.setAttribute("model", model);
 		req.setAttribute("models", models);
-		
+		}
 		req.getRequestDispatcher("/_view/homepage.jsp").forward(req, resp);
 	}
 	

@@ -81,7 +81,7 @@ public class DerbyDatabase implements IDatabase {
 	private Connection connect() throws SQLException {
 		
 
-		Connection conn = DriverManager.getConnection("jdbc:derby:C:/Users/Jason/git/CS320_TeamProject/database.db;create=true");		
+		Connection conn = DriverManager.getConnection("jdbc:derby:C:/Users/ktgraf/git/CS320_TeamProject/database.db;create=true");		
 		
 		// Set autocommit() to false to allow the execution of
 		// multiple queries/statements as part of the same transaction.
@@ -202,9 +202,9 @@ public class DerbyDatabase implements IDatabase {
 						"		generated always as identity (start with 1, increment by 1), " +	
 						"   profile_id integer constraint profile_id references profiles," + 
 						"   title varchar(40)," +
-						"   description varchar(250)," + 
+						"   description varchar(2000)," + 
 						"   thumbnail varchar(100)," + 
-						"   engPrinciple varchar(100)," +
+						"   engPrinciple varchar(2000)," +
 						"   citation varchar(100)," +
 						"   category varchar(20)," +
 						"   steps varchar(150)" +
@@ -221,7 +221,7 @@ public class DerbyDatabase implements IDatabase {
 							"	material_model_id integer constraint material_model_id references models," +
 							"	quantity float," +
 							"   name varchar(50)," +
-							"   description varchar(100)," + 
+							"   description varchar(500)," + 
 							"   cost varchar(50)," +
 							"   buildTime varchar(50)" +
 							")"
@@ -260,9 +260,9 @@ public class DerbyDatabase implements IDatabase {
 							"	application_id integer primary key " +
 							"		generated always as identity (start with 1, increment by 1), " +
 							"	application_model_id integer constraint applciation_model_id references models," +
-							"	beforeClass varchar(150)," +
+							"	beforeClass varchar(2000)," +
 							"   beforeImage varchar(150)," +
-							"   duringClass varchar(150)," +
+							"   duringClass varchar(2000)," +
 							"   duringImage varchar(150)" +
 							")"
 					);
